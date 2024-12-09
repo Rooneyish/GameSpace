@@ -4,6 +4,14 @@
  */
 package com.gamespace.views;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ilust
@@ -17,6 +25,7 @@ public class GameSpace extends javax.swing.JFrame {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,33 +36,72 @@ public class GameSpace extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMainLogIn = new javax.swing.JPanel();
+        pnlWelcomeLogIn = new RoundedPanel(80,new Color(145, 49, 117));
+        pnlLogInBorder = new RoundedPanel(80,new Color(233, 232, 231) );
+        jPanel1 = new RoundedPanel(70,new Color(32, 38, 46));
+        jLabel2 = new javax.swing.JLabel();
+        lblLogInBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout pnlMainLogInLayout = new javax.swing.GroupLayout(pnlMainLogIn);
-        pnlMainLogIn.setLayout(pnlMainLogInLayout);
-        pnlMainLogInLayout.setHorizontalGroup(
-            pnlMainLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1920, Short.MAX_VALUE)
+        pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlWelcomeLogIn.setBackground(new java.awt.Color(145, 49, 117));
+        pnlWelcomeLogIn.setPreferredSize(new java.awt.Dimension(1280, 700));
+
+        pnlLogInBorder.setBackground(new java.awt.Color(233, 232, 231));
+        pnlLogInBorder.setPreferredSize(new java.awt.Dimension(650, 700));
+        pnlLogInBorder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(32, 38, 46));
+        jPanel1.setPreferredSize(new java.awt.Dimension(640, 700));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
-        pnlMainLogInLayout.setVerticalGroup(
-            pnlMainLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMainLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        pnlLogInBorder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlWelcomeLogInLayout = new javax.swing.GroupLayout(pnlWelcomeLogIn);
+        pnlWelcomeLogIn.setLayout(pnlWelcomeLogInLayout);
+        pnlWelcomeLogInLayout.setHorizontalGroup(
+            pnlWelcomeLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlWelcomeLogInLayout.createSequentialGroup()
+                .addGap(0, 89, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(78, 78, 78)
+                .addComponent(pnlLogInBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMainLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        pnlWelcomeLogInLayout.setVerticalGroup(
+            pnlWelcomeLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlWelcomeLogInLayout.createSequentialGroup()
+                .addComponent(pnlLogInBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlWelcomeLogInLayout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pnlMainLogIn.add(pnlWelcomeLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 1280, -1));
+
+        lblLogInBackground.setBackground(new java.awt.Color(145, 49, 117));
+        lblLogInBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/loginpage Background.png"))); // NOI18N
+        pnlMainLogIn.add(lblLogInBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(pnlMainLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,6 +142,49 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLogInBackground;
+    private javax.swing.JPanel pnlLogInBorder;
     private javax.swing.JPanel pnlMainLogIn;
+    private javax.swing.JPanel pnlWelcomeLogIn;
     // End of variables declaration//GEN-END:variables
+
+class RoundedPanel extends JPanel
+    {
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+            
+        }
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+            setOpaque(false);
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
+            graphics.setColor(backgroundColor != null ? backgroundColor : getBackground());
+            graphics.fillRoundRect(0, 0, width, height, arcs.width, arcs.height);             
+        }
+    }
 }
