@@ -285,26 +285,14 @@ class RoundedPanel extends JPanel
     {
         private Color backgroundColor;
         private int cornerRadius = 15;
-        public RoundedPanel(LayoutManager layout, int radius) {
-            super(layout);
-            cornerRadius = radius;
-        }
-        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
-            super(layout);
-            cornerRadius = radius;
-            backgroundColor = bgColor;
-        }
-        public RoundedPanel(int radius) {
-            super();
-            cornerRadius = radius;
-            
-        }
+
         public RoundedPanel(int radius, Color bgColor) {
             super();
             cornerRadius = radius;
             backgroundColor = bgColor;
             setOpaque(false);
         }
+        
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
