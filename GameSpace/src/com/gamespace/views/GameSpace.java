@@ -5,6 +5,7 @@
 package com.gamespace.views;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,8 +39,17 @@ public class GameSpace extends javax.swing.JFrame {
         pnlMainLogIn = new javax.swing.JPanel();
         pnlWelcomeLogIn = new RoundedPanel(80,new Color(145, 49, 117));
         pnlLogInBorder = new RoundedPanel(80,new Color(233, 232, 231) );
-        jPanel1 = new RoundedPanel(70,new Color(32, 38, 46));
-        jLabel2 = new javax.swing.JLabel();
+        pnlLogIn = new RoundedPanel(70,new Color(32, 38, 46));
+        lblLogInTitle = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtFldUsername = new javax.swing.JTextField();
+        txtFldPassword = new javax.swing.JPasswordField();
+        lblForgotPassword = new javax.swing.JLabel();
+        pnlLogInbtn = new javax.swing.JPanel();
+        btnLogIn = new javax.swing.JButton();
+        lblHaveAccount = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
         lblLogInBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,23 +66,126 @@ public class GameSpace extends javax.swing.JFrame {
         pnlLogInBorder.setPreferredSize(new java.awt.Dimension(650, 700));
         pnlLogInBorder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(32, 38, 46));
-        jPanel1.setPreferredSize(new java.awt.Dimension(640, 700));
+        pnlLogIn.setBackground(new java.awt.Color(32, 38, 46));
+        pnlLogIn.setPreferredSize(new java.awt.Dimension(640, 700));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+        lblLogInTitle.setBackground(new java.awt.Color(233, 232, 231));
+        lblLogInTitle.setFont(new java.awt.Font("Pixelify Sans", 0, 32)); // NOI18N
+        lblLogInTitle.setForeground(new java.awt.Color(233, 232, 231));
+        lblLogInTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogInTitle.setText("Log-In To GameSpace");
+
+        lblUsername.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(233, 232, 231));
+        lblUsername.setText("Username");
+
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(233, 232, 231));
+        lblPassword.setText("Password");
+
+        txtFldUsername.setBackground(new java.awt.Color(145, 49, 117));
+        txtFldUsername.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldUsername.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldUsername.setPreferredSize(new java.awt.Dimension(368, 42));
+        txtFldUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldUsernameActionPerformed(evt);
+            }
+        });
+
+        txtFldPassword.setBackground(new java.awt.Color(145, 49, 117));
+        txtFldPassword.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldPassword.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldPassword.setPreferredSize(new java.awt.Dimension(368, 42));
+        txtFldPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldPasswordActionPerformed(evt);
+            }
+        });
+
+        lblForgotPassword.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        lblForgotPassword.setForeground(new java.awt.Color(233, 232, 231));
+        lblForgotPassword.setText("Forgot Password?");
+        lblForgotPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        pnlLogInbtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        pnlLogInbtn.setPreferredSize(new java.awt.Dimension(147, 43));
+
+        btnLogIn.setBackground(new java.awt.Color(32, 38, 46));
+        btnLogIn.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnLogIn.setForeground(new java.awt.Color(233, 232, 231));
+        btnLogIn.setText("Log-In");
+        btnLogIn.setBorder(null);
+        btnLogIn.setBorderPainted(false);
+        btnLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogIn.setPreferredSize(new java.awt.Dimension(141, 37));
+
+        javax.swing.GroupLayout pnlLogInbtnLayout = new javax.swing.GroupLayout(pnlLogInbtn);
+        pnlLogInbtn.setLayout(pnlLogInbtnLayout);
+        pnlLogInbtnLayout.setHorizontalGroup(
+            pnlLogInbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogInbtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+        pnlLogInbtnLayout.setVerticalGroup(
+            pnlLogInbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogInbtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pnlLogInBorder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        lblHaveAccount.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        lblHaveAccount.setForeground(new java.awt.Color(233, 232, 231));
+        lblHaveAccount.setText("Don't have a Account?");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized.png"))); // NOI18N
+        javax.swing.GroupLayout pnlLogInLayout = new javax.swing.GroupLayout(pnlLogIn);
+        pnlLogIn.setLayout(pnlLogInLayout);
+        pnlLogInLayout.setHorizontalGroup(
+            pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogInLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlLogInLayout.createSequentialGroup()
+                        .addComponent(pnlLogInbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(lblHaveAccount))
+                    .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblForgotPassword)
+                        .addComponent(txtFldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPassword)
+                        .addComponent(txtFldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblUsername)
+                        .addComponent(lblLogInTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(136, Short.MAX_VALUE))
+        );
+        pnlLogInLayout.setVerticalGroup(
+            pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogInLayout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addComponent(lblLogInTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lblUsername)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblForgotPassword)
+                .addGap(18, 18, 18)
+                .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHaveAccount)
+                    .addComponent(pnlLogInbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(216, Short.MAX_VALUE))
+        );
+
+        pnlLogInBorder.add(pnlLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlWelcomeLogInLayout = new javax.swing.GroupLayout(pnlWelcomeLogIn);
         pnlWelcomeLogIn.setLayout(pnlWelcomeLogInLayout);
@@ -80,7 +193,7 @@ public class GameSpace extends javax.swing.JFrame {
             pnlWelcomeLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlWelcomeLogInLayout.createSequentialGroup()
                 .addGap(0, 89, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblLogo)
                 .addGap(78, 78, 78)
                 .addComponent(pnlLogInBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -91,7 +204,7 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlWelcomeLogInLayout.createSequentialGroup()
                 .addGap(279, 279, 279)
-                .addComponent(jLabel2)
+                .addComponent(lblLogo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -103,8 +216,17 @@ public class GameSpace extends javax.swing.JFrame {
 
         getContentPane().add(pnlMainLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pack();
+        setSize(new java.awt.Dimension(2775, 1410));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldUsernameActionPerformed
+
+    private void txtFldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +239,7 @@ public class GameSpace extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -142,12 +264,21 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnLogIn;
+    private javax.swing.JLabel lblForgotPassword;
+    private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblLogInBackground;
+    private javax.swing.JLabel lblLogInTitle;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JPanel pnlLogIn;
     private javax.swing.JPanel pnlLogInBorder;
+    private javax.swing.JPanel pnlLogInbtn;
     private javax.swing.JPanel pnlMainLogIn;
     private javax.swing.JPanel pnlWelcomeLogIn;
+    private javax.swing.JPasswordField txtFldPassword;
+    private javax.swing.JTextField txtFldUsername;
     // End of variables declaration//GEN-END:variables
 
 class RoundedPanel extends JPanel
