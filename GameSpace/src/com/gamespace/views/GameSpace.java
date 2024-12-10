@@ -51,11 +51,11 @@ public class GameSpace extends javax.swing.JFrame {
         lblHaveAccount = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblLogInBackground = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlWelcome = new javax.swing.JPanel();
+        lblWelcome = new javax.swing.JLabel();
+        btnContinue = new javax.swing.JButton();
+        lblWlcPgLogo = new javax.swing.JLabel();
+        lblWelcomePageImg = new javax.swing.JLabel();
 
         pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -214,9 +214,42 @@ public class GameSpace extends javax.swing.JFrame {
         lblLogInBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/loginpage Background.png"))); // NOI18N
         pnlMainLogIn.add(lblLogInBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(pnlMainLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        setSize(new java.awt.Dimension(2775, 1410));
+        pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblWelcome.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(233, 232, 231));
+        lblWelcome.setText("WELCOME TO");
+        pnlWelcome.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 400, -1, -1));
+
+        btnContinue.setBackground(new java.awt.Color(233, 232, 231));
+        btnContinue.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnContinue.setForeground(new java.awt.Color(32, 38, 46));
+        btnContinue.setText("Continue");
+        btnContinue.setBorder(null);
+        btnContinue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinueActionPerformed(evt);
+            }
+        });
+        pnlWelcome.add(btnContinue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1720, 930, 140, 30));
+
+        lblWlcPgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcPgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized1.png"))); // NOI18N
+        pnlWelcome.add(lblWlcPgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 1920, 1070));
+
+        lblWelcomePageImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
+        pnlWelcome.add(lblWelcomePageImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -227,6 +260,10 @@ public class GameSpace extends javax.swing.JFrame {
     private void txtFldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFldPasswordActionPerformed
+
+    private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContinueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +301,7 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContinue;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblHaveAccount;
@@ -272,10 +310,14 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lblWelcomePageImg;
+    private javax.swing.JLabel lblWlcPgLogo;
     private javax.swing.JPanel pnlLogIn;
     private javax.swing.JPanel pnlLogInBorder;
     private javax.swing.JPanel pnlLogInbtn;
     private javax.swing.JPanel pnlMainLogIn;
+    private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JPasswordField txtFldPassword;
     private javax.swing.JTextField txtFldUsername;
