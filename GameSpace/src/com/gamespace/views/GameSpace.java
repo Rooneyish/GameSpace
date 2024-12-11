@@ -11,7 +11,8 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author ilust
+ * @author Ronish Prajapati
+ * LmuID: 23048584
  */
 public class GameSpace extends javax.swing.JFrame {
 
@@ -23,8 +24,8 @@ public class GameSpace extends javax.swing.JFrame {
     public GameSpace() {
         setUndecorated(true);
         initComponents();
-        initializeLayout();
-        startProgress();
+        //initializeLayout();
+        //startProgress();
     }
 
     private void initializeTools() {
@@ -109,6 +110,15 @@ public class GameSpace extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         lblWlcPgLogo = new javax.swing.JLabel();
         lblWelcomePageImg = new javax.swing.JLabel();
+        pnlAdmin = new javax.swing.JPanel();
+        pnlSidebar = new javax.swing.JPanel();
+        lblAdminIcon = new javax.swing.JLabel();
+        btnHome = new javax.swing.JButton();
+        btnAddGames = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        pnlSearchBar = new javax.swing.JPanel();
+        pnlDashboard = new javax.swing.JPanel();
+        pnlDashboardBg = new javax.swing.JLabel();
 
         pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -279,12 +289,6 @@ public class GameSpace extends javax.swing.JFrame {
         lblLogInBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/loginpage Background.png"))); // NOI18N
         pnlMainLogIn.add(lblLogInBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));
         pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -309,7 +313,92 @@ public class GameSpace extends javax.swing.JFrame {
         lblWelcomePageImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
         pnlWelcome.add(lblWelcomePageImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlAdmin.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        pnlAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlSidebar.setBackground(new java.awt.Color(32, 38, 46));
+
+        lblAdminIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/crown.png"))); // NOI18N
+
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/home.png"))); // NOI18N
+        btnHome.setBorder(null);
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+
+        btnAddGames.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/plus.png"))); // NOI18N
+        btnAddGames.setBorder(null);
+        btnAddGames.setBorderPainted(false);
+        btnAddGames.setContentAreaFilled(false);
+        btnAddGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddGamesActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logout.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+
+        javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
+        pnlSidebar.setLayout(pnlSidebarLayout);
+        pnlSidebarLayout.setHorizontalGroup(
+            pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblAdminIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddGames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        pnlSidebarLayout.setVerticalGroup(
+            pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblAdminIcon)
+                .addGap(301, 301, 301)
+                .addComponent(btnHome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAddGames)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        pnlAdmin.add(pnlSidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 1080));
+
+        pnlSearchBar.setBackground(new java.awt.Color(145, 49, 117));
+
+        javax.swing.GroupLayout pnlSearchBarLayout = new javax.swing.GroupLayout(pnlSearchBar);
+        pnlSearchBar.setLayout(pnlSearchBarLayout);
+        pnlSearchBarLayout.setHorizontalGroup(
+            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1820, Short.MAX_VALUE)
+        );
+        pnlSearchBarLayout.setVerticalGroup(
+            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        pnlAdmin.add(pnlSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1820, -1));
+
+        pnlDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlDashboardBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/pgBackground.png"))); // NOI18N
+        pnlDashboard.add(pnlDashboardBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pnlAdmin.add(pnlDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1820, 980));
+
+        getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -324,6 +413,10 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         minimizeWindow();
     }//GEN-LAST:event_btnMinimizeLogInActionPerformed
+
+    private void btnAddGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGamesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddGamesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,9 +456,13 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddGames;
     private javax.swing.JButton btnCloseLogIn;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JButton btnMinimizeLogIn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel lblAdminIcon;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblLogInBackground;
@@ -377,10 +474,15 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblWelcomePageImg;
     private javax.swing.JLabel lblWlcPgLogo;
     private javax.swing.JProgressBar pgBarWelcomeScreen;
+    private javax.swing.JPanel pnlAdmin;
+    private javax.swing.JPanel pnlDashboard;
+    private javax.swing.JLabel pnlDashboardBg;
     private javax.swing.JPanel pnlLogIn;
     private javax.swing.JPanel pnlLogInBorder;
     private javax.swing.JPanel pnlLogInbtn;
     private javax.swing.JPanel pnlMainLogIn;
+    private javax.swing.JPanel pnlSearchBar;
+    private javax.swing.JPanel pnlSidebar;
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JPasswordField txtFldPassword;
