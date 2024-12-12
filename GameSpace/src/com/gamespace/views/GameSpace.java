@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.gamespace.views;
 
 import java.awt.Color;
@@ -115,9 +112,29 @@ public class GameSpace extends javax.swing.JFrame {
         lblAdminIcon = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
         btnAddGames = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnLogoutAdmin = new javax.swing.JButton();
         pnlSearchBar = new javax.swing.JPanel();
+        lblLogoAdmin = new javax.swing.JLabel();
+        txtFldSearchAdmin = new javax.swing.JTextField();
+        btnCloseWinAdmin = new javax.swing.JButton();
+        btnMinimizeWinAdmin = new javax.swing.JButton();
+        btnFilter = new javax.swing.JLabel();
         pnlDashboard = new javax.swing.JPanel();
+        divider = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
+        lblTotalAdmin = new javax.swing.JLabel();
+        lblAdminNum = new javax.swing.JLabel();
+        lblAdminIC = new javax.swing.JLabel();
+        pnlTotalUsers = new CustomRoundedPanel(80, new Color(145,49,117));
+        lblTotalUsers = new javax.swing.JLabel();
+        lblUsersNum = new javax.swing.JLabel();
+        lblUserIcon = new javax.swing.JLabel();
+        pnlTotalGames = new CustomRoundedPanel(80, new Color(145,49,117));
+        lblTotalGames = new javax.swing.JLabel();
+        lblGamesNum = new javax.swing.JLabel();
+        lblGameIcon = new javax.swing.JLabel();
         pnlDashboardBg = new javax.swing.JLabel();
 
         pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,7 +148,7 @@ public class GameSpace extends javax.swing.JFrame {
                 btnMinimizeLogInActionPerformed(evt);
             }
         });
-        pnlMainLogIn.add(btnMinimizeLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1850, 10, -1, -1));
+        pnlMainLogIn.add(btnMinimizeLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1860, 10, -1, -1));
 
         btnCloseLogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
         btnCloseLogIn.setBorder(null);
@@ -323,6 +340,7 @@ public class GameSpace extends javax.swing.JFrame {
         pnlAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSidebar.setBackground(new java.awt.Color(32, 38, 46));
+        pnlSidebar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblAdminIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/crown.png"))); // NOI18N
 
@@ -330,21 +348,18 @@ public class GameSpace extends javax.swing.JFrame {
         btnHome.setBorder(null);
         btnHome.setBorderPainted(false);
         btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnAddGames.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/plus.png"))); // NOI18N
         btnAddGames.setBorder(null);
         btnAddGames.setBorderPainted(false);
         btnAddGames.setContentAreaFilled(false);
-        btnAddGames.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddGamesActionPerformed(evt);
-            }
-        });
+        btnAddGames.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logout.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
+        btnLogoutAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logout.png"))); // NOI18N
+        btnLogoutAdmin.setBorder(null);
+        btnLogoutAdmin.setBorderPainted(false);
+        btnLogoutAdmin.setContentAreaFilled(false);
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -353,11 +368,12 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblAdminIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddGames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnLogoutAdmin)
+                    .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnAddGames)
+                        .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAdminIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlSidebarLayout.setVerticalGroup(
@@ -365,35 +381,258 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblAdminIcon)
-                .addGap(301, 301, 301)
+                .addGap(393, 393, 393)
                 .addComponent(btnHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddGames)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+                .addComponent(btnLogoutAdmin)
                 .addContainerGap())
         );
 
         pnlAdmin.add(pnlSidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 1080));
 
         pnlSearchBar.setBackground(new java.awt.Color(145, 49, 117));
+        pnlSearchBar.setPreferredSize(new java.awt.Dimension(1820, 100));
+
+        lblLogoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/Untitled-1.png"))); // NOI18N
+
+        txtFldSearchAdmin.setBackground(new java.awt.Color(233, 232, 231));
+        txtFldSearchAdmin.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtFldSearchAdmin.setForeground(new java.awt.Color(145, 49, 117));
+        txtFldSearchAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 38, 46), 5));
+        txtFldSearchAdmin.setPreferredSize(new java.awt.Dimension(1275, 45));
+
+        btnCloseWinAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
+        btnCloseWinAdmin.setBorder(null);
+        btnCloseWinAdmin.setBorderPainted(false);
+        btnCloseWinAdmin.setContentAreaFilled(false);
+        btnCloseWinAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseWinAdminActionPerformed(evt);
+            }
+        });
+
+        btnMinimizeWinAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/minmize-icon.png"))); // NOI18N
+        btnMinimizeWinAdmin.setBorder(null);
+        btnMinimizeWinAdmin.setBorderPainted(false);
+        btnMinimizeWinAdmin.setContentAreaFilled(false);
+        btnMinimizeWinAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizeWinAdminActionPerformed(evt);
+            }
+        });
+
+        btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/filter.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlSearchBarLayout = new javax.swing.GroupLayout(pnlSearchBar);
         pnlSearchBar.setLayout(pnlSearchBarLayout);
         pnlSearchBarLayout.setHorizontalGroup(
             pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1820, Short.MAX_VALUE)
+            .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLogoAdmin)
+                .addGap(26, 26, 26)
+                .addComponent(txtFldSearchAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addComponent(btnFilter)
+                .addGap(18, 18, 18)
+                .addComponent(btnMinimizeWinAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCloseWinAdmin)
+                .addContainerGap())
         );
         pnlSearchBarLayout.setVerticalGroup(
             pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLogoAdmin)
+                            .addComponent(btnCloseWinAdmin)
+                            .addComponent(btnMinimizeWinAdmin)))
+                    .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnFilter)
+                            .addComponent(txtFldSearchAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pnlAdmin.add(pnlSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1820, -1));
 
         pnlDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        divider.setBackground(new java.awt.Color(233, 232, 231));
+        divider.setPreferredSize(new java.awt.Dimension(1800, 5));
+
+        javax.swing.GroupLayout dividerLayout = new javax.swing.GroupLayout(divider);
+        divider.setLayout(dividerLayout);
+        dividerLayout.setHorizontalGroup(
+            dividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1800, Short.MAX_VALUE)
+        );
+        dividerLayout.setVerticalGroup(
+            dividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        pnlDashboard.add(divider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 1800, 10));
+
+        jPanel1.setBackground(new java.awt.Color(32, 38, 46));
+
+        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(233, 232, 231));
+        jLabel1.setText("Game Data");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap(1652, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addContainerGap(568, Short.MAX_VALUE))
+        );
+
+        pnlDashboard.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1800, 620));
+
+        pnlTotalAdmin.setBackground(new java.awt.Color(145, 49, 117));
+
+        lblTotalAdmin.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblTotalAdmin.setForeground(new java.awt.Color(233, 232, 231));
+        lblTotalAdmin.setText("Total Users");
+
+        lblAdminNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        lblAdminNum.setForeground(new java.awt.Color(233, 232, 231));
+        lblAdminNum.setText("100");
+
+        lblAdminIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/whiteCrown.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlTotalAdminLayout = new javax.swing.GroupLayout(pnlTotalAdmin);
+        pnlTotalAdmin.setLayout(pnlTotalAdminLayout);
+        pnlTotalAdminLayout.setHorizontalGroup(
+            pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalAdminLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTotalAdminLayout.createSequentialGroup()
+                        .addComponent(lblAdminIC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblAdminNum)
+                        .addGap(31, 31, 31))
+                    .addGroup(pnlTotalAdminLayout.createSequentialGroup()
+                        .addComponent(lblTotalAdmin)
+                        .addContainerGap(151, Short.MAX_VALUE))))
+        );
+        pnlTotalAdminLayout.setVerticalGroup(
+            pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalAdminLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblTotalAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAdminNum, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAdminIC, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(31, 31, 31))
+        );
+
+        pnlDashboard.add(pnlTotalAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 60, -1, -1));
+
+        pnlTotalUsers.setBackground(new java.awt.Color(145, 49, 117));
+
+        lblTotalUsers.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblTotalUsers.setForeground(new java.awt.Color(233, 232, 231));
+        lblTotalUsers.setText("Total Users");
+
+        lblUsersNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        lblUsersNum.setForeground(new java.awt.Color(233, 232, 231));
+        lblUsersNum.setText("100");
+
+        lblUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/users.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlTotalUsersLayout = new javax.swing.GroupLayout(pnlTotalUsers);
+        pnlTotalUsers.setLayout(pnlTotalUsersLayout);
+        pnlTotalUsersLayout.setHorizontalGroup(
+            pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalUsersLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTotalUsersLayout.createSequentialGroup()
+                        .addComponent(lblUserIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUsersNum)
+                        .addGap(31, 31, 31))
+                    .addGroup(pnlTotalUsersLayout.createSequentialGroup()
+                        .addComponent(lblTotalUsers)
+                        .addContainerGap(151, Short.MAX_VALUE))))
+        );
+        pnlTotalUsersLayout.setVerticalGroup(
+            pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalUsersLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblTotalUsers)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsersNum, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUserIcon, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(31, 31, 31))
+        );
+
+        pnlDashboard.add(pnlTotalUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
+
+        pnlTotalGames.setBackground(new java.awt.Color(145, 49, 117));
+
+        lblTotalGames.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblTotalGames.setForeground(new java.awt.Color(233, 232, 231));
+        lblTotalGames.setText("Total Games");
+
+        lblGamesNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        lblGamesNum.setForeground(new java.awt.Color(233, 232, 231));
+        lblGamesNum.setText("100");
+
+        lblGameIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/joystick.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlTotalGamesLayout = new javax.swing.GroupLayout(pnlTotalGames);
+        pnlTotalGames.setLayout(pnlTotalGamesLayout);
+        pnlTotalGamesLayout.setHorizontalGroup(
+            pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalGamesLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTotalGamesLayout.createSequentialGroup()
+                        .addComponent(lblGameIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblGamesNum)
+                        .addGap(31, 31, 31))
+                    .addGroup(pnlTotalGamesLayout.createSequentialGroup()
+                        .addComponent(lblTotalGames)
+                        .addContainerGap(151, Short.MAX_VALUE))))
+        );
+        pnlTotalGamesLayout.setVerticalGroup(
+            pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalGamesLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblTotalGames)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGamesNum, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblGameIcon, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(31, 31, 31))
+        );
+
+        pnlDashboard.add(pnlTotalGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 400, 210));
+
         pnlDashboardBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/pgBackground.png"))); // NOI18N
+        pnlDashboardBg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlDashboard.add(pnlDashboardBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlAdmin.add(pnlDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1820, 980));
@@ -414,9 +653,15 @@ public class GameSpace extends javax.swing.JFrame {
         minimizeWindow();
     }//GEN-LAST:event_btnMinimizeLogInActionPerformed
 
-    private void btnAddGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGamesActionPerformed
+    private void btnMinimizeWinAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizeWinAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddGamesActionPerformed
+        minimizeWindow();
+    }//GEN-LAST:event_btnMinimizeWinAdminActionPerformed
+
+    private void btnCloseWinAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseWinAdminActionPerformed
+        // TODO add your handling code here:
+        closeWindow();
+    }//GEN-LAST:event_btnCloseWinAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,18 +703,34 @@ public class GameSpace extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddGames;
     private javax.swing.JButton btnCloseLogIn;
+    private javax.swing.JButton btnCloseWinAdmin;
+    private javax.swing.JLabel btnFilter;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogIn;
+    private javax.swing.JButton btnLogoutAdmin;
     private javax.swing.JButton btnMinimizeLogIn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMinimizeWinAdmin;
+    private javax.swing.JPanel divider;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
+    private javax.swing.JLabel lblAdminNum;
     private javax.swing.JLabel lblForgotPassword;
+    private javax.swing.JLabel lblGameIcon;
+    private javax.swing.JLabel lblGamesNum;
     private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblLogInBackground;
     private javax.swing.JLabel lblLogInTitle;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoAdmin;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblTotalAdmin;
+    private javax.swing.JLabel lblTotalGames;
+    private javax.swing.JLabel lblTotalUsers;
+    private javax.swing.JLabel lblUserIcon;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblUsersNum;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblWelcomePageImg;
     private javax.swing.JLabel lblWlcPgLogo;
@@ -483,9 +744,13 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMainLogIn;
     private javax.swing.JPanel pnlSearchBar;
     private javax.swing.JPanel pnlSidebar;
+    private javax.swing.JPanel pnlTotalAdmin;
+    private javax.swing.JPanel pnlTotalGames;
+    private javax.swing.JPanel pnlTotalUsers;
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JPasswordField txtFldPassword;
+    private javax.swing.JTextField txtFldSearchAdmin;
     private javax.swing.JTextField txtFldUsername;
     // End of variables declaration//GEN-END:variables
 
