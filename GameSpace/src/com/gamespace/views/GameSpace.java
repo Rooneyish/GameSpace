@@ -21,8 +21,8 @@ public class GameSpace extends javax.swing.JFrame {
     public GameSpace() {
         setUndecorated(true);
         initComponents();
-        //initializeLayout();
-        //startProgress();
+        initializeLayout();
+        startProgress();
     }
 
     private void initializeTools() {
@@ -35,6 +35,7 @@ public class GameSpace extends javax.swing.JFrame {
 
         getContentPane().add(pnlWelcome, "WelcomeScreen");
         getContentPane().add(pnlMainLogIn, "LogInScreen");
+        getContentPane().add(pnlAdmin, "AdminScreen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
@@ -100,13 +101,9 @@ public class GameSpace extends javax.swing.JFrame {
         pnlLogInbtn = new javax.swing.JPanel();
         btnLogIn = new javax.swing.JButton();
         lblHaveAccount = new javax.swing.JLabel();
+        lblLoginError = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblLogInBackground = new javax.swing.JLabel();
-        pnlWelcome = new javax.swing.JPanel();
-        pgBarWelcomeScreen = new javax.swing.JProgressBar();
-        lblWelcome = new javax.swing.JLabel();
-        lblWlcPgLogo = new javax.swing.JLabel();
-        lblWelcomePageImg = new javax.swing.JLabel();
         pnlAdmin = new javax.swing.JPanel();
         pnlSidebar = new javax.swing.JPanel();
         lblAdminIcon = new javax.swing.JLabel();
@@ -136,6 +133,11 @@ public class GameSpace extends javax.swing.JFrame {
         lblGamesNum = new javax.swing.JLabel();
         lblGameIcon = new javax.swing.JLabel();
         pnlDashboardBg = new javax.swing.JLabel();
+        pnlWelcome = new javax.swing.JPanel();
+        pgBarWelcomeScreen = new javax.swing.JProgressBar();
+        lblWelcome = new javax.swing.JLabel();
+        lblWlcPgLogo = new javax.swing.JLabel();
+        lblWelcomePageImg = new javax.swing.JLabel();
 
         pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -213,6 +215,11 @@ public class GameSpace extends javax.swing.JFrame {
         btnLogIn.setBorderPainted(false);
         btnLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogIn.setPreferredSize(new java.awt.Dimension(141, 37));
+        btnLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogInActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlLogInbtnLayout = new javax.swing.GroupLayout(pnlLogInbtn);
         pnlLogInbtn.setLayout(pnlLogInbtnLayout);
@@ -233,24 +240,33 @@ public class GameSpace extends javax.swing.JFrame {
         lblHaveAccount.setForeground(new java.awt.Color(233, 232, 231));
         lblHaveAccount.setText("Don't have a Account?");
 
+        lblLoginError.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblLoginError.setForeground(new java.awt.Color(217, 84, 79));
+        lblLoginError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout pnlLogInLayout = new javax.swing.GroupLayout(pnlLogIn);
         pnlLogIn.setLayout(pnlLogInLayout);
         pnlLogInLayout.setHorizontalGroup(
             pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogInLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
                 .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlLogInLayout.createSequentialGroup()
-                        .addComponent(pnlLogInbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93)
-                        .addComponent(lblHaveAccount))
-                    .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblForgotPassword)
-                        .addComponent(txtFldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblPassword)
-                        .addComponent(txtFldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblUsername)
-                        .addComponent(lblLogInTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(lblLoginError, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLogInLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlLogInLayout.createSequentialGroup()
+                                .addComponent(pnlLogInbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(93, 93, 93)
+                                .addComponent(lblHaveAccount))
+                            .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblForgotPassword)
+                                .addComponent(txtFldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPassword)
+                                .addComponent(txtFldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblUsername)
+                                .addComponent(lblLogInTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlLogInLayout.setVerticalGroup(
@@ -272,7 +288,9 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblHaveAccount)
                     .addComponent(pnlLogInbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblLoginError)
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         pnlLogInBorder.add(pnlLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
@@ -305,36 +323,6 @@ public class GameSpace extends javax.swing.JFrame {
         lblLogInBackground.setBackground(new java.awt.Color(145, 49, 117));
         lblLogInBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/loginpage Background.png"))); // NOI18N
         pnlMainLogIn.add(lblLogInBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pgBarWelcomeScreen.setStringPainted(true);
-        pgBarWelcomeScreen.setBackground(new java.awt.Color(32, 38, 46));
-        pgBarWelcomeScreen.setForeground(new java.awt.Color(145, 49, 117));
-        pgBarWelcomeScreen.setBorder(null);
-        pgBarWelcomeScreen.setBorderPainted(false);
-        pgBarWelcomeScreen.setPreferredSize(new java.awt.Dimension(1920, 4));
-        pnlWelcome.add(pgBarWelcomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 930, 1940, 10));
-
-        lblWelcome.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
-        lblWelcome.setForeground(new java.awt.Color(233, 232, 231));
-        lblWelcome.setText("WELCOME TO");
-        pnlWelcome.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 400, -1, -1));
-
-        lblWlcPgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWlcPgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized1.png"))); // NOI18N
-        lblWlcPgLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlWelcome.add(lblWlcPgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 1920, 1070));
-
-        lblWelcomePageImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
-        pnlWelcome.add(lblWelcomePageImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAdmin.setPreferredSize(new java.awt.Dimension(1920, 1080));
         pnlAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -637,7 +625,37 @@ public class GameSpace extends javax.swing.JFrame {
 
         pnlAdmin.add(pnlDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1820, 980));
 
-        getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pgBarWelcomeScreen.setStringPainted(true);
+        pgBarWelcomeScreen.setBackground(new java.awt.Color(32, 38, 46));
+        pgBarWelcomeScreen.setForeground(new java.awt.Color(145, 49, 117));
+        pgBarWelcomeScreen.setBorder(null);
+        pgBarWelcomeScreen.setBorderPainted(false);
+        pgBarWelcomeScreen.setPreferredSize(new java.awt.Dimension(1920, 4));
+        pnlWelcome.add(pgBarWelcomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1070, 1920, 10));
+
+        lblWelcome.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(233, 232, 231));
+        lblWelcome.setText("WELCOME TO");
+        pnlWelcome.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 400, -1, -1));
+
+        lblWlcPgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcPgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logoGameSpaceResized1.png"))); // NOI18N
+        lblWlcPgLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlWelcome.add(lblWlcPgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 1920, 1070));
+
+        lblWelcomePageImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
+        pnlWelcome.add(lblWelcomePageImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -662,6 +680,26 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         closeWindow();
     }//GEN-LAST:event_btnCloseWinAdminActionPerformed
+
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
+        // TODO add your handling code here:
+        String username = "admin";
+        String password = "admin";
+        String usernametxt = txtFldUsername.getText();
+        String passwordtxt = new String(txtFldPassword.getPassword());
+
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            lblLoginError.setText("Please enter your username and password.");
+        } // Check if username and password are incorrect
+        else if (!usernametxt.equals("admin") || !passwordtxt.equals("admin")) {
+            lblLoginError.setText("Username and password mismatch.");
+        } // If credentials are correct, proceed to load the main screen
+        else {
+            lblLoginError.setText(""); // Clear any previous error messages
+            loadScreen("AdminScreen"); // Load the main screen
+        }
+    }//GEN-LAST:event_btnLogInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -722,6 +760,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblLogInBackground;
     private javax.swing.JLabel lblLogInTitle;
+    private javax.swing.JLabel lblLoginError;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoAdmin;
     private javax.swing.JLabel lblPassword;
