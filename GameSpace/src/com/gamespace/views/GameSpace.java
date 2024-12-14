@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -23,6 +24,7 @@ public class GameSpace extends javax.swing.JFrame {
         initComponents();
         initializeLayout();
         startProgress();
+        
     }
 
     private void initializeTools() {
@@ -77,6 +79,8 @@ public class GameSpace extends javax.swing.JFrame {
     private void minimizeWindow(){
         setExtendedState(JFrame.ICONIFIED);
     }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,8 +111,6 @@ public class GameSpace extends javax.swing.JFrame {
         pnlAdmin = new javax.swing.JPanel();
         pnlSidebar = new javax.swing.JPanel();
         lblAdminIcon = new javax.swing.JLabel();
-        btnHome = new javax.swing.JButton();
-        btnAddGames = new javax.swing.JButton();
         btnLogoutAdmin = new javax.swing.JButton();
         pnlSearchBar = new javax.swing.JPanel();
         lblLogoAdmin = new javax.swing.JLabel();
@@ -118,8 +120,13 @@ public class GameSpace extends javax.swing.JFrame {
         btnFilter = new javax.swing.JLabel();
         pnlDashboard = new javax.swing.JPanel();
         divider = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        pnlGameData = new javax.swing.JPanel();
+        lblGameData = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblGameData = new javax.swing.JTable();
+        btnAddGames = new javax.swing.JButton();
+        btnRemoveGames = new javax.swing.JButton();
+        btnUpdateGames = new javax.swing.JButton();
         pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
         lblTotalAdmin = new javax.swing.JLabel();
         lblAdminNum = new javax.swing.JLabel();
@@ -332,18 +339,6 @@ public class GameSpace extends javax.swing.JFrame {
 
         lblAdminIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/crown.png"))); // NOI18N
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/home.png"))); // NOI18N
-        btnHome.setBorder(null);
-        btnHome.setBorderPainted(false);
-        btnHome.setContentAreaFilled(false);
-        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btnAddGames.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/plus.png"))); // NOI18N
-        btnAddGames.setBorder(null);
-        btnAddGames.setBorderPainted(false);
-        btnAddGames.setContentAreaFilled(false);
-        btnAddGames.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         btnLogoutAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/logout.png"))); // NOI18N
         btnLogoutAdmin.setBorder(null);
         btnLogoutAdmin.setBorderPainted(false);
@@ -357,11 +352,7 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogoutAdmin)
-                    .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAddGames)
-                        .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblAdminIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(lblAdminIcon))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlSidebarLayout.setVerticalGroup(
@@ -369,11 +360,7 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblAdminIcon)
-                .addGap(393, 393, 393)
-                .addComponent(btnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddGames)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 945, Short.MAX_VALUE)
                 .addComponent(btnLogoutAdmin)
                 .addContainerGap())
         );
@@ -468,30 +455,119 @@ public class GameSpace extends javax.swing.JFrame {
 
         pnlDashboard.add(divider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 1800, 10));
 
-        jPanel1.setBackground(new java.awt.Color(32, 38, 46));
+        pnlGameData.setBackground(new java.awt.Color(32, 38, 46));
+        pnlGameData.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(233, 232, 231));
-        jLabel1.setText("Game Data");
+        lblGameData.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
+        lblGameData.setForeground(new java.awt.Color(233, 232, 231));
+        lblGameData.setText("Game Data");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBackground(null);
+        jScrollPane1.getViewport().setBorder(null);
+
+        tblGameData.setOpaque(false);
+        ((DefaultTableCellRenderer)tblGameData.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblGameData.setShowGrid(false);
+        tblGameData.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
+        tblGameData.getTableHeader().setOpaque(false);
+        tblGameData.getTableHeader().setBackground(new Color(145,49,117));
+        tblGameData.getTableHeader().setForeground(new Color(233,232,231));
+        tblGameData.setRowHeight(40);
+        tblGameData.setBorder(null);
+        tblGameData.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblGameData.setForeground(new java.awt.Color(32, 38, 46));
+        tblGameData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Game No.", "Game Title", "Main Developers", "Publisher", "Released Date", "Genres", "Rating", "Link"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblGameData.setFocusable(false);
+        tblGameData.setRowHeight(40);
+        tblGameData.setSelectionBackground(new java.awt.Color(145, 49, 117));
+        tblGameData.setSelectionForeground(new java.awt.Color(233, 232, 231));
+        tblGameData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGameData.setShowGrid(false);
+        tblGameData.setShowHorizontalLines(true);
+        tblGameData.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblGameData);
+
+        btnAddGames.setBackground(new java.awt.Color(145, 49, 117));
+        btnAddGames.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnAddGames.setForeground(new java.awt.Color(233, 232, 231));
+        btnAddGames.setText("Add Games");
+        btnAddGames.setBorder(null);
+        btnAddGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddGamesActionPerformed(evt);
+            }
+        });
+
+        btnRemoveGames.setBackground(new java.awt.Color(145, 49, 117));
+        btnRemoveGames.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnRemoveGames.setForeground(new java.awt.Color(233, 232, 231));
+        btnRemoveGames.setText("Remove");
+        btnRemoveGames.setBorder(null);
+
+        btnUpdateGames.setBackground(new java.awt.Color(145, 49, 117));
+        btnUpdateGames.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnUpdateGames.setForeground(new java.awt.Color(233, 232, 231));
+        btnUpdateGames.setText("Update");
+        btnUpdateGames.setBorder(null);
+
+        javax.swing.GroupLayout pnlGameDataLayout = new javax.swing.GroupLayout(pnlGameData);
+        pnlGameData.setLayout(pnlGameDataLayout);
+        pnlGameDataLayout.setHorizontalGroup(
+            pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGameDataLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(1652, Short.MAX_VALUE))
+                .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(pnlGameDataLayout.createSequentialGroup()
+                        .addComponent(lblGameData)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1261, Short.MAX_VALUE)
+                        .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addContainerGap(568, Short.MAX_VALUE))
+        pnlGameDataLayout.setVerticalGroup(
+            pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGameDataLayout.createSequentialGroup()
+                .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlGameDataLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lblGameData)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameDataLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        pnlDashboard.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1800, 620));
+        pnlDashboard.add(pnlGameData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1790, 620));
 
         pnlTotalAdmin.setBackground(new java.awt.Color(145, 49, 117));
 
@@ -701,6 +777,10 @@ public class GameSpace extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLogInActionPerformed
 
+    private void btnAddGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGamesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddGamesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -743,18 +823,19 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnCloseLogIn;
     private javax.swing.JButton btnCloseWinAdmin;
     private javax.swing.JLabel btnFilter;
-    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JButton btnLogoutAdmin;
     private javax.swing.JButton btnMinimizeLogIn;
     private javax.swing.JButton btnMinimizeWinAdmin;
+    private javax.swing.JButton btnRemoveGames;
+    private javax.swing.JButton btnUpdateGames;
     private javax.swing.JPanel divider;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
     private javax.swing.JLabel lblAdminNum;
     private javax.swing.JLabel lblForgotPassword;
+    private javax.swing.JLabel lblGameData;
     private javax.swing.JLabel lblGameIcon;
     private javax.swing.JLabel lblGamesNum;
     private javax.swing.JLabel lblHaveAccount;
@@ -777,6 +858,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlDashboard;
     private javax.swing.JLabel pnlDashboardBg;
+    private javax.swing.JPanel pnlGameData;
     private javax.swing.JPanel pnlLogIn;
     private javax.swing.JPanel pnlLogInBorder;
     private javax.swing.JPanel pnlLogInbtn;
@@ -788,6 +870,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTotalUsers;
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
+    private javax.swing.JTable tblGameData;
     private javax.swing.JPasswordField txtFldPassword;
     private javax.swing.JTextField txtFldSearchAdmin;
     private javax.swing.JTextField txtFldUsername;
