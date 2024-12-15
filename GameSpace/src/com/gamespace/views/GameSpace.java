@@ -80,7 +80,9 @@ public class GameSpace extends javax.swing.JFrame {
         setExtendedState(JFrame.ICONIFIED);
     }
     
-
+    private void logout(){
+        loadScreen("LogInScreen");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -343,6 +345,11 @@ public class GameSpace extends javax.swing.JFrame {
         btnLogoutAdmin.setBorder(null);
         btnLogoutAdmin.setBorderPainted(false);
         btnLogoutAdmin.setContentAreaFilled(false);
+        btnLogoutAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -781,15 +788,16 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddGamesActionPerformed
 
+    private void btnLogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAdminActionPerformed
+        // TODO add your handling code here:
+        logout();
+    }//GEN-LAST:event_btnLogoutAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {
