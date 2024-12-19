@@ -1,16 +1,11 @@
 
 package com.gamespace.views;
 
-import com.gamespace.model.GameModel;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 public class GameSpace extends javax.swing.JFrame {
 
     private java.awt.CardLayout cardLayout;
-    private List<GameModel> gameList;
 
     /**
      * Creates new form GameSpace
@@ -29,14 +23,12 @@ public class GameSpace extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
         initializeLayout();
-        initializeTools();
-        initializeData();
         startProgress();
         
     }
 
     private void initializeTools() {
-        gameList = new LinkedList();
+
     }
 
     private void initializeLayout() {
@@ -46,19 +38,9 @@ public class GameSpace extends javax.swing.JFrame {
         getContentPane().add(pnlWelcome, "WelcomeScreen");
         getContentPane().add(pnlMainLogIn, "LogInScreen");
         getContentPane().add(pnlAdmin, "AdminScreen");
+        //getContentPane().add(pnlAddGames,"AddGamesScreeen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
-    }
-    
-    private void initializeData(){
-        gameList = new LinkedList();
-        ArrayList<String> cars = new ArrayList<String>();
-        cars.add("Volvo");
-        cars.add("BMW");
-        cars.add("Ford");
-       
-        
-        addGamesToTable(new GameModel(1,"Counter Strike",cars,"Prajapati","asdf",cars,6,"adfs"));
     }
 
     private void startProgress() {
@@ -101,21 +83,6 @@ public class GameSpace extends javax.swing.JFrame {
     
     private void logout(){
         loadScreen("LogInScreen");
-    }
-    
-    private void addGamesToTable(GameModel game){
-        gameList.add(game);
-        DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
-        
-        model.addRow(new Object[]{
-            game.getGameNum(),
-            game.getGameName(),
-            game.getMainDevelopers(),
-            game.getPublishers(),
-            game.getReleasedDate(),
-            game.getRating(),
-            game.getLink()
-        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
