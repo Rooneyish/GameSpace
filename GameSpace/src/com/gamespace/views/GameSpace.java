@@ -72,7 +72,7 @@ public class GameSpace extends javax.swing.JFrame {
         cardLayout.show(getContentPane(), screenName);
     }
 
-    void closeWindow(){
+    private void closeWindow(){
         WindowEvent close= new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(close);
     }
@@ -715,6 +715,7 @@ public class GameSpace extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));

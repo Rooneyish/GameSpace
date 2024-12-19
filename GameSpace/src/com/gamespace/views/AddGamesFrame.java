@@ -2,23 +2,28 @@
 package com.gamespace.views;
 
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 
 /**
  *
  * @author ilust
  */
-public class AddGamesFrame extends javax.swing.JFrame {
+public class AddGamesFrame extends javax.swing.JFrame{
 
-    private GameSpace gameSpace;
     /**
      * Creates new form AddGamesFrame
      */
     public AddGamesFrame() {
         setUndecorated(true);
         initComponents();
-        gameSpace= new GameSpace();
+        setLocationRelativeTo(null);
     }
-
+    
+    private void closeWindow(){
+        this.dispose();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +33,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         pnlAddGames = new javax.swing.JPanel();
         comboBoxRating = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -65,13 +71,17 @@ public class AddGamesFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(859, 627));
+        setPreferredSize(new java.awt.Dimension(870, 640));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(233, 232, 231));
+        jPanel1.setPreferredSize(new java.awt.Dimension(859, 627));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAddGames.setBackground(new java.awt.Color(145, 49, 117));
-        pnlAddGames.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         pnlAddGames.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlAddGames.setFocusCycleRoot(true);
-        pnlAddGames.setPreferredSize(new java.awt.Dimension(867, 627));
+        pnlAddGames.setPreferredSize(new java.awt.Dimension(851, 620));
 
         comboBoxRating.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxRating.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -233,6 +243,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -256,7 +267,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
                             .addComponent(txtFldGameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblGameTitle)
                             .addComponent(txtFldGameNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                         .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblGenres1)
                             .addComponent(lblGenres2)
@@ -330,7 +341,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
                         .addComponent(lblGameTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFldGameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(lblMainDevelopers)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFldMainDevelopers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,20 +390,17 @@ public class AddGamesFrame extends javax.swing.JFrame {
                 .addGap(59, 59, 59))
         );
 
+        jPanel1.add(pnlAddGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
         );
 
         pack();
@@ -400,7 +408,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        gameSpace.closeWindow();
+        closeWindow();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -411,6 +419,7 @@ public class AddGamesFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblGameNum;
     private javax.swing.JLabel lblGameTitle;
     private javax.swing.JLabel lblGenres;
