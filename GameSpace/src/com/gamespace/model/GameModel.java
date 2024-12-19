@@ -11,25 +11,20 @@ import java.util.ArrayList;
 public class GameModel {
     private int gameNum;
     private String gameName;
-    private ArrayList<String> mainDevelopers;
+    private String mainDevelopers;
     private String publishers;
     private String releasedDate;
-    private ArrayList<String> genres;
-    private double rating;
+    private String genres;
+    private int rating;
     private String link;
-    
-    public GameModel(){
-        mainDevelopers=new ArrayList<>();
-        genres= new ArrayList<>();
-    }
 
-    public GameModel(int gameNum, String gameName, ArrayList<String> mainDevelopers, String publishers, String releasedDate, ArrayList<String> genres, double rating, String link) {
+    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String releasedDate, String genres, int rating, String link) {
         this.gameNum = gameNum;
         this.gameName = gameName;
-        this.mainDevelopers = mainDevelopers != null? new ArrayList<>(mainDevelopers):new ArrayList<>();
+        this.mainDevelopers = mainDevelopers;
         this.publishers = publishers;
         this.releasedDate = releasedDate;
-        this.genres = genres != null? new ArrayList<>(genres):new ArrayList<>();
+        this.genres = genres;
         this.rating = rating;
         this.link = link;
     }
@@ -50,12 +45,12 @@ public class GameModel {
         this.gameName = gameName;
     }
 
-    public ArrayList<String> getMainDevelopers() {
+    public String getMainDevelopers() {
         return mainDevelopers;
     }
 
-    public void setMainDevelopers(ArrayList<String> mainDevelopers) {
-        this.mainDevelopers = mainDevelopers != null? new ArrayList<>(mainDevelopers):new ArrayList<>();
+    public void setMainDevelopers(String mainDevelopers) {
+        this.mainDevelopers = mainDevelopers;
     }
 
     public String getPublishers() {
@@ -74,19 +69,19 @@ public class GameModel {
         this.releasedDate = releasedDate;
     }
 
-    public ArrayList<String> getGenres() {
-        return genres != null? new ArrayList<>(genres):new ArrayList<>();
+    public String getGenres() {
+        return genres;
     }
 
-    public void setGenres(ArrayList<String> genres) {
+    public void setGenres(String genres) {
         this.genres = genres;
     }
 
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
@@ -97,8 +92,7 @@ public class GameModel {
     public void setLink(String link) {
         this.link = link;
     }
-    
-    
+ 
 }
 
 

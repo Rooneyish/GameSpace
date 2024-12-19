@@ -1,11 +1,15 @@
 
 package com.gamespace.views;
 
+import com.gamespace.model.GameModel;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class GameSpace extends javax.swing.JFrame {
 
     private java.awt.CardLayout cardLayout;
+    private List<GameModel> gameList;
 
     /**
      * Creates new form GameSpace
@@ -23,12 +28,13 @@ public class GameSpace extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
         initializeLayout();
+        initializeTools();
+        initializeData();
         startProgress();
-        
     }
 
     private void initializeTools() {
-
+        gameList = new LinkedList();
     }
 
     private void initializeLayout() {
@@ -42,7 +48,30 @@ public class GameSpace extends javax.swing.JFrame {
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
-
+    
+    private void initializeData(){
+        gameList = new LinkedList();
+        addGamesToTable(new GameModel(1235,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
+        addGamesToTable(new GameModel(1234,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
+        
+    }
+    
+    private void addGamesToTable(GameModel game){
+        gameList.add(game);
+        
+        DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
+        
+        model.addRow(new Object[]{
+            game.getGameNum(),
+            game.getGameName(),
+            game.getMainDevelopers(),
+            game.getPublishers(),
+            game.getReleasedDate(),
+            game.getGenres(),
+            game.getRating(),
+            game.getLink()
+        });
+    }
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
             @Override
@@ -487,13 +516,10 @@ public class GameSpace extends javax.swing.JFrame {
         tblGameData.setRowHeight(40);
         tblGameData.setBorder(null);
         tblGameData.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblGameData.setForeground(new java.awt.Color(32, 38, 46));
+        tblGameData.setForeground(new java.awt.Color(233, 232, 231));
         tblGameData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Game No.", "Game Title", "Main Developers", "Publisher", "Released Date", "Genres", "Rating", "Link"
@@ -514,6 +540,7 @@ public class GameSpace extends javax.swing.JFrame {
         tblGameData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGameData.setShowGrid(false);
         tblGameData.setShowHorizontalLines(true);
+        tblGameData.setSurrendersFocusOnKeystroke(true);
         tblGameData.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblGameData);
 
