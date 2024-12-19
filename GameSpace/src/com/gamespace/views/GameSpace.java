@@ -20,10 +20,10 @@ public class GameSpace extends javax.swing.JFrame {
      * Creates new form GameSpace
      */
     public GameSpace() {
-        //setUndecorated(true);
+        setUndecorated(true);
         initComponents();
-        //initializeLayout();
-        //startProgress();
+        initializeLayout();
+        startProgress();
         
     }
 
@@ -38,7 +38,7 @@ public class GameSpace extends javax.swing.JFrame {
         getContentPane().add(pnlWelcome, "WelcomeScreen");
         getContentPane().add(pnlMainLogIn, "LogInScreen");
         getContentPane().add(pnlAdmin, "AdminScreen");
-        getContentPane().add(pnlAddGames,"AddGamesScreeen");
+        //getContentPane().add(pnlAddGames,"AddGamesScreeen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
@@ -72,7 +72,7 @@ public class GameSpace extends javax.swing.JFrame {
         cardLayout.show(getContentPane(), screenName);
     }
 
-    private void closeWindow(){
+    void closeWindow(){
         WindowEvent close= new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(close);
     }
@@ -148,29 +148,6 @@ public class GameSpace extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         lblWlcPgLogo = new javax.swing.JLabel();
         lblWelcomePageImg = new javax.swing.JLabel();
-        pnlAddGames = new CustomRoundedPanel(80,new Color(145,49,117));
-        comboBoxRating = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        txtFldGameNum = new javax.swing.JTextField();
-        lblGameNum = new javax.swing.JLabel();
-        lblGameTitle = new javax.swing.JLabel();
-        txtFldGameTitle = new javax.swing.JTextField();
-        lblMainDevelopers = new javax.swing.JLabel();
-        txtFldMainDevelopers = new javax.swing.JTextField();
-        lblPublishers = new javax.swing.JLabel();
-        txtFldPublishers = new javax.swing.JTextField();
-        lblGenres = new javax.swing.JLabel();
-        lblGenres1 = new javax.swing.JLabel();
-        lblGenres2 = new javax.swing.JLabel();
-        comboBoxGenres = new javax.swing.JComboBox<>();
-        txtFldLink = new javax.swing.JTextField();
-        lblLink = new javax.swing.JLabel();
-        txtFldReleasedYear = new javax.swing.JTextField();
-        lblReleasedDate = new javax.swing.JLabel();
-        txtFldReleasedMonth = new javax.swing.JTextField();
-        txtFldReleasedDay = new javax.swing.JTextField();
-        lblSlash1 = new javax.swing.JLabel();
-        lblSlash2 = new javax.swing.JLabel();
 
         pnlMainLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -734,6 +711,12 @@ public class GameSpace extends javax.swing.JFrame {
 
         pnlAdmin.add(pnlDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1820, 980));
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         pnlWelcome.setPreferredSize(new java.awt.Dimension(1920, 1080));
         pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -758,272 +741,7 @@ public class GameSpace extends javax.swing.JFrame {
         lblWelcomePageImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
         pnlWelcome.add(lblWelcomePageImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlAddGames.setBackground(new java.awt.Color(145, 49, 117));
-        pnlAddGames.setPreferredSize(new java.awt.Dimension(859, 627));
-
-        comboBoxRating.setBackground(new java.awt.Color(32, 38, 46));
-        comboBoxRating.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        comboBoxRating.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", " " }));
-        comboBoxRating.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        comboBoxRating.setMinimumSize(new java.awt.Dimension(254, 22));
-        comboBoxRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxRatingActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(233, 232, 231));
-        jLabel1.setText("Add Games");
-
-        txtFldGameNum.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldGameNum.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldGameNum.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldGameNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldGameNum.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldGameNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldGameNumActionPerformed(evt);
-            }
-        });
-
-        lblGameNum.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblGameNum.setForeground(new java.awt.Color(233, 232, 231));
-        lblGameNum.setText("Game No.");
-
-        lblGameTitle.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblGameTitle.setForeground(new java.awt.Color(233, 232, 231));
-        lblGameTitle.setText("Game Title");
-
-        txtFldGameTitle.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldGameTitle.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldGameTitle.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldGameTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldGameTitle.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldGameTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldGameTitleActionPerformed(evt);
-            }
-        });
-
-        lblMainDevelopers.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblMainDevelopers.setForeground(new java.awt.Color(233, 232, 231));
-        lblMainDevelopers.setText("Main Developers");
-
-        txtFldMainDevelopers.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldMainDevelopers.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldMainDevelopers.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldMainDevelopers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldMainDevelopers.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldMainDevelopers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldMainDevelopersActionPerformed(evt);
-            }
-        });
-
-        lblPublishers.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblPublishers.setForeground(new java.awt.Color(233, 232, 231));
-        lblPublishers.setText("Publishers");
-
-        txtFldPublishers.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldPublishers.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldPublishers.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldPublishers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldPublishers.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldPublishers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldPublishersActionPerformed(evt);
-            }
-        });
-
-        lblGenres.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblGenres.setForeground(new java.awt.Color(233, 232, 231));
-        lblGenres.setText("Genres");
-
-        lblGenres1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblGenres1.setForeground(new java.awt.Color(233, 232, 231));
-        lblGenres1.setText("Platform");
-
-        lblGenres2.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblGenres2.setForeground(new java.awt.Color(233, 232, 231));
-        lblGenres2.setText("Rating");
-
-        comboBoxGenres.setBackground(new java.awt.Color(32, 38, 46));
-        comboBoxGenres.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        comboBoxGenres.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Action", "Adventures", "Educational", "Racing/Driving", "Role-Playing", "Simulation", "Sports", "Strategy", " " }));
-        comboBoxGenres.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        comboBoxGenres.setMinimumSize(new java.awt.Dimension(254, 22));
-        comboBoxGenres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxGenresActionPerformed(evt);
-            }
-        });
-
-        txtFldLink.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldLink.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldLink.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldLink.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldLink.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldLink.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldLinkActionPerformed(evt);
-            }
-        });
-
-        lblLink.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblLink.setForeground(new java.awt.Color(233, 232, 231));
-        lblLink.setText("Link");
-
-        txtFldReleasedYear.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldReleasedYear.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldReleasedYear.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldReleasedYear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldReleasedYear.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldReleasedYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldReleasedYearActionPerformed(evt);
-            }
-        });
-
-        lblReleasedDate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblReleasedDate.setForeground(new java.awt.Color(233, 232, 231));
-        lblReleasedDate.setText("Released Date");
-
-        txtFldReleasedMonth.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldReleasedMonth.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldReleasedMonth.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldReleasedMonth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldReleasedMonth.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldReleasedMonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldReleasedMonthActionPerformed(evt);
-            }
-        });
-
-        txtFldReleasedDay.setBackground(new java.awt.Color(32, 38, 46));
-        txtFldReleasedDay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        txtFldReleasedDay.setForeground(new java.awt.Color(233, 232, 231));
-        txtFldReleasedDay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
-        txtFldReleasedDay.setPreferredSize(new java.awt.Dimension(254, 42));
-        txtFldReleasedDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldReleasedDayActionPerformed(evt);
-            }
-        });
-
-        lblSlash1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblSlash1.setForeground(new java.awt.Color(233, 232, 231));
-        lblSlash1.setText("/");
-
-        lblSlash2.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        lblSlash2.setForeground(new java.awt.Color(233, 232, 231));
-        lblSlash2.setText("/");
-
-        javax.swing.GroupLayout pnlAddGamesLayout = new javax.swing.GroupLayout(pnlAddGames);
-        pnlAddGames.setLayout(pnlAddGamesLayout);
-        pnlAddGamesLayout.setHorizontalGroup(
-            pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblReleasedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFldReleasedYear, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblSlash1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFldReleasedMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addComponent(txtFldGameNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblGameNum)
-                    .addComponent(txtFldPublishers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPublishers)
-                    .addComponent(txtFldMainDevelopers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMainDevelopers)
-                    .addComponent(txtFldGameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblGameTitle)
-                    .addComponent(jLabel1))
-                .addGap(12, 12, 12)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddGamesLayout.createSequentialGroup()
-                        .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGenres1)
-                            .addComponent(lblGenres2)
-                            .addComponent(lblGenres)
-                            .addComponent(comboBoxRating, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFldLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLink))
-                        .addGap(212, 212, 212))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddGamesLayout.createSequentialGroup()
-                        .addComponent(lblSlash2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFldReleasedDay, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(445, Short.MAX_VALUE))))
-        );
-        pnlAddGamesLayout.setVerticalGroup(
-            pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addComponent(lblGameNum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFldGameNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAddGamesLayout.createSequentialGroup()
-                        .addComponent(lblGenres)
-                        .addGap(4, 4, 4)
-                        .addComponent(comboBoxGenres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblGameTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFldGameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblGenres1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMainDevelopers)
-                    .addComponent(lblGenres2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFldMainDevelopers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxRating, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addComponent(lblPublishers)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFldPublishers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                        .addComponent(lblLink)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFldLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(lblReleasedDate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFldReleasedYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldReleasedMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldReleasedDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSlash1)
-                    .addComponent(lblSlash2))
-                .addContainerGap(126, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(pnlAddGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
+        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1071,52 +789,14 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAddGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGamesActionPerformed
         // TODO add your handling code here:
+        AddGamesFrame addgames=new AddGamesFrame();
+        addgames.setVisible(true);
     }//GEN-LAST:event_btnAddGamesActionPerformed
 
     private void btnLogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAdminActionPerformed
         // TODO add your handling code here:
         logout();
     }//GEN-LAST:event_btnLogoutAdminActionPerformed
-
-    private void txtFldGameNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldGameNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldGameNumActionPerformed
-
-    private void txtFldGameTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldGameTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldGameTitleActionPerformed
-
-    private void txtFldMainDevelopersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldMainDevelopersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldMainDevelopersActionPerformed
-
-    private void txtFldPublishersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldPublishersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldPublishersActionPerformed
-
-    private void comboBoxRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxRatingActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxRatingActionPerformed
-
-    private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxGenresActionPerformed
-
-    private void txtFldLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldLinkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldLinkActionPerformed
-
-    private void txtFldReleasedYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldReleasedYearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldReleasedYearActionPerformed
-
-    private void txtFldReleasedMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldReleasedMonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldReleasedMonthActionPerformed
-
-    private void txtFldReleasedDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldReleasedDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldReleasedDayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1162,10 +842,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnRemoveGames;
     private javax.swing.JButton btnUpdateGames;
-    private javax.swing.JComboBox<String> comboBoxGenres;
-    private javax.swing.JComboBox<String> comboBoxRating;
     private javax.swing.JPanel divider;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
@@ -1173,25 +850,14 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblGameData;
     private javax.swing.JLabel lblGameIcon;
-    private javax.swing.JLabel lblGameNum;
-    private javax.swing.JLabel lblGameTitle;
     private javax.swing.JLabel lblGamesNum;
-    private javax.swing.JLabel lblGenres;
-    private javax.swing.JLabel lblGenres1;
-    private javax.swing.JLabel lblGenres2;
     private javax.swing.JLabel lblHaveAccount;
-    private javax.swing.JLabel lblLink;
     private javax.swing.JLabel lblLogInBackground;
     private javax.swing.JLabel lblLogInTitle;
     private javax.swing.JLabel lblLoginError;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoAdmin;
-    private javax.swing.JLabel lblMainDevelopers;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblPublishers;
-    private javax.swing.JLabel lblReleasedDate;
-    private javax.swing.JLabel lblSlash1;
-    private javax.swing.JLabel lblSlash2;
     private javax.swing.JLabel lblTotalAdmin;
     private javax.swing.JLabel lblTotalGames;
     private javax.swing.JLabel lblTotalUsers;
@@ -1202,7 +868,6 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblWelcomePageImg;
     private javax.swing.JLabel lblWlcPgLogo;
     private javax.swing.JProgressBar pgBarWelcomeScreen;
-    private javax.swing.JPanel pnlAddGames;
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlDashboard;
     private javax.swing.JLabel pnlDashboardBg;
@@ -1219,15 +884,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JTable tblGameData;
-    private javax.swing.JTextField txtFldGameNum;
-    private javax.swing.JTextField txtFldGameTitle;
-    private javax.swing.JTextField txtFldLink;
-    private javax.swing.JTextField txtFldMainDevelopers;
     private javax.swing.JPasswordField txtFldPassword;
-    private javax.swing.JTextField txtFldPublishers;
-    private javax.swing.JTextField txtFldReleasedDay;
-    private javax.swing.JTextField txtFldReleasedMonth;
-    private javax.swing.JTextField txtFldReleasedYear;
     private javax.swing.JTextField txtFldSearchAdmin;
     private javax.swing.JTextField txtFldUsername;
     // End of variables declaration//GEN-END:variables
