@@ -15,7 +15,7 @@ public class GameModel {
     private String publishers;
     private String releasedDate;
     private ArrayList<String> genres;
-    private double rating;
+    private int rating;
     private String link;
     
     public GameModel(){
@@ -23,7 +23,7 @@ public class GameModel {
         genres= new ArrayList<>();
     }
 
-    public GameModel(int gameNum, String gameName, ArrayList<String> mainDevelopers, String publishers, String releasedDate, ArrayList<String> genres, double rating, String link) {
+    public GameModel(int gameNum, String gameName, ArrayList<String> mainDevelopers, String publishers, String releasedDate, ArrayList<String> genres, int rating, String link) {
         this.gameNum = gameNum;
         this.gameName = gameName;
         this.mainDevelopers = mainDevelopers != null? new ArrayList<>(mainDevelopers):new ArrayList<>();
@@ -82,11 +82,11 @@ public class GameModel {
         this.genres = genres;
     }
 
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

@@ -86,7 +86,7 @@ public class AddGamesFrame extends javax.swing.JFrame{
         comboBoxRating.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxRating.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxRating.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", " " }));
+        comboBoxRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         comboBoxRating.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         comboBoxRating.setMinimumSize(new java.awt.Dimension(254, 22));
 
