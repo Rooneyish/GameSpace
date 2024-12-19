@@ -67,7 +67,6 @@ public class AddGamesFrame extends javax.swing.JFrame{
         pnlGenres = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(870, 640));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(233, 232, 231));
