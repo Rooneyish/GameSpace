@@ -53,7 +53,9 @@ public class GameSpace extends javax.swing.JFrame {
         gameList = new LinkedList();
         addGamesToTable(new GameModel(1235,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
         addGamesToTable(new GameModel(1234,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
-        
+        addGamesToTable(new GameModel(1234,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
+        addGamesToTable(new GameModel(1234,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));
+        addGamesToTable(new GameModel(1234,"Counter Strike","Ronish","Prajapati","2024","Action",5,"1234"));   
     }
     
     private void addGamesToTable(GameModel game){

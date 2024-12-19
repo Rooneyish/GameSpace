@@ -4,6 +4,8 @@ package com.gamespace.views;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -18,6 +20,7 @@ public class AddGamesFrame extends javax.swing.JFrame{
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
+        initializeGenreCheckBoxes();
     }
     
     private void closeWindow(){
@@ -57,18 +60,11 @@ public class AddGamesFrame extends javax.swing.JFrame{
         txtFldReleasedDay = new javax.swing.JTextField();
         lblSlash1 = new javax.swing.JLabel();
         lblSlash2 = new javax.swing.JLabel();
-        radioBtnAction = new javax.swing.JRadioButton();
-        radioBtnAdventures = new javax.swing.JRadioButton();
-        radioBtnEducational = new javax.swing.JRadioButton();
-        radioBtnRolePlaying = new javax.swing.JRadioButton();
-        radioBtnRacing = new javax.swing.JRadioButton();
-        radioBtnSimulation = new javax.swing.JRadioButton();
-        radioBtnSports = new javax.swing.JRadioButton();
-        radioBtnStrategy = new javax.swing.JRadioButton();
         btnAddGame = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        pnlGenres = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(870, 640));
@@ -193,51 +189,16 @@ public class AddGamesFrame extends javax.swing.JFrame{
         lblSlash2.setForeground(new java.awt.Color(233, 232, 231));
         lblSlash2.setText("/");
 
-        radioBtnAction.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnAction.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnAction.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnAction.setText("Action");
-
-        radioBtnAdventures.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnAdventures.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnAdventures.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnAdventures.setText("Adventures");
-
-        radioBtnEducational.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnEducational.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnEducational.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnEducational.setText("Educational");
-
-        radioBtnRolePlaying.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnRolePlaying.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnRolePlaying.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnRolePlaying.setText("Role-Playing");
-
-        radioBtnRacing.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnRacing.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnRacing.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnRacing.setText("Racing/Driving");
-
-        radioBtnSimulation.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnSimulation.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnSimulation.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnSimulation.setText("Simulation");
-
-        radioBtnSports.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnSports.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnSports.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnSports.setText("Sports");
-
-        radioBtnStrategy.setBackground(new java.awt.Color(145, 49, 117));
-        radioBtnStrategy.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        radioBtnStrategy.setForeground(new java.awt.Color(233, 232, 231));
-        radioBtnStrategy.setText("Strategy");
-
         btnAddGame.setBackground(new java.awt.Color(205, 88, 136));
         btnAddGame.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnAddGame.setForeground(new java.awt.Color(32, 38, 46));
         btnAddGame.setText("Add Game");
         btnAddGame.setBorder(null);
+        btnAddGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddGameActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -249,6 +210,17 @@ public class AddGamesFrame extends javax.swing.JFrame{
                 jButton1ActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout pnlGenresLayout = new javax.swing.GroupLayout(pnlGenres);
+        pnlGenres.setLayout(pnlGenresLayout);
+        pnlGenresLayout.setHorizontalGroup(
+            pnlGenresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+        pnlGenresLayout.setVerticalGroup(
+            pnlGenresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 128, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout pnlAddGamesLayout = new javax.swing.GroupLayout(pnlAddGames);
         pnlAddGames.setLayout(pnlAddGamesLayout);
@@ -290,32 +262,19 @@ public class AddGamesFrame extends javax.swing.JFrame{
                     .addGroup(pnlAddGamesLayout.createSequentialGroup()
                         .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnRacing)
-                                    .addComponent(radioBtnSports))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                                        .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioBtnRolePlaying)
-                                            .addComponent(radioBtnAdventures))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioBtnEducational)
-                                            .addGroup(pnlAddGamesLayout.createSequentialGroup()
-                                                .addComponent(radioBtnSimulation)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(radioBtnStrategy))
+                                .addComponent(pnlGenres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8))
-                            .addComponent(lblGenres)
-                            .addComponent(radioBtnAction)
                             .addGroup(pnlAddGamesLayout.createSequentialGroup()
                                 .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)))
+                                .addComponent(jButton1))
+                            .addGroup(pnlAddGamesLayout.createSequentialGroup()
+                                .addComponent(lblGenres)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addContainerGap())))
@@ -341,7 +300,7 @@ public class AddGamesFrame extends javax.swing.JFrame{
                         .addComponent(lblGameTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFldGameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addComponent(lblMainDevelopers)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFldMainDevelopers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,22 +331,14 @@ public class AddGamesFrame extends javax.swing.JFrame{
                             .addComponent(lblSlash2))))
                 .addGap(18, 18, 18)
                 .addComponent(lblGenres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBtnAction)
-                    .addComponent(radioBtnAdventures)
-                    .addComponent(radioBtnEducational))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBtnRolePlaying)
-                    .addComponent(radioBtnSimulation)
-                    .addComponent(radioBtnRacing)
-                    .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBtnSports)
-                    .addComponent(radioBtnStrategy))
-                .addGap(59, 59, 59))
+                .addGroup(pnlAddGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlAddGamesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlGenres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
         );
 
         jPanel1.add(pnlAddGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -411,6 +362,29 @@ public class AddGamesFrame extends javax.swing.JFrame{
         closeWindow();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void initializeGenreCheckBoxes() {
+    String[] genres = {"Action", "Adventure", "Role-Playing", "Simulation", "Sports", "Strategy"};
+
+    for (String genre : genres) {
+        JCheckBox checkBox = new JCheckBox(genre); // Create checkbox for each genre
+        pnlGenres.add(checkBox);                  // Add checkbox to the JPanel
+    }
+
+    pnlGenres.revalidate(); // Refresh the panel to reflect the changes
+    pnlGenres.repaint();
+    }
+
+    
+    private void btnAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGameActionPerformed
+        // TODO add your handling code here:
+        String gameNum= txtFldGameNum.getText();
+        String gameTitle= txtFldGameTitle.getText();
+        String mainDevelopers= txtFldMainDevelopers.getText();
+        String publishers = txtFldPublishers.getText();
+        String platform = String.valueOf((String)comboBoxPlatform.getSelectedItem());
+        int rating = Integer.parseInt((String)comboBoxRating.getSelectedItem());
+    }//GEN-LAST:event_btnAddGameActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddGame;
     private javax.swing.JComboBox<String> comboBoxPlatform;
@@ -432,14 +406,7 @@ public class AddGamesFrame extends javax.swing.JFrame{
     private javax.swing.JLabel lblSlash1;
     private javax.swing.JLabel lblSlash2;
     private javax.swing.JPanel pnlAddGames;
-    private javax.swing.JRadioButton radioBtnAction;
-    private javax.swing.JRadioButton radioBtnAdventures;
-    private javax.swing.JRadioButton radioBtnEducational;
-    private javax.swing.JRadioButton radioBtnRacing;
-    private javax.swing.JRadioButton radioBtnRolePlaying;
-    private javax.swing.JRadioButton radioBtnSimulation;
-    private javax.swing.JRadioButton radioBtnSports;
-    private javax.swing.JRadioButton radioBtnStrategy;
+    private javax.swing.JPanel pnlGenres;
     private javax.swing.JTextField txtFldGameNum;
     private javax.swing.JTextField txtFldGameTitle;
     private javax.swing.JTextField txtFldLink;

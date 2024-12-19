@@ -113,33 +113,11 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="radioBtnRacing" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioBtnSports" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="radioBtnRolePlaying" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="radioBtnAdventures" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="radioBtnEducational" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="radioBtnSimulation" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="btnAddGame" min="-2" pref="124" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <Component id="radioBtnStrategy" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="pnlGenres" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnAddGame" min="-2" pref="124" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="lblGenres" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="radioBtnAction" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -147,6 +125,10 @@
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblGenres" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -180,7 +162,7 @@
                               <Component id="lblGameTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtFldGameTitle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                               <Component id="lblMainDevelopers" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtFldMainDevelopers" min="-2" max="-2" attributes="0"/>
@@ -215,25 +197,17 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblGenres" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="radioBtnAction" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnAdventures" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnEducational" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btnAddGame" min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlGenres" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="radioBtnRolePlaying" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnSimulation" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnRacing" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAddGame" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="radioBtnSports" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnStrategy" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -624,118 +598,6 @@
                 <Property name="text" type="java.lang.String" value="/"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnAction">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Action"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnAdventures">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Adventures"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnEducational">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Educational"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnRolePlaying">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Role-Playing"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnRacing">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Racing/Driving"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnSimulation">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Simulation"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnSports">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Sports"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="radioBtnStrategy">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="75" green="31" red="91" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e7" green="e8" red="e9" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Strategy"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btnAddGame">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -752,6 +614,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddGameActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
             </Component>
@@ -775,6 +640,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JPanel" name="pnlGenres">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="128" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
