@@ -78,7 +78,7 @@ public class GameSpace extends javax.swing.JFrame {
             game.getLink()
         });
     }
-
+    
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
             @Override
@@ -185,7 +185,7 @@ public class GameSpace extends javax.swing.JFrame {
         pnlAddGamesBorder = new javax.swing.JPanel();
         pnlAddGamesFrame = new javax.swing.JPanel();
         comboBoxRating = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lblAddGames = new javax.swing.JLabel();
         txtFldGameNum = new javax.swing.JTextField();
         lblGameNum = new javax.swing.JLabel();
         lblGameTitle = new javax.swing.JLabel();
@@ -207,9 +207,6 @@ public class GameSpace extends javax.swing.JFrame {
         lblSlash1 = new javax.swing.JLabel();
         lblSlash2 = new javax.swing.JLabel();
         btnAddGame = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnCloseAddGamesPanel = new javax.swing.JButton();
         checkBoxAction = new javax.swing.JCheckBox();
         checkBoxAdventures = new javax.swing.JCheckBox();
         checkBoxEducational = new javax.swing.JCheckBox();
@@ -248,7 +245,6 @@ public class GameSpace extends javax.swing.JFrame {
         btnUpdateGame = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnCloseAddGamesPanel1 = new javax.swing.JButton();
         checkBoxActionUpdate = new javax.swing.JCheckBox();
         checkBoxAdventuresUpdate = new javax.swing.JCheckBox();
         checkBoxEducationalUpdate = new javax.swing.JCheckBox();
@@ -257,7 +253,7 @@ public class GameSpace extends javax.swing.JFrame {
         checkBoxSimulationUpdate = new javax.swing.JCheckBox();
         checkBoxSportsUpdate = new javax.swing.JCheckBox();
         checkBoxStrategyUpdate = new javax.swing.JCheckBox();
-        btnCloseAddGames1 = new javax.swing.JButton();
+        btnCloseUpdateGames = new javax.swing.JButton();
         lblUpdateGamesBG = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         pgBarWelcomeScreen = new javax.swing.JProgressBar();
@@ -855,9 +851,9 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxRating.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxRating.setPreferredSize(new java.awt.Dimension(254, 42));
 
-        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(233, 232, 231));
-        jLabel1.setText("Add Games");
+        lblAddGames.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblAddGames.setForeground(new java.awt.Color(233, 232, 231));
+        lblAddGames.setText("Add Games");
 
         txtFldGameNum.setBackground(new java.awt.Color(32, 38, 46));
         txtFldGameNum.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -967,16 +963,6 @@ public class GameSpace extends javax.swing.JFrame {
         btnAddGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddGameActionPerformed(evt);
-            }
-        });
-
-        btnCloseAddGamesPanel.setBorder(null);
-        btnCloseAddGamesPanel.setBorderPainted(false);
-        btnCloseAddGamesPanel.setContentAreaFilled(false);
-        btnCloseAddGamesPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCloseAddGamesPanel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseAddGamesPanelActionPerformed(evt);
             }
         });
 
@@ -1112,11 +1098,7 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGap(24, 33, Short.MAX_VALUE))
             .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
-                .addGroup(pnlAddGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(534, 534, 534)
-                .addComponent(btnCloseAddGamesPanel)
+                .addComponent(lblAddGames)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCloseAddGames)
                 .addContainerGap())
@@ -1126,13 +1108,8 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
                 .addGroup(pnlAddGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(pnlAddGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel1))
-                            .addComponent(btnCloseAddGamesPanel)))
+                        .addGap(33, 33, 33)
+                        .addComponent(lblAddGames))
                     .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnCloseAddGames)))
@@ -1356,16 +1333,6 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        btnCloseAddGamesPanel1.setBorder(null);
-        btnCloseAddGamesPanel1.setBorderPainted(false);
-        btnCloseAddGamesPanel1.setContentAreaFilled(false);
-        btnCloseAddGamesPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCloseAddGamesPanel1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseAddGamesPanel1ActionPerformed(evt);
-            }
-        });
-
         checkBoxActionUpdate.setBackground(new java.awt.Color(145, 49, 117));
         checkBoxActionUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         checkBoxActionUpdate.setForeground(new java.awt.Color(233, 232, 231));
@@ -1406,13 +1373,13 @@ public class GameSpace extends javax.swing.JFrame {
         checkBoxStrategyUpdate.setForeground(new java.awt.Color(233, 232, 231));
         checkBoxStrategyUpdate.setText("Strategy");
 
-        btnCloseAddGames1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
-        btnCloseAddGames1.setBorder(null);
-        btnCloseAddGames1.setBorderPainted(false);
-        btnCloseAddGames1.setContentAreaFilled(false);
-        btnCloseAddGames1.addActionListener(new java.awt.event.ActionListener() {
+        btnCloseUpdateGames.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
+        btnCloseUpdateGames.setBorder(null);
+        btnCloseUpdateGames.setBorderPainted(false);
+        btnCloseUpdateGames.setContentAreaFilled(false);
+        btnCloseUpdateGames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseAddGames1ActionPerformed(evt);
+                btnCloseUpdateGamesActionPerformed(evt);
             }
         });
 
@@ -1494,18 +1461,16 @@ public class GameSpace extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(checkBoxSimulationUpdate)
                                 .addGap(49, 49, 49)
-                                .addComponent(checkBoxStrategyUpdate)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(lblUpdateGames))
-                .addGap(534, 534, 534)
-                .addComponent(btnCloseAddGamesPanel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCloseAddGames1)
-                .addContainerGap())
+                                .addComponent(checkBoxStrategyUpdate))))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblUpdateGames)
+                            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 742, Short.MAX_VALUE)
+                                .addComponent(btnCloseUpdateGames)))))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         pnlUpdateGamesFrameLayout.setVerticalGroup(
             pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1513,15 +1478,12 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(12, 12, 12)
-                                .addComponent(lblUpdateGames))
-                            .addComponent(btnCloseAddGamesPanel1)))
+                        .addComponent(jLabel6)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblUpdateGames))
                     .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnCloseAddGames1)))
+                        .addComponent(btnCloseUpdateGames)))
                 .addGap(18, 18, 18)
                 .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGameNumUpdate)
@@ -1707,31 +1669,15 @@ public class GameSpace extends javax.swing.JFrame {
         String link = txtFldLink.getText();
 
         ArrayList<String> selectedGenres = new ArrayList<>();
-        if (checkBoxAction.isSelected()) {
-            selectedGenres.add("Action");
-        }
-        if (checkBoxAdventures.isSelected()) {
-            selectedGenres.add("Adventures");
-        }
-        if (checkBoxEducational.isSelected()) {
-            selectedGenres.add("Educational");
-        }
-        if (checkBoxSports.isSelected()) {
-            selectedGenres.add("Sports");
-        }
-        if (checkBoxStrategy.isSelected()) {
-            selectedGenres.add("Strategy");
-        }
-        if (checkBoxSimulation.isSelected()) {
-            selectedGenres.add("Simulation");
-        }
-        if (checkBoxRacing.isSelected()) {
-            selectedGenres.add("Racing/Driving");
-        }
-        if (checkBoxRolePlaying.isSelected()) {
-            selectedGenres.add("Role-Playing");
-        }
-
+        if (checkBoxAction.isSelected()) selectedGenres.add("Action");
+        if (checkBoxAdventures.isSelected()) selectedGenres.add("Adventures");
+        if (checkBoxEducational.isSelected()) selectedGenres.add("Educational");
+        if (checkBoxSports.isSelected()) selectedGenres.add("Sports");
+        if (checkBoxStrategy.isSelected()) selectedGenres.add("Strategy");
+        if (checkBoxSimulation.isSelected()) selectedGenres.add("Simulation");
+        if (checkBoxRacing.isSelected()) selectedGenres.add("Racing/Driving");
+        if (checkBoxRolePlaying.isSelected()) selectedGenres.add("Role-Playing");
+        
         String genres = String.join(", ", selectedGenres);
 
         ArrayList<String> date = new ArrayList<>();
@@ -1757,11 +1703,6 @@ public class GameSpace extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddGameActionPerformed
 
-    private void btnCloseAddGamesPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGamesPanelActionPerformed
-        // TODO add your handling code here:
-        closeWindow();
-    }//GEN-LAST:event_btnCloseAddGamesPanelActionPerformed
-
     private void btnCloseAddGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGamesActionPerformed
         // TODO add your handling code here:
         loadScreen("AdminScreen");
@@ -1769,21 +1710,86 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
         // TODO add your handling code here:
-        
+        try{
+            int gameNum = Integer.parseInt(txtFldGameNumUpdate.getText());
+            String gameTitle = txtFldGameTitleUpdate.getText();
+            String mainDevelopers = txtFldMainDevelopersUpdate.getText();
+            String publishers = txtFldPublishersUpdate.getText();
+            String platform = String.valueOf((String) comboBoxPlatformUpdate.getSelectedItem());
+            int rating = Integer.parseInt((String) comboBoxRatingUpdate.getSelectedItem());
+            String link = txtFldLinkUpdate.getText();
+
+            ArrayList<String> selectedGenres = new ArrayList<>();
+            if (checkBoxActionUpdate.isSelected()) selectedGenres.add("Action");
+            if (checkBoxAdventuresUpdate.isSelected()) selectedGenres.add("Adventures");
+            if (checkBoxEducationalUpdate.isSelected()) selectedGenres.add("Educational");
+            if (checkBoxSportsUpdate.isSelected()) selectedGenres.add("Sports");
+            if (checkBoxStrategyUpdate.isSelected()) selectedGenres.add("Strategy");
+            if (checkBoxSimulationUpdate.isSelected()) selectedGenres.add("Simulation");
+            if (checkBoxRacingUpdate.isSelected()) selectedGenres.add("Racing/Driving");
+            if (checkBoxRolePlayingUpdate.isSelected()) selectedGenres.add("Role-Playing");
+
+            String genres = String.join(", ", selectedGenres);
+
+            ArrayList<String> date = new ArrayList<>();
+            date.add(txtFldReleasedYearUpdate.getText());
+            date.add(txtFldReleasedMonthUpdate.getText());
+            date.add(txtFldReleasedDayUpdate.getText());
+
+            String releasedDate = String.join("/ ", date);
+            
+            boolean exists=false;
+            
+            for(GameModel game: gameList){
+                if(gameNum==game.getGameNum()){
+                    game.setGameName(gameTitle);
+                    game.setMainDevelopers(mainDevelopers);
+                    game.setPublishers(publishers);
+                    game.setPlatform(platform);
+                    game.setReleasedDate(releasedDate);
+                    game.setGenres(genres);
+                    game.setRating(rating);
+                    game.setLink(link);
+                    exists=true;
+                    break;
+                }
+            }
+            
+            if(exists){
+                DefaultTableModel model = (DefaultTableModel)tblGameData.getModel();
+                model.setRowCount(0);
+                for(GameModel game:gameList){
+                    model.addRow(new Object[]{
+                        game.getGameNum(),
+                        game.getGameName(),
+                        game.getMainDevelopers(),
+                        game.getPublishers(),
+                        game.getPlatform(),
+                        game.getReleasedDate(),
+                        game.getGenres(),
+                        game.getRating(),
+                        game.getLink()
+                    });
+                }
+            }
+            loadScreen("AdminScreen");
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+            System.out.println("Game Number: " + txtFldGameNum.getText());
+            System.out.println("Rating: " + comboBoxRating.getSelectedItem());
+        }
     }//GEN-LAST:event_btnUpdateGameActionPerformed
-
-    private void btnCloseAddGamesPanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGamesPanel1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCloseAddGamesPanel1ActionPerformed
-
-    private void btnCloseAddGames1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGames1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCloseAddGames1ActionPerformed
 
     private void btnUpdateGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGamesActionPerformed
         // TODO add your handling code here:
         loadScreen("UpdateGamesScreen");
     }//GEN-LAST:event_btnUpdateGamesActionPerformed
+
+    private void btnCloseUpdateGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseUpdateGamesActionPerformed
+        // TODO add your handling code here:
+        loadScreen("AdminScreen");
+    }//GEN-LAST:event_btnCloseUpdateGamesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1822,10 +1828,8 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnAddGame;
     private javax.swing.JButton btnAddGames;
     private javax.swing.JButton btnCloseAddGames;
-    private javax.swing.JButton btnCloseAddGames1;
-    private javax.swing.JButton btnCloseAddGamesPanel;
-    private javax.swing.JButton btnCloseAddGamesPanel1;
     private javax.swing.JButton btnCloseLogIn;
+    private javax.swing.JButton btnCloseUpdateGames;
     private javax.swing.JButton btnCloseWinAdmin;
     private javax.swing.JLabel btnFilter;
     private javax.swing.JButton btnLogIn;
@@ -1856,13 +1860,11 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxRating;
     private javax.swing.JComboBox<String> comboBoxRatingUpdate;
     private javax.swing.JPanel divider;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAddGames;
     private javax.swing.JLabel lblAddGamesBG;
     private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
