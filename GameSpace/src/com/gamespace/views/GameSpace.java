@@ -1,4 +1,3 @@
-
 package com.gamespace.views;
 
 import com.collegeapp.model.StudentModel;
@@ -10,13 +9,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ronish Prajapati
- * LmuID: 23048584
+ * @author Ronish Prajapati LmuID: 23048584
  */
 public class GameSpace extends javax.swing.JFrame {
 
@@ -33,7 +32,7 @@ public class GameSpace extends javax.swing.JFrame {
         initializeTools();
         initializeData();
         startProgress();
-        
+
     }
 
     private void initializeTools() {
@@ -47,21 +46,26 @@ public class GameSpace extends javax.swing.JFrame {
         getContentPane().add(pnlWelcome, "WelcomeScreen");
         getContentPane().add(pnlMainLogIn, "LogInScreen");
         getContentPane().add(pnlAdmin, "AdminScreen");
-        getContentPane().add(pnlAddGamesOuter,"AddGamesScreeen");
+        getContentPane().add(pnlAddGamesOuter, "AddGamesScreeen");
+        getContentPane().add(pnlUpdateGamesOuter,"UpdateGamesScreen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
-    
-    private void initializeData(){
+
+    private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(12,"CS Go","Half-Life","Ronish","PC","2024","Action",5,"https"));
+        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "https"));
+        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "https"));
+        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "https"));
+        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "https"));
+        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "https"));
     }
-    
-    public void addGamesToTable(GameModel game){
+
+    public void addGamesToTable(GameModel game) {
         gameList.add(game);
-        
+
         DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
-        
+
         model.addRow(new Object[]{
             game.getGameNum(),
             game.getGameName(),
@@ -74,6 +78,7 @@ public class GameSpace extends javax.swing.JFrame {
             game.getLink()
         });
     }
+
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
             @Override
@@ -103,18 +108,19 @@ public class GameSpace extends javax.swing.JFrame {
         cardLayout.show(getContentPane(), screenName);
     }
 
-    private void closeWindow(){
-        WindowEvent close= new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+    private void closeWindow() {
+        WindowEvent close = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(close);
     }
-    
-    private void minimizeWindow(){
+
+    private void minimizeWindow() {
         setExtendedState(JFrame.ICONIFIED);
     }
-    
-    private void logout(){
+
+    private void logout() {
         loadScreen("LogInScreen");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,6 +167,7 @@ public class GameSpace extends javax.swing.JFrame {
         btnAddGames = new javax.swing.JButton();
         btnRemoveGames = new javax.swing.JButton();
         btnUpdateGames = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
         lblTotalAdmin = new javax.swing.JLabel();
         lblAdminNum = new javax.swing.JLabel();
@@ -213,6 +220,45 @@ public class GameSpace extends javax.swing.JFrame {
         checkBoxStrategy = new javax.swing.JCheckBox();
         btnCloseAddGames = new javax.swing.JButton();
         lblAddGamesBG = new javax.swing.JLabel();
+        pnlUpdateGamesOuter = new javax.swing.JPanel();
+        pnlUpdateGamesBorder = new javax.swing.JPanel();
+        pnlUpdateGamesFrame = new javax.swing.JPanel();
+        comboBoxRatingUpdate = new javax.swing.JComboBox<>();
+        lblUpdateGames = new javax.swing.JLabel();
+        txtFldGameNumUpdate = new javax.swing.JTextField();
+        lblGameNumUpdate = new javax.swing.JLabel();
+        lblGameTitleUpdate = new javax.swing.JLabel();
+        txtFldGameTitleUpdate = new javax.swing.JTextField();
+        lblMainDevelopersUpdate = new javax.swing.JLabel();
+        txtFldMainDevelopersUpdate = new javax.swing.JTextField();
+        lblPublishersUpdate = new javax.swing.JLabel();
+        txtFldPublishersUpdate = new javax.swing.JTextField();
+        lblGenresUpdate = new javax.swing.JLabel();
+        lblPlatformsUpdate = new javax.swing.JLabel();
+        lblRatingUpdate = new javax.swing.JLabel();
+        comboBoxPlatformUpdate = new javax.swing.JComboBox<>();
+        txtFldLinkUpdate = new javax.swing.JTextField();
+        lblLinkUpdate = new javax.swing.JLabel();
+        txtFldReleasedYearUpdate = new javax.swing.JTextField();
+        lblReleasedDateUpdate = new javax.swing.JLabel();
+        txtFldReleasedMonthUpdate = new javax.swing.JTextField();
+        txtFldReleasedDayUpdate = new javax.swing.JTextField();
+        lblSlash3 = new javax.swing.JLabel();
+        lblSlash4 = new javax.swing.JLabel();
+        btnUpdateGame = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnCloseAddGamesPanel1 = new javax.swing.JButton();
+        checkBoxActionUpdate = new javax.swing.JCheckBox();
+        checkBoxAdventuresUpdate = new javax.swing.JCheckBox();
+        checkBoxEducationalUpdate = new javax.swing.JCheckBox();
+        checkBoxRolePlayingUpdate = new javax.swing.JCheckBox();
+        checkBoxRacingUpdate = new javax.swing.JCheckBox();
+        checkBoxSimulationUpdate = new javax.swing.JCheckBox();
+        checkBoxSportsUpdate = new javax.swing.JCheckBox();
+        checkBoxStrategyUpdate = new javax.swing.JCheckBox();
+        btnCloseAddGames1 = new javax.swing.JButton();
+        lblUpdateGamesBG = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         pgBarWelcomeScreen = new javax.swing.JProgressBar();
         lblWelcome = new javax.swing.JLabel();
@@ -607,6 +653,13 @@ public class GameSpace extends javax.swing.JFrame {
         btnUpdateGames.setForeground(new java.awt.Color(233, 232, 231));
         btnUpdateGames.setText("Update");
         btnUpdateGames.setBorder(null);
+        btnUpdateGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateGamesActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout pnlGameDataLayout = new javax.swing.GroupLayout(pnlGameData);
         pnlGameData.setLayout(pnlGameDataLayout);
@@ -618,7 +671,9 @@ public class GameSpace extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addComponent(lblGameData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1261, Short.MAX_VALUE)
+                        .addGap(565, 565, 565)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 659, Short.MAX_VALUE)
                         .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,7 +687,9 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(lblGameData)
+                        .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGameData)
+                            .addComponent(jLabel4))
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameDataLayout.createSequentialGroup()
                         .addContainerGap()
@@ -1040,16 +1097,18 @@ public class GameSpace extends javax.swing.JFrame {
                         .addComponent(checkBoxSports))
                     .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(checkBoxAdventures)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkBoxRolePlaying)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkBoxSimulation)
-                        .addGap(49, 49, 49)
-                        .addComponent(checkBoxStrategy))
-                    .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
-                        .addGap(703, 703, 703)
-                        .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlAddGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
+                                .addGap(615, 615, 615)
+                                .addComponent(btnAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
+                                .addComponent(checkBoxAdventures)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkBoxRolePlaying)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkBoxSimulation)
+                                .addGap(49, 49, 49)
+                                .addComponent(checkBoxStrategy)))))
                 .addGap(24, 33, Short.MAX_VALUE))
             .addGroup(pnlAddGamesFrameLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
@@ -1164,6 +1223,392 @@ public class GameSpace extends javax.swing.JFrame {
         lblAddGamesBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
         pnlAddGamesOuter.add(lblAddGamesBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        pnlUpdateGamesOuter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlUpdateGamesBorder.setBackground(new java.awt.Color(233, 232, 231));
+        pnlUpdateGamesBorder.setPreferredSize(new java.awt.Dimension(870, 630));
+
+        pnlUpdateGamesFrame.setBackground(new java.awt.Color(145, 49, 117));
+        pnlUpdateGamesFrame.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlUpdateGamesFrame.setFocusCycleRoot(true);
+        pnlUpdateGamesFrame.setPreferredSize(new java.awt.Dimension(851, 620));
+
+        comboBoxRatingUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        comboBoxRatingUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        comboBoxRatingUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        comboBoxRatingUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        comboBoxRatingUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        comboBoxRatingUpdate.setMinimumSize(new java.awt.Dimension(254, 22));
+        comboBoxRatingUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblUpdateGames.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblUpdateGames.setForeground(new java.awt.Color(233, 232, 231));
+        lblUpdateGames.setText("Update Games");
+
+        txtFldGameNumUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldGameNumUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldGameNumUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldGameNumUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldGameNumUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblGameNumUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblGameNumUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblGameNumUpdate.setText("Game No.");
+
+        lblGameTitleUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblGameTitleUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblGameTitleUpdate.setText("Game Title");
+
+        txtFldGameTitleUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldGameTitleUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldGameTitleUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldGameTitleUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldGameTitleUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblMainDevelopersUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblMainDevelopersUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblMainDevelopersUpdate.setText("Main Developers");
+
+        txtFldMainDevelopersUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldMainDevelopersUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldMainDevelopersUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldMainDevelopersUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldMainDevelopersUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblPublishersUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblPublishersUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblPublishersUpdate.setText("Publishers");
+
+        txtFldPublishersUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldPublishersUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldPublishersUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldPublishersUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldPublishersUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblGenresUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblGenresUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblGenresUpdate.setText("Genres");
+
+        lblPlatformsUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblPlatformsUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblPlatformsUpdate.setText("Platform");
+
+        lblRatingUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblRatingUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblRatingUpdate.setText("Rating");
+
+        comboBoxPlatformUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        comboBoxPlatformUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        comboBoxPlatformUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        comboBoxPlatformUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Play Station", "XBox" }));
+        comboBoxPlatformUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        comboBoxPlatformUpdate.setMinimumSize(new java.awt.Dimension(254, 22));
+        comboBoxPlatformUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        txtFldLinkUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldLinkUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldLinkUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldLinkUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldLinkUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
+
+        lblLinkUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblLinkUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblLinkUpdate.setText("Link");
+
+        txtFldReleasedYearUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldReleasedYearUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldReleasedYearUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldReleasedYearUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldReleasedYearUpdate.setPreferredSize(new java.awt.Dimension(84, 42));
+
+        lblReleasedDateUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblReleasedDateUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        lblReleasedDateUpdate.setText("Released Date");
+
+        txtFldReleasedMonthUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldReleasedMonthUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldReleasedMonthUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldReleasedMonthUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldReleasedMonthUpdate.setPreferredSize(new java.awt.Dimension(64, 42));
+
+        txtFldReleasedDayUpdate.setBackground(new java.awt.Color(32, 38, 46));
+        txtFldReleasedDayUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        txtFldReleasedDayUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        txtFldReleasedDayUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        txtFldReleasedDayUpdate.setPreferredSize(new java.awt.Dimension(64, 42));
+
+        lblSlash3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblSlash3.setForeground(new java.awt.Color(233, 232, 231));
+        lblSlash3.setText("/");
+
+        lblSlash4.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblSlash4.setForeground(new java.awt.Color(233, 232, 231));
+        lblSlash4.setText("/");
+
+        btnUpdateGame.setBackground(new java.awt.Color(205, 88, 136));
+        btnUpdateGame.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnUpdateGame.setForeground(new java.awt.Color(32, 38, 46));
+        btnUpdateGame.setText("Update Game");
+        btnUpdateGame.setBorder(null);
+        btnUpdateGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateGameActionPerformed(evt);
+            }
+        });
+
+        btnCloseAddGamesPanel1.setBorder(null);
+        btnCloseAddGamesPanel1.setBorderPainted(false);
+        btnCloseAddGamesPanel1.setContentAreaFilled(false);
+        btnCloseAddGamesPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCloseAddGamesPanel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseAddGamesPanel1ActionPerformed(evt);
+            }
+        });
+
+        checkBoxActionUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxActionUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxActionUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxActionUpdate.setText("Action");
+
+        checkBoxAdventuresUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxAdventuresUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxAdventuresUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxAdventuresUpdate.setText("Adventures");
+
+        checkBoxEducationalUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxEducationalUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxEducationalUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxEducationalUpdate.setText("Educational");
+
+        checkBoxRolePlayingUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxRolePlayingUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxRolePlayingUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxRolePlayingUpdate.setText("Role-Playing");
+
+        checkBoxRacingUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxRacingUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxRacingUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxRacingUpdate.setText("Racing/Driving");
+
+        checkBoxSimulationUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxSimulationUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxSimulationUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxSimulationUpdate.setText("Simulation");
+
+        checkBoxSportsUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxSportsUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxSportsUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxSportsUpdate.setText("Sports");
+
+        checkBoxStrategyUpdate.setBackground(new java.awt.Color(145, 49, 117));
+        checkBoxStrategyUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        checkBoxStrategyUpdate.setForeground(new java.awt.Color(233, 232, 231));
+        checkBoxStrategyUpdate.setText("Strategy");
+
+        btnCloseAddGames1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/closeIcon.png"))); // NOI18N
+        btnCloseAddGames1.setBorder(null);
+        btnCloseAddGames1.setBorderPainted(false);
+        btnCloseAddGames1.setContentAreaFilled(false);
+        btnCloseAddGames1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseAddGames1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlUpdateGamesFrameLayout = new javax.swing.GroupLayout(pnlUpdateGamesFrame);
+        pnlUpdateGamesFrame.setLayout(pnlUpdateGamesFrameLayout);
+        pnlUpdateGamesFrameLayout.setHorizontalGroup(
+            pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblGameNumUpdate)
+                        .addGap(323, 323, 323)
+                        .addComponent(lblPlatformsUpdate))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(txtFldGameNumUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143)
+                        .addComponent(comboBoxPlatformUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblGameTitleUpdate)
+                            .addComponent(txtFldGameTitleUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(143, 143, 143)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRatingUpdate)
+                            .addComponent(comboBoxRatingUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblMainDevelopersUpdate)
+                        .addGap(272, 272, 272)
+                        .addComponent(lblLinkUpdate))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(txtFldMainDevelopersUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143)
+                        .addComponent(txtFldLinkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblPublishersUpdate)
+                        .addGap(318, 318, 318)
+                        .addComponent(lblReleasedDateUpdate))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(txtFldPublishersUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143)
+                        .addComponent(txtFldReleasedYearUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblSlash3)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtFldReleasedMonthUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblSlash4)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtFldReleasedDayUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(lblGenresUpdate))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(checkBoxActionUpdate)
+                        .addGap(54, 54, 54)
+                        .addComponent(checkBoxEducationalUpdate)
+                        .addGap(22, 22, 22)
+                        .addComponent(checkBoxRacingUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkBoxSportsUpdate))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                                .addGap(615, 615, 615)
+                                .addComponent(btnUpdateGame, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                                .addComponent(checkBoxAdventuresUpdate)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkBoxRolePlayingUpdate)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkBoxSimulationUpdate)
+                                .addGap(49, 49, 49)
+                                .addComponent(checkBoxStrategyUpdate)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(lblUpdateGames))
+                .addGap(534, 534, 534)
+                .addComponent(btnCloseAddGamesPanel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCloseAddGames1)
+                .addContainerGap())
+        );
+        pnlUpdateGamesFrameLayout.setVerticalGroup(
+            pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(12, 12, 12)
+                                .addComponent(lblUpdateGames))
+                            .addComponent(btnCloseAddGamesPanel1)))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnCloseAddGames1)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGameNumUpdate)
+                    .addComponent(lblPlatformsUpdate))
+                .addGap(6, 6, 6)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFldGameNumUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxPlatformUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addComponent(lblGameTitleUpdate)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtFldGameTitleUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(lblRatingUpdate)
+                        .addGap(6, 6, 6)
+                        .addComponent(comboBoxRatingUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMainDevelopersUpdate)
+                    .addComponent(lblLinkUpdate))
+                .addGap(6, 6, 6)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFldMainDevelopersUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldLinkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPublishersUpdate)
+                    .addComponent(lblReleasedDateUpdate))
+                .addGap(6, 6, 6)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFldPublishersUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldReleasedYearUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldReleasedMonthUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldReleasedDayUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlUpdateGamesFrameLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSlash3)
+                            .addComponent(lblSlash4))))
+                .addGap(18, 18, 18)
+                .addComponent(lblGenresUpdate)
+                .addGap(6, 6, 6)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxActionUpdate)
+                    .addComponent(checkBoxEducationalUpdate)
+                    .addComponent(checkBoxRacingUpdate)
+                    .addComponent(checkBoxSportsUpdate))
+                .addGap(17, 17, 17)
+                .addGroup(pnlUpdateGamesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxAdventuresUpdate)
+                    .addComponent(checkBoxRolePlayingUpdate)
+                    .addComponent(checkBoxSimulationUpdate)
+                    .addComponent(checkBoxStrategyUpdate))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateGame, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlUpdateGamesBorderLayout = new javax.swing.GroupLayout(pnlUpdateGamesBorder);
+        pnlUpdateGamesBorder.setLayout(pnlUpdateGamesBorderLayout);
+        pnlUpdateGamesBorderLayout.setHorizontalGroup(
+            pnlUpdateGamesBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(pnlUpdateGamesBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateGamesBorderLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlUpdateGamesFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pnlUpdateGamesBorderLayout.setVerticalGroup(
+            pnlUpdateGamesBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(pnlUpdateGamesBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateGamesBorderLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlUpdateGamesFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pnlUpdateGamesOuter.add(pnlUpdateGamesBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 225, -1, -1));
+
+        lblUpdateGamesBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
+        pnlUpdateGamesOuter.add(lblUpdateGamesBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
@@ -1253,23 +1698,39 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGameActionPerformed
         // TODO add your handling code here:
-        int gameNum= Integer.parseInt(txtFldGameNum.getText());
-        String gameTitle= txtFldGameTitle.getText();
-        String mainDevelopers= txtFldMainDevelopers.getText();
+        int gameNum = Integer.parseInt(txtFldGameNum.getText());
+        String gameTitle = txtFldGameTitle.getText();
+        String mainDevelopers = txtFldMainDevelopers.getText();
         String publishers = txtFldPublishers.getText();
-        String platform = String.valueOf((String)comboBoxPlatform.getSelectedItem());
-        int rating = Integer.parseInt((String)comboBoxRating.getSelectedItem());
-        String link= txtFldLink.getText();
+        String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
+        int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
+        String link = txtFldLink.getText();
 
         ArrayList<String> selectedGenres = new ArrayList<>();
-        if(checkBoxAction.isSelected())selectedGenres.add("Action");
-        if(checkBoxAdventures.isSelected())selectedGenres.add("Adventures");
-        if(checkBoxEducational.isSelected())selectedGenres.add("Educational");
-        if(checkBoxSports.isSelected())selectedGenres.add("Sports");
-        if(checkBoxStrategy.isSelected())selectedGenres.add("Strategy");
-        if(checkBoxSimulation.isSelected())selectedGenres.add("Simulation");
-        if(checkBoxRacing.isSelected())selectedGenres.add("Racing/Driving");
-        if(checkBoxRolePlaying.isSelected())selectedGenres.add("Role-Playing");
+        if (checkBoxAction.isSelected()) {
+            selectedGenres.add("Action");
+        }
+        if (checkBoxAdventures.isSelected()) {
+            selectedGenres.add("Adventures");
+        }
+        if (checkBoxEducational.isSelected()) {
+            selectedGenres.add("Educational");
+        }
+        if (checkBoxSports.isSelected()) {
+            selectedGenres.add("Sports");
+        }
+        if (checkBoxStrategy.isSelected()) {
+            selectedGenres.add("Strategy");
+        }
+        if (checkBoxSimulation.isSelected()) {
+            selectedGenres.add("Simulation");
+        }
+        if (checkBoxRacing.isSelected()) {
+            selectedGenres.add("Racing/Driving");
+        }
+        if (checkBoxRolePlaying.isSelected()) {
+            selectedGenres.add("Role-Playing");
+        }
 
         String genres = String.join(", ", selectedGenres);
 
@@ -1279,18 +1740,20 @@ public class GameSpace extends javax.swing.JFrame {
         date.add(txtFldReleasedDay.getText());
 
         String releasedDate = String.join("/ ", date);
-        
+
         boolean exists = false;
-        
-                for(GameModel game: gameList){
-                    if(gameNum==game.getGameNum()){
-                        exists = true;
-                        break;
-                    }
-                }
-        if(!exists){
-            GameModel game = new GameModel(gameNum,gameTitle,mainDevelopers, publishers,platform,releasedDate, genres, rating, link);
+
+        for (GameModel game : gameList) {
+            if (gameNum == game.getGameNum()) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, link);
             addGamesToTable(game);
+            JOptionPane.showMessageDialog(this,"Game added SUCCESSFULLY!!","Success",JOptionPane.INFORMATION_MESSAGE);
+            loadScreen("AdminScreen");
         }
     }//GEN-LAST:event_btnAddGameActionPerformed
 
@@ -1303,6 +1766,24 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadScreen("AdminScreen");
     }//GEN-LAST:event_btnCloseAddGamesActionPerformed
+
+    private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnUpdateGameActionPerformed
+
+    private void btnCloseAddGamesPanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGamesPanel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCloseAddGamesPanel1ActionPerformed
+
+    private void btnCloseAddGames1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddGames1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCloseAddGames1ActionPerformed
+
+    private void btnUpdateGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGamesActionPerformed
+        // TODO add your handling code here:
+        loadScreen("UpdateGamesScreen");
+    }//GEN-LAST:event_btnUpdateGamesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1341,7 +1822,9 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnAddGame;
     private javax.swing.JButton btnAddGames;
     private javax.swing.JButton btnCloseAddGames;
+    private javax.swing.JButton btnCloseAddGames1;
     private javax.swing.JButton btnCloseAddGamesPanel;
+    private javax.swing.JButton btnCloseAddGamesPanel1;
     private javax.swing.JButton btnCloseLogIn;
     private javax.swing.JButton btnCloseWinAdmin;
     private javax.swing.JLabel btnFilter;
@@ -1350,21 +1833,35 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeLogIn;
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnRemoveGames;
+    private javax.swing.JButton btnUpdateGame;
     private javax.swing.JButton btnUpdateGames;
     private javax.swing.JCheckBox checkBoxAction;
+    private javax.swing.JCheckBox checkBoxActionUpdate;
     private javax.swing.JCheckBox checkBoxAdventures;
+    private javax.swing.JCheckBox checkBoxAdventuresUpdate;
     private javax.swing.JCheckBox checkBoxEducational;
+    private javax.swing.JCheckBox checkBoxEducationalUpdate;
     private javax.swing.JCheckBox checkBoxRacing;
+    private javax.swing.JCheckBox checkBoxRacingUpdate;
     private javax.swing.JCheckBox checkBoxRolePlaying;
+    private javax.swing.JCheckBox checkBoxRolePlayingUpdate;
     private javax.swing.JCheckBox checkBoxSimulation;
+    private javax.swing.JCheckBox checkBoxSimulationUpdate;
     private javax.swing.JCheckBox checkBoxSports;
+    private javax.swing.JCheckBox checkBoxSportsUpdate;
     private javax.swing.JCheckBox checkBoxStrategy;
+    private javax.swing.JCheckBox checkBoxStrategyUpdate;
     private javax.swing.JComboBox<String> comboBoxPlatform;
+    private javax.swing.JComboBox<String> comboBoxPlatformUpdate;
     private javax.swing.JComboBox<String> comboBoxRating;
+    private javax.swing.JComboBox<String> comboBoxRatingUpdate;
     private javax.swing.JPanel divider;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddGamesBG;
     private javax.swing.JLabel lblAdminIC;
@@ -1374,27 +1871,40 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblGameData;
     private javax.swing.JLabel lblGameIcon;
     private javax.swing.JLabel lblGameNum;
+    private javax.swing.JLabel lblGameNumUpdate;
     private javax.swing.JLabel lblGameTitle;
+    private javax.swing.JLabel lblGameTitleUpdate;
     private javax.swing.JLabel lblGamesNum;
     private javax.swing.JLabel lblGenres;
     private javax.swing.JLabel lblGenres1;
     private javax.swing.JLabel lblGenres2;
+    private javax.swing.JLabel lblGenresUpdate;
     private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblLink;
+    private javax.swing.JLabel lblLinkUpdate;
     private javax.swing.JLabel lblLogInBackground;
     private javax.swing.JLabel lblLogInTitle;
     private javax.swing.JLabel lblLoginError;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoAdmin;
     private javax.swing.JLabel lblMainDevelopers;
+    private javax.swing.JLabel lblMainDevelopersUpdate;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPlatformsUpdate;
     private javax.swing.JLabel lblPublishers;
+    private javax.swing.JLabel lblPublishersUpdate;
+    private javax.swing.JLabel lblRatingUpdate;
     private javax.swing.JLabel lblReleasedDate;
+    private javax.swing.JLabel lblReleasedDateUpdate;
     private javax.swing.JLabel lblSlash1;
     private javax.swing.JLabel lblSlash2;
+    private javax.swing.JLabel lblSlash3;
+    private javax.swing.JLabel lblSlash4;
     private javax.swing.JLabel lblTotalAdmin;
     private javax.swing.JLabel lblTotalGames;
     private javax.swing.JLabel lblTotalUsers;
+    private javax.swing.JLabel lblUpdateGames;
+    private javax.swing.JLabel lblUpdateGamesBG;
     private javax.swing.JLabel lblUserIcon;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblUsersNum;
@@ -1418,18 +1928,29 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTotalAdmin;
     private javax.swing.JPanel pnlTotalGames;
     private javax.swing.JPanel pnlTotalUsers;
+    private javax.swing.JPanel pnlUpdateGamesBorder;
+    private javax.swing.JPanel pnlUpdateGamesFrame;
+    private javax.swing.JPanel pnlUpdateGamesOuter;
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JTable tblGameData;
     private javax.swing.JTextField txtFldGameNum;
+    private javax.swing.JTextField txtFldGameNumUpdate;
     private javax.swing.JTextField txtFldGameTitle;
+    private javax.swing.JTextField txtFldGameTitleUpdate;
     private javax.swing.JTextField txtFldLink;
+    private javax.swing.JTextField txtFldLinkUpdate;
     private javax.swing.JTextField txtFldMainDevelopers;
+    private javax.swing.JTextField txtFldMainDevelopersUpdate;
     private javax.swing.JPasswordField txtFldPassword;
     private javax.swing.JTextField txtFldPublishers;
+    private javax.swing.JTextField txtFldPublishersUpdate;
     private javax.swing.JTextField txtFldReleasedDay;
+    private javax.swing.JTextField txtFldReleasedDayUpdate;
     private javax.swing.JTextField txtFldReleasedMonth;
+    private javax.swing.JTextField txtFldReleasedMonthUpdate;
     private javax.swing.JTextField txtFldReleasedYear;
+    private javax.swing.JTextField txtFldReleasedYearUpdate;
     private javax.swing.JTextField txtFldSearchAdmin;
     private javax.swing.JTextField txtFldUsername;
     // End of variables declaration//GEN-END:variables
