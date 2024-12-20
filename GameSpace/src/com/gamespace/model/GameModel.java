@@ -13,16 +13,18 @@ public class GameModel {
     private String gameName;
     private String mainDevelopers;
     private String publishers;
+    private String platform;
     private String releasedDate;
     private String genres;
     private int rating;
     private String link;
 
-    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String releasedDate, String genres, int rating, String link) {
+    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String platform, String releasedDate, String genres, int rating, String link) {
         this.gameNum = gameNum;
         this.gameName = gameName;
         this.mainDevelopers = mainDevelopers;
         this.publishers = publishers;
+        this.platform = platform;
         this.releasedDate = releasedDate;
         this.genres = genres;
         this.rating = rating;
@@ -61,6 +63,14 @@ public class GameModel {
         this.publishers = publishers;
     }
 
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
     public String getReleasedDate() {
         return releasedDate;
     }
@@ -92,8 +102,6 @@ public class GameModel {
     public void setLink(String link) {
         this.link = link;
     }
- 
+
 }
-
-
 
