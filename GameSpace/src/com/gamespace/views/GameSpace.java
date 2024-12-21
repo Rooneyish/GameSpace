@@ -623,7 +623,6 @@ public class GameSpace extends javax.swing.JFrame {
         tblGameData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGameData.setShowGrid(false);
         tblGameData.setShowHorizontalLines(true);
-        tblGameData.setSurrendersFocusOnKeystroke(true);
         tblGameData.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblGameData);
 
@@ -643,6 +642,11 @@ public class GameSpace extends javax.swing.JFrame {
         btnRemoveGames.setForeground(new java.awt.Color(233, 232, 231));
         btnRemoveGames.setText("Remove");
         btnRemoveGames.setBorder(null);
+        btnRemoveGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveGamesActionPerformed(evt);
+            }
+        });
 
         btnUpdateGames.setBackground(new java.awt.Color(145, 49, 117));
         btnUpdateGames.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -1790,6 +1794,47 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadScreen("AdminScreen");
     }//GEN-LAST:event_btnCloseUpdateGamesActionPerformed
+
+    private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
+        // TODO add your handling code here:
+        String removeNumStr= JOptionPane.showInputDialog("Enter Game No. to REMOVE");
+        try{
+            int removeNum = Integer.parseInt(removeNumStr);
+            
+            boolean exist = false;
+            for(int i=0;i<gameList.size(); i++){
+                if((gameList.get(i).getGameNum())==removeNum){
+                    gameList.remove(i);
+                    exist=true;
+                    break;
+                }
+            }
+            
+            if(exist){
+                DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
+                model.setRowCount(0);
+                for(GameModel game:gameList){
+                    model.addRow(new Object[]{
+                        game.getGameNum(),
+                        game.getGameName(),
+                        game.getMainDevelopers(),
+                        game.getPublishers(),
+                        game.getPlatform(),
+                        game.getReleasedDate(),
+                        game.getGenres(),
+                        game.getRating(),
+                        game.getLink()
+                    });
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Game Not Found!!","Alert",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRemoveGamesActionPerformed
 
     /**
      * @param args the command line arguments
