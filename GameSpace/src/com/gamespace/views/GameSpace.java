@@ -1,6 +1,5 @@
 package com.gamespace.views;
 
-import com.collegeapp.model.StudentModel;
 import com.gamespace.model.GameModel;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -1664,6 +1663,8 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGameActionPerformed
         // TODO add your handling code here:
+        try{
+            
         int gameNum = Integer.parseInt(txtFldGameNum.getText());
         String gameTitle = txtFldGameTitle.getText();
         String mainDevelopers = txtFldMainDevelopers.getText();
@@ -1702,8 +1703,15 @@ public class GameSpace extends javax.swing.JFrame {
         if (!exists) {
             GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, link);
             addGamesToTable(game);
-            JOptionPane.showMessageDialog(this,"Game added SUCCESSFULLY!!","Success",JOptionPane.INFORMATION_MESSAGE);
+            CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!","Success",JOptionPane.INFORMATION_MESSAGE);
             loadScreen("AdminScreen");
+        }
+        else{
+            CustomMessageJOptionPane.showCustomMessage("The Game No. Already Exists", "Information",JOptionPane.INFORMATION_MESSAGE);
+        }
+        }
+        catch(NumberFormatException e){
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddGameActionPerformed
 
@@ -1776,12 +1784,14 @@ public class GameSpace extends javax.swing.JFrame {
                     });
                 }
             }
+            else{
+                CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
             loadScreen("AdminScreen");
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this,"Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
-            System.out.println("Game Number: " + txtFldGameNum.getText());
-            System.out.println("Rating: " + comboBoxRating.getSelectedItem());
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+            
         }
     }//GEN-LAST:event_btnUpdateGameActionPerformed
 
@@ -1797,7 +1807,7 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
         // TODO add your handling code here:
-        String removeNumStr= JOptionPane.showInputDialog("Enter Game No. to REMOVE");
+        String removeNumStr= CustomInputJOptionPane.showCustomInputDialog("Enter Game No. to REMOVE: ","Custom Input Dialog");
         try{
             int removeNum = Integer.parseInt(removeNumStr);
             
@@ -1828,11 +1838,11 @@ public class GameSpace extends javax.swing.JFrame {
                 }
             }
             else{
-                JOptionPane.showMessageDialog(this, "Game Not Found!!","Alert",JOptionPane.INFORMATION_MESSAGE);
+                CustomMessageJOptionPane.showCustomMessage( "Game Not Found!!","Alert",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this,"Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnRemoveGamesActionPerformed
 
@@ -1848,13 +1858,7 @@ public class GameSpace extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameSpace.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameSpace.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameSpace.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GameSpace.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
