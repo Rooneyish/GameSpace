@@ -1,5 +1,6 @@
 package com.gamespace.views;
 
+import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -20,6 +21,7 @@ public class GameSpace extends javax.swing.JFrame {
 
     private java.awt.CardLayout cardLayout;
     private List<GameModel> gameList;
+    private com.gamespace.util.ValidationUtil validation;
 
     /**
      * Creates new form GameSpace
@@ -36,6 +38,7 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void initializeTools() {
         gameList = new LinkedList();
+        validation = new ValidationUtil();
     }
 
     private void initializeLayout() {
@@ -46,18 +49,18 @@ public class GameSpace extends javax.swing.JFrame {
         getContentPane().add(pnlMainLogIn, "LogInScreen");
         getContentPane().add(pnlAdmin, "AdminScreen");
         getContentPane().add(pnlAddGamesOuter, "AddGamesScreeen");
-        getContentPane().add(pnlUpdateGamesOuter,"UpdateGamesScreen");
+        getContentPane().add(pnlUpdateGamesOuter, "UpdateGamesScreen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
 
     private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5,20, "https"));
-        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5,20, "https"));
-        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5,20, "https"));
-        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5,20, "https"));
-        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5,20, "https"));
+        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
+        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
+        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
+        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
+        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
     }
 
     public void addGamesToTable(GameModel game) {
@@ -78,7 +81,7 @@ public class GameSpace extends javax.swing.JFrame {
             game.getLink()
         });
     }
-    
+
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
             @Override
@@ -1758,57 +1761,94 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGameActionPerformed
         // TODO add your handling code here:
-        try{
-            
-        int gameNum = Integer.parseInt(txtFldGameNum.getText());
-        String gameTitle = txtFldGameTitle.getText();
-        String mainDevelopers = txtFldMainDevelopers.getText();
-        String publishers = txtFldPublishers.getText();
-        String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
-        int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
-        double price= Double.parseDouble((String) txtFldPrice.getText());
-        String link = txtFldLink.getText();
+        try {
 
-        ArrayList<String> selectedGenres = new ArrayList<>();
-        if (checkBoxAction.isSelected()) selectedGenres.add("Action");
-        if (checkBoxAdventures.isSelected()) selectedGenres.add("Adventures");
-        if (checkBoxEducational.isSelected()) selectedGenres.add("Educational");
-        if (checkBoxSports.isSelected()) selectedGenres.add("Sports");
-        if (checkBoxStrategy.isSelected()) selectedGenres.add("Strategy");
-        if (checkBoxSimulation.isSelected()) selectedGenres.add("Simulation");
-        if (checkBoxRacing.isSelected()) selectedGenres.add("Racing/Driving");
-        if (checkBoxRolePlaying.isSelected()) selectedGenres.add("Role-Playing");
-        if (checkBoxShooting.isSelected()) selectedGenres.add("Shooting");
-        
-        String genres = String.join(", ", selectedGenres);
+            int gameNum = Integer.parseInt(txtFldGameNum.getText());
+            String gameTitle = txtFldGameTitle.getText();
+            String mainDevelopers = txtFldMainDevelopers.getText();
+            String publishers = txtFldPublishers.getText();
+            String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
+            int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
+            double price = Double.parseDouble((String) txtFldPrice.getText());
+            String link = txtFldLink.getText();
 
-        ArrayList<String> date = new ArrayList<>();
-        date.add(txtFldReleasedYear.getText());
-        date.add(txtFldReleasedMonth.getText());
-        date.add(txtFldReleasedDay.getText());
-
-        String releasedDate = String.join("/ ", date);
-
-        boolean exists = false;
-
-        for (GameModel game : gameList) {
-            if (gameNum == game.getGameNum()) {
-                exists = true;
-                break;
+            ArrayList<String> selectedGenres = new ArrayList<>();
+            if (checkBoxAction.isSelected()) {
+                selectedGenres.add("Action");
             }
-        }
-        if (!exists) {
-            GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating,price, link);
-            addGamesToTable(game);
-            CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!","Success",JOptionPane.INFORMATION_MESSAGE);
-            loadScreen("AdminScreen");
-        }
-        else{
-            CustomMessageJOptionPane.showCustomMessage("The Game No. Already Exists", "Information",JOptionPane.INFORMATION_MESSAGE);
-        }
-        }
-        catch(NumberFormatException e){
-            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+            if (checkBoxAdventures.isSelected()) {
+                selectedGenres.add("Adventures");
+            }
+            if (checkBoxEducational.isSelected()) {
+                selectedGenres.add("Educational");
+            }
+            if (checkBoxSports.isSelected()) {
+                selectedGenres.add("Sports");
+            }
+            if (checkBoxStrategy.isSelected()) {
+                selectedGenres.add("Strategy");
+            }
+            if (checkBoxSimulation.isSelected()) {
+                selectedGenres.add("Simulation");
+            }
+            if (checkBoxRacing.isSelected()) {
+                selectedGenres.add("Racing/Driving");
+            }
+            if (checkBoxRolePlaying.isSelected()) {
+                selectedGenres.add("Role-Playing");
+            }
+            if (checkBoxShooting.isSelected()) {
+                selectedGenres.add("Shooting");
+            }
+            if(selectedGenres.isEmpty()){
+                CustomMessageJOptionPane.showCustomMessage("Please select at least one genre!","ALERT",JOptionPane.WARNING_MESSAGE);
+            }
+
+            String genres = String.join(", ", selectedGenres);
+            
+            String yearNum = (txtFldReleasedYear.getText());
+            String monthNum = (txtFldReleasedMonth.getText());
+            String dayNum = (txtFldReleasedDay.getText());
+            
+            ArrayList<String> date = new ArrayList<>();
+            
+            if( !validation.isValidReleasedDate(yearNum, monthNum, dayNum)){
+                CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).","ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            String releasedDate = yearNum+"/"+monthNum+"/"+dayNum;
+
+            boolean exists = false;
+
+            for (GameModel game : gameList) {
+                if (gameNum == game.getGameNum()) {
+                    exists = true;
+                    break;
+                }
+            }
+            
+            if (!exists) {
+                if (!validation.isValidGameNum(gameNum)){
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers) ){
+                    CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(!validation.isValidPrice(price)){
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Pric!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
+                }
+                else {
+                    GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
+                    addGamesToTable(game);
+                    CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    loadScreen("AdminScreen");
+                }
+            } else {
+                CustomMessageJOptionPane.showCustomMessage("The Game No. Already Exists", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddGameActionPerformed
 
@@ -1819,26 +1859,44 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             int gameNum = Integer.parseInt(txtFldGameNumUpdate.getText());
             String gameTitle = txtFldGameTitleUpdate.getText();
             String mainDevelopers = txtFldMainDevelopersUpdate.getText();
             String publishers = txtFldPublishersUpdate.getText();
             String platform = String.valueOf((String) comboBoxPlatformUpdate.getSelectedItem());
             int rating = Integer.parseInt((String) comboBoxRatingUpdate.getSelectedItem());
-            double price= Double.parseDouble((String) txtFldPriceUpdate.getText());
+            double price = Double.parseDouble((String) txtFldPriceUpdate.getText());
             String link = txtFldLinkUpdate.getText();
 
             ArrayList<String> selectedGenres = new ArrayList<>();
-            if (checkBoxActionUpdate.isSelected()) selectedGenres.add("Action");
-            if (checkBoxAdventuresUpdate.isSelected()) selectedGenres.add("Adventures");
-            if (checkBoxEducationalUpdate.isSelected()) selectedGenres.add("Educational");
-            if (checkBoxSportsUpdate.isSelected()) selectedGenres.add("Sports");
-            if (checkBoxStrategyUpdate.isSelected()) selectedGenres.add("Strategy");
-            if (checkBoxSimulationUpdate.isSelected()) selectedGenres.add("Simulation");
-            if (checkBoxRacingUpdate.isSelected()) selectedGenres.add("Racing/Driving");
-            if (checkBoxRolePlayingUpdate.isSelected()) selectedGenres.add("Role-Playing");
-            if (checkBoxShootingUpdate.isSelected()) selectedGenres.add("Shooting");
+            if (checkBoxActionUpdate.isSelected()) {
+                selectedGenres.add("Action");
+            }
+            if (checkBoxAdventuresUpdate.isSelected()) {
+                selectedGenres.add("Adventures");
+            }
+            if (checkBoxEducationalUpdate.isSelected()) {
+                selectedGenres.add("Educational");
+            }
+            if (checkBoxSportsUpdate.isSelected()) {
+                selectedGenres.add("Sports");
+            }
+            if (checkBoxStrategyUpdate.isSelected()) {
+                selectedGenres.add("Strategy");
+            }
+            if (checkBoxSimulationUpdate.isSelected()) {
+                selectedGenres.add("Simulation");
+            }
+            if (checkBoxRacingUpdate.isSelected()) {
+                selectedGenres.add("Racing/Driving");
+            }
+            if (checkBoxRolePlayingUpdate.isSelected()) {
+                selectedGenres.add("Role-Playing");
+            }
+            if (checkBoxShootingUpdate.isSelected()) {
+                selectedGenres.add("Shooting");
+            }
 
             String genres = String.join(", ", selectedGenres);
 
@@ -1848,11 +1906,11 @@ public class GameSpace extends javax.swing.JFrame {
             date.add(txtFldReleasedDayUpdate.getText());
 
             String releasedDate = String.join("/ ", date);
-            
-            boolean exists=false;
-            
-            for(GameModel game: gameList){
-                if(gameNum==game.getGameNum()){
+
+            boolean exists = false;
+
+            for (GameModel game : gameList) {
+                if (gameNum == game.getGameNum()) {
                     game.setGameName(gameTitle);
                     game.setMainDevelopers(mainDevelopers);
                     game.setPublishers(publishers);
@@ -1862,15 +1920,15 @@ public class GameSpace extends javax.swing.JFrame {
                     game.setRating(rating);
                     game.setPrice(price);
                     game.setLink(link);
-                    exists=true;
+                    exists = true;
                     break;
                 }
             }
-            
-            if(exists){
-                DefaultTableModel model = (DefaultTableModel)tblGameData.getModel();
+
+            if (exists) {
+                DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
                 model.setRowCount(0);
-                for(GameModel game:gameList){
+                for (GameModel game : gameList) {
                     model.addRow(new Object[]{
                         game.getGameNum(),
                         game.getGameName(),
@@ -1884,15 +1942,13 @@ public class GameSpace extends javax.swing.JFrame {
                         game.getLink()
                     });
                 }
-            }
-            else{
+            } else {
                 CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
             loadScreen("AdminScreen");
-        }
-        catch(NumberFormatException e){
-            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
-            
+        } catch (NumberFormatException e) {
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_btnUpdateGameActionPerformed
 
@@ -1908,23 +1964,23 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
         // TODO add your handling code here:
-        String removeNumStr= CustomInputJOptionPane.showCustomInputDialog("Enter Game No. to REMOVE: ","Custom Input Dialog");
-        try{
+        String removeNumStr = CustomInputJOptionPane.showCustomInputDialog("Enter Game No. to REMOVE: ", "Custom Input Dialog");
+        try {
             int removeNum = Integer.parseInt(removeNumStr);
-            
+
             boolean exist = false;
-            for(int i=0;i<gameList.size(); i++){
-                if((gameList.get(i).getGameNum())==removeNum){
+            for (int i = 0; i < gameList.size(); i++) {
+                if ((gameList.get(i).getGameNum()) == removeNum) {
                     gameList.remove(i);
-                    exist=true;
+                    exist = true;
                     break;
                 }
             }
-            
-            if(exist){
+
+            if (exist) {
                 DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
                 model.setRowCount(0);
-                for(GameModel game:gameList){
+                for (GameModel game : gameList) {
                     model.addRow(new Object[]{
                         game.getGameNum(),
                         game.getGameName(),
@@ -1938,13 +1994,11 @@ public class GameSpace extends javax.swing.JFrame {
                         game.getLink()
                     });
                 }
+            } else {
+                CustomMessageJOptionPane.showCustomMessage("Game Not Found!!", "Alert", JOptionPane.INFORMATION_MESSAGE);
             }
-            else{
-                CustomMessageJOptionPane.showCustomMessage( "Game Not Found!!","Alert",JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        catch(NumberFormatException e){
-            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!","ALERT!",JOptionPane.WARNING_MESSAGE);
+        } catch (NumberFormatException e) {
+            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnRemoveGamesActionPerformed
 
