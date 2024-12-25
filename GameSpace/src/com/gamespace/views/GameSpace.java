@@ -623,6 +623,7 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
         tblGameData.setFocusable(false);
+        tblGameData.setRequestFocusEnabled(false);
         tblGameData.setRowHeight(40);
         tblGameData.setSelectionBackground(new java.awt.Color(145, 49, 117));
         tblGameData.setSelectionForeground(new java.awt.Color(233, 232, 231));
@@ -633,15 +634,25 @@ public class GameSpace extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblGameData);
         if (tblGameData.getColumnModel().getColumnCount() > 0) {
             tblGameData.getColumnModel().getColumn(0).setResizable(false);
+            tblGameData.getColumnModel().getColumn(0).setPreferredWidth(80);
             tblGameData.getColumnModel().getColumn(1).setResizable(false);
+            tblGameData.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblGameData.getColumnModel().getColumn(2).setResizable(false);
+            tblGameData.getColumnModel().getColumn(2).setPreferredWidth(180);
             tblGameData.getColumnModel().getColumn(3).setResizable(false);
+            tblGameData.getColumnModel().getColumn(3).setPreferredWidth(170);
             tblGameData.getColumnModel().getColumn(4).setResizable(false);
+            tblGameData.getColumnModel().getColumn(4).setPreferredWidth(150);
             tblGameData.getColumnModel().getColumn(5).setResizable(false);
+            tblGameData.getColumnModel().getColumn(5).setPreferredWidth(120);
             tblGameData.getColumnModel().getColumn(6).setResizable(false);
+            tblGameData.getColumnModel().getColumn(6).setPreferredWidth(250);
             tblGameData.getColumnModel().getColumn(7).setResizable(false);
+            tblGameData.getColumnModel().getColumn(7).setPreferredWidth(80);
             tblGameData.getColumnModel().getColumn(8).setResizable(false);
+            tblGameData.getColumnModel().getColumn(8).setPreferredWidth(80);
             tblGameData.getColumnModel().getColumn(9).setResizable(false);
+            tblGameData.getColumnModel().getColumn(9).setPreferredWidth(280);
         }
 
         btnAddGames.setBackground(new java.awt.Color(145, 49, 117));
@@ -686,12 +697,12 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlGameDataLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1771, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addComponent(lblGameData)
                         .addGap(565, 565, 565)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 659, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -716,8 +727,8 @@ public class GameSpace extends javax.swing.JFrame {
                             .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlDashboard.add(pnlGameData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1790, 620));

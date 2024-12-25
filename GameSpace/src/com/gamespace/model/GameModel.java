@@ -17,9 +17,10 @@ public class GameModel {
     private String releasedDate;
     private String genres;
     private int rating;
+    private double price;
     private String link;
 
-    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String platform, String releasedDate, String genres, int rating, String link) {
+    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String platform, String releasedDate, String genres, int rating,double price, String link) {
         this.gameNum = gameNum;
         this.gameName = gameName;
         this.mainDevelopers = mainDevelopers;
@@ -28,6 +29,7 @@ public class GameModel {
         this.releasedDate = releasedDate;
         this.genres = genres;
         this.rating = rating;
+        this.price = price;
         this.link = link;
     }
 
@@ -93,6 +95,14 @@ public class GameModel {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    
+    public void setPrice(double price){
+        this.price = price;
     }
 
     public String getLink() {
