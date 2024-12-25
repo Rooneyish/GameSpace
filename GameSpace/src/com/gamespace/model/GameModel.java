@@ -17,10 +17,10 @@ public class GameModel {
     private String releasedDate;
     private String genres;
     private int rating;
-    private double price;
+    private String price;
     private String link;
 
-    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String platform, String releasedDate, String genres, int rating,double price, String link) {
+    public GameModel(int gameNum, String gameName, String mainDevelopers, String publishers, String platform, String releasedDate, String genres, int rating,String price, String link) {
         this.gameNum = gameNum;
         this.gameName = gameName;
         this.mainDevelopers = mainDevelopers;
@@ -97,11 +97,11 @@ public class GameModel {
         this.rating = rating;
     }
     
-    public double getPrice(){
+    public String getPrice(){
         return price;
     }
     
-    public void setPrice(double price){
+    public void setPrice(String price){
         this.price = price;
     }
 

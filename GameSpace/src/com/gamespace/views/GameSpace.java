@@ -56,11 +56,11 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
-        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
-        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
-        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
-        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, 20, "https"));
+        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
     }
 
     public void addGamesToTable(GameModel game) {
@@ -1769,7 +1769,8 @@ public class GameSpace extends javax.swing.JFrame {
             String publishers = txtFldPublishers.getText();
             String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
             int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
-            double price = Double.parseDouble((String) txtFldPrice.getText());
+            double priceValue = Double.parseDouble((String) txtFldPrice.getText());
+            String price = priceValue ==0?"Free":"$"+priceValue;
             String link = txtFldLink.getText();
 
             ArrayList<String> selectedGenres = new ArrayList<>();
@@ -1810,8 +1811,6 @@ public class GameSpace extends javax.swing.JFrame {
             String monthNum = (txtFldReleasedMonth.getText());
             String dayNum = (txtFldReleasedDay.getText());
             
-            ArrayList<String> date = new ArrayList<>();
-            
             if( !validation.isValidReleasedDate(yearNum, monthNum, dayNum)){
                 CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).","ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
@@ -1835,7 +1834,7 @@ public class GameSpace extends javax.swing.JFrame {
                 else if(!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers) ){
                     CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 }
-                else if(!validation.isValidPrice(price)){
+                else if(!validation.isValidPrice(priceValue)){
                     CustomMessageJOptionPane.showCustomMessage("Enter valid Pric!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
                 }
                 else {
@@ -1866,7 +1865,8 @@ public class GameSpace extends javax.swing.JFrame {
             String publishers = txtFldPublishersUpdate.getText();
             String platform = String.valueOf((String) comboBoxPlatformUpdate.getSelectedItem());
             int rating = Integer.parseInt((String) comboBoxRatingUpdate.getSelectedItem());
-            double price = Double.parseDouble((String) txtFldPriceUpdate.getText());
+            double priceValue = Double.parseDouble((String) txtFldPriceUpdate.getText());
+            String price = priceValue ==0?"Free":"$"+priceValue;
             String link = txtFldLinkUpdate.getText();
 
             ArrayList<String> selectedGenres = new ArrayList<>();
