@@ -1680,11 +1680,10 @@
                       <Color blue="e7" green="e8" red="e9" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="3">
                         <StringItem index="0" value="PC"/>
-                        <StringItem index="1" value="Play Station"/>
-                        <StringItem index="2" value="XBox"/>
-                        <StringItem index="3" value="Mobile"/>
+                        <StringItem index="1" value="Console"/>
+                        <StringItem index="2" value="Mobile"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1761,6 +1760,9 @@
                       <Dimension value="[84, 42]"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(&quot;YYYY&quot;)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblReleasedDate">
                   <Properties>
@@ -2580,11 +2582,10 @@
                       <Color blue="e7" green="e8" red="e9" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="3">
                         <StringItem index="0" value="PC"/>
-                        <StringItem index="1" value="Play Station"/>
-                        <StringItem index="2" value="XBox"/>
-                        <StringItem index="3" value="Mobile"/>
+                        <StringItem index="1" value="Console"/>
+                        <StringItem index="2" value="Mobile"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2939,7 +2940,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e7" green="e8" red="e9" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Link"/>
+                    <Property name="text" type="java.lang.String" value="Price"/>
                   </Properties>
                 </Component>
               </SubComponents>

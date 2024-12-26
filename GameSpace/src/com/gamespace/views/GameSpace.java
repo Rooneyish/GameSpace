@@ -203,7 +203,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatform = new javax.swing.JComboBox<>();
         txtFldLink = new javax.swing.JTextField();
         lblLink = new javax.swing.JLabel();
-        txtFldReleasedYear = new javax.swing.JTextField();
+        txtFldReleasedYear = new javax.swing.JTextField("YYYY");
         lblReleasedDate = new javax.swing.JLabel();
         txtFldReleasedMonth = new javax.swing.JTextField();
         txtFldReleasedDay = new javax.swing.JTextField();
@@ -946,7 +946,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatform.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxPlatform.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxPlatform.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxPlatform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Play Station", "XBox", "Mobile" }));
+        comboBoxPlatform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile" }));
         comboBoxPlatform.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         comboBoxPlatform.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxPlatform.setPreferredSize(new java.awt.Dimension(254, 42));
@@ -1342,7 +1342,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatformUpdate.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxPlatformUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxPlatformUpdate.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxPlatformUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Play Station", "XBox", "Mobile" }));
+        comboBoxPlatformUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile" }));
         comboBoxPlatformUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         comboBoxPlatformUpdate.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxPlatformUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
@@ -1463,7 +1463,7 @@ public class GameSpace extends javax.swing.JFrame {
 
         lblPriceUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         lblPriceUpdate.setForeground(new java.awt.Color(233, 232, 231));
-        lblPriceUpdate.setText("Link");
+        lblPriceUpdate.setText("Price");
 
         javax.swing.GroupLayout pnlUpdateGamesFrameLayout = new javax.swing.GroupLayout(pnlUpdateGamesFrame);
         pnlUpdateGamesFrame.setLayout(pnlUpdateGamesFrameLayout);
@@ -1835,7 +1835,7 @@ public class GameSpace extends javax.swing.JFrame {
                     CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 }
                 else if(!validation.isValidPrice(priceValue)){
-                    CustomMessageJOptionPane.showCustomMessage("Enter valid Pric!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
                 }
                 else {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
@@ -1897,15 +1897,23 @@ public class GameSpace extends javax.swing.JFrame {
             if (checkBoxShootingUpdate.isSelected()) {
                 selectedGenres.add("Shooting");
             }
+            if(selectedGenres.isEmpty()){
+                CustomMessageJOptionPane.showCustomMessage("Please select at least one genre!","ALERT",JOptionPane.WARNING_MESSAGE);
+            }
 
             String genres = String.join(", ", selectedGenres);
 
-            ArrayList<String> date = new ArrayList<>();
-            date.add(txtFldReleasedYearUpdate.getText());
-            date.add(txtFldReleasedMonthUpdate.getText());
-            date.add(txtFldReleasedDayUpdate.getText());
 
-            String releasedDate = String.join("/ ", date);
+            String yearNum = (txtFldReleasedYearUpdate.getText());
+            String monthNum = (txtFldReleasedMonthUpdate.getText());
+            String dayNum = (txtFldReleasedDayUpdate.getText());
+            
+            if( !validation.isValidReleasedDate(yearNum, monthNum, dayNum)){
+                CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).","ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            String releasedDate = yearNum+"/"+monthNum+"/"+dayNum;
 
             boolean exists = false;
 
@@ -1926,6 +1934,16 @@ public class GameSpace extends javax.swing.JFrame {
             }
 
             if (exists) {
+                if (!validation.isValidGameNum(gameNum)){
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers) ){
+                    CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(!validation.isValidPrice(priceValue)){
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
                 DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
                 model.setRowCount(0);
                 for (GameModel game : gameList) {
@@ -1941,6 +1959,7 @@ public class GameSpace extends javax.swing.JFrame {
                         game.getPrice(),
                         game.getLink()
                     });
+                }
                 }
             } else {
                 CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
