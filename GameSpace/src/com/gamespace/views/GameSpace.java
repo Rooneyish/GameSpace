@@ -136,8 +136,8 @@ public class GameSpace extends javax.swing.JFrame {
         pnlMainLogIn = new javax.swing.JPanel();
         btnMinimizeLogIn = new javax.swing.JButton();
         btnCloseLogIn = new javax.swing.JButton();
-        pnlWelcomeLogIn = new CustomRoundedPanel(80,new Color(145, 49, 117));
-        pnlLogInBorder = new CustomRoundedPanel(80,new Color(233, 232, 231) );
+        pnlWelcomeLogIn = new CustomRoundedPanel(80, new Color(145, 49, 117));
+        pnlLogInBorder = new CustomRoundedPanel(80, new Color(233, 232, 231));
         pnlLogIn = new CustomRoundedPanel(70,new Color(32, 38, 46));
         lblLogInTitle = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
@@ -203,7 +203,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatform = new javax.swing.JComboBox<>();
         txtFldLink = new javax.swing.JTextField();
         lblLink = new javax.swing.JLabel();
-        txtFldReleasedYear = new javax.swing.JTextField("YYYY");
+        txtFldReleasedYear = new javax.swing.JTextField();
         lblReleasedDate = new javax.swing.JLabel();
         txtFldReleasedMonth = new javax.swing.JTextField();
         txtFldReleasedDay = new javax.swing.JTextField();
@@ -444,7 +444,7 @@ public class GameSpace extends javax.swing.JFrame {
                 .addComponent(pnlLogInBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlWelcomeLogInLayout.createSequentialGroup()
-                .addGap(279, 279, 279)
+                .addGap(290, 290, 290)
                 .addComponent(lblLogo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -629,7 +629,7 @@ public class GameSpace extends javax.swing.JFrame {
         tblGameData.setRequestFocusEnabled(false);
         tblGameData.setRowHeight(40);
         tblGameData.setSelectionBackground(new java.awt.Color(145, 49, 117));
-        tblGameData.setSelectionForeground(new java.awt.Color(233, 232, 231));
+        tblGameData.setSelectionForeground(new java.awt.Color(145, 49, 117));
         tblGameData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGameData.setShowGrid(false);
         tblGameData.setShowHorizontalLines(true);
@@ -946,7 +946,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatform.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxPlatform.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxPlatform.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxPlatform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile" }));
+        comboBoxPlatform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile", "Cloud" }));
         comboBoxPlatform.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         comboBoxPlatform.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxPlatform.setPreferredSize(new java.awt.Dimension(254, 42));
@@ -1342,7 +1342,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxPlatformUpdate.setBackground(new java.awt.Color(32, 38, 46));
         comboBoxPlatformUpdate.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxPlatformUpdate.setForeground(new java.awt.Color(233, 232, 231));
-        comboBoxPlatformUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile" }));
+        comboBoxPlatformUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Console", "Mobile", "Cloud" }));
         comboBoxPlatformUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
         comboBoxPlatformUpdate.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxPlatformUpdate.setPreferredSize(new java.awt.Dimension(254, 42));
@@ -1821,7 +1821,7 @@ public class GameSpace extends javax.swing.JFrame {
             boolean exists = false;
 
             for (GameModel game : gameList) {
-                if (gameNum == game.getGameNum()) {
+                if (gameNum == game.getGameNum() || gameTitle.equalsIgnoreCase(game.getGameName()) ) {
                     exists = true;
                     break;
                 }
@@ -1983,13 +1983,15 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
         // TODO add your handling code here:
-        String removeNumStr = CustomInputJOptionPane.showCustomInputDialog("Enter Game No. to REMOVE: ", "Custom Input Dialog");
+        
+        int selectedRow= tblGameData.getSelectedRow();
+        String removeNumInt =String.valueOf(tblGameData.getValueAt(selectedRow, 0));
+        
         try {
-            int removeNum = Integer.parseInt(removeNumStr);
-
+            int removeNumButton = Integer.parseInt(removeNumInt);
             boolean exist = false;
             for (int i = 0; i < gameList.size(); i++) {
-                if ((gameList.get(i).getGameNum()) == removeNum) {
+                if ((gameList.get(i).getGameNum()) == removeNumButton ) {
                     gameList.remove(i);
                     exist = true;
                     break;
