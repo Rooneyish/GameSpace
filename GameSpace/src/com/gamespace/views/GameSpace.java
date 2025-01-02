@@ -1,5 +1,6 @@
 package com.gamespace.views;
 
+import com.gamespace.contoller.algorithms.CustomSelectionSort;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
 import java.awt.Color;
@@ -56,30 +57,42 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(1, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(2, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(5, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(1, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
         addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
         addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(5, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        addGamesToTable(new GameModel(6, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
+        
+        CustomSelectionSort sort= new CustomSelectionSort();
+        gameList = sort.sortByGameNum(gameList, false);
+        
+        tableUpdator();
+        
     }
 
+    private void tableUpdator(){
+        DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
+        model.setRowCount(0);
+
+        for(GameModel game: gameList){
+            model.addRow(new Object[]{
+                game.getGameNum(),
+                game.getGameName(),
+                game.getMainDevelopers(),
+                game.getPublishers(),
+                game.getPlatform(),
+                game.getReleasedDate(),
+                game.getGenres(),
+                game.getRating(),
+                game.getPrice(),
+                game.getLink()
+            });
+        }
+    }
+    
     public void addGamesToTable(GameModel game) {
         gameList.add(game);
-
-        DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
-
-        model.addRow(new Object[]{
-            game.getGameNum(),
-            game.getGameName(),
-            game.getMainDevelopers(),
-            game.getPublishers(),
-            game.getPlatform(),
-            game.getReleasedDate(),
-            game.getGenres(),
-            game.getRating(),
-            game.getPrice(),
-            game.getLink()
-        });
+        tableUpdator();
     }
 
     private void startProgress() {
@@ -1844,7 +1857,7 @@ public class GameSpace extends javax.swing.JFrame {
                     loadScreen("AdminScreen");
                 }
             } else {
-                CustomMessageJOptionPane.showCustomMessage("The Game No. Already Exists", "Information", JOptionPane.INFORMATION_MESSAGE);
+                CustomMessageJOptionPane.showCustomMessage("The Game Already Exists", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (NumberFormatException e) {
             CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
@@ -1944,22 +1957,7 @@ public class GameSpace extends javax.swing.JFrame {
                     CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
                 }
                 else{
-                DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
-                model.setRowCount(0);
-                for (GameModel game : gameList) {
-                    model.addRow(new Object[]{
-                        game.getGameNum(),
-                        game.getGameName(),
-                        game.getMainDevelopers(),
-                        game.getPublishers(),
-                        game.getPlatform(),
-                        game.getReleasedDate(),
-                        game.getGenres(),
-                        game.getRating(),
-                        game.getPrice(),
-                        game.getLink()
-                    });
-                }
+                    tableUpdator();
                 }
             } else {
                 CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
@@ -1985,9 +1983,15 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int selectedRow= tblGameData.getSelectedRow();
-        String removeNumInt =String.valueOf(tblGameData.getValueAt(selectedRow, 0));
+        
+        
+        if(selectedRow==-1){
+            CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         try {
+            String removeNumInt =String.valueOf(tblGameData.getValueAt(selectedRow, 0));
             int removeNumButton = Integer.parseInt(removeNumInt);
             boolean exist = false;
             for (int i = 0; i < gameList.size(); i++) {
@@ -1999,22 +2003,8 @@ public class GameSpace extends javax.swing.JFrame {
             }
 
             if (exist) {
-                DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
-                model.setRowCount(0);
-                for (GameModel game : gameList) {
-                    model.addRow(new Object[]{
-                        game.getGameNum(),
-                        game.getGameName(),
-                        game.getMainDevelopers(),
-                        game.getPublishers(),
-                        game.getPlatform(),
-                        game.getReleasedDate(),
-                        game.getGenres(),
-                        game.getRating(),
-                        game.getPrice(),
-                        game.getLink()
-                    });
-                }
+                tableUpdator();  
+                CustomMessageJOptionPane.showCustomMessage("Game Successfully Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 CustomMessageJOptionPane.showCustomMessage("Game Not Found!!", "Alert", JOptionPane.INFORMATION_MESSAGE);
             }
