@@ -1,5 +1,6 @@
 package com.gamespace.views;
 
+import com.gamespace.contoller.algorithms.CustomInsertionSort;
 import com.gamespace.contoller.algorithms.CustomSelectionSort;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
@@ -38,7 +39,7 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     private void initializeTools() {
-        gameList = new LinkedList();
+        gameList = new ArrayList();
         validation = new ValidationUtil();
     }
 
@@ -63,7 +64,7 @@ public class GameSpace extends javax.swing.JFrame {
         addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
         addGamesToTable(new GameModel(6, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
         
-        CustomSelectionSort sort= new CustomSelectionSort();
+        CustomInsertionSort sort= new CustomInsertionSort();
         gameList = sort.sortByGameNum(gameList, false);
         
         tableUpdator();
