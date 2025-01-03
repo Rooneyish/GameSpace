@@ -43,7 +43,7 @@ public class CustomSelectionSort {
      * Finds the index of the extremum value (minimum or maximum) in the list
      * from the start index.
      *
-     * @param gameList the list of StudentModel objects
+     * @param gameList the list of GameModel objects
      * @param startIndex the index to start searching from
      * @param isDesc specifies whether to find the maximum (true) or minimum
      * (false)
@@ -79,7 +79,7 @@ public class CustomSelectionSort {
     /**
      * Swaps two elements in the list.
      *
-     * @param gameList the list of StudentModel objects
+     * @param gameList the list of GameModel objects
      * @param i the index of the first element
      * @param j the index of the second element
      */
