@@ -15,10 +15,10 @@ public class CustomSelectionSort {
         gameSortedList = new ArrayList<>();
     }
     /**
-     * Sorts a list of StudentModel objects by their LMU ID in ascending or
+     * Sorts a list of GameModel objects by their properties in ascending or
      * descending order.
      *
-     * @param gameList the list of StudentModel objects to be sorted
+     * @param gameList the list of GameModel objects to be sorted
      * @param isDesc specifies the sort order (true for descending, false for
      * ascending)
      * @return the sorted list
