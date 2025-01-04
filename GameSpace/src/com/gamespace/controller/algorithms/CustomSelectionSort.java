@@ -1,4 +1,4 @@
-package com.gamespace.contoller.algorithms;
+package com.gamespace.controller.algorithms;
 
 import com.gamespace.model.GameModel;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class CustomSelectionSort {
      * ascending)
      * @return the sorted list
      */
-    public List<GameModel> sortByGameNum(List<GameModel> gameList, boolean isDesc){
+    public List<GameModel> sortByGameName(List<GameModel> gameList, boolean isDesc){
         this.gameSortedList.clear();
         this.gameSortedList.addAll(gameList);
         if (gameSortedList == null || gameSortedList.isEmpty()){
@@ -53,7 +53,7 @@ public class CustomSelectionSort {
         int extremumIndex = startIndex;
 
         for (int j = startIndex + 1; j < gameSortedList.size(); j++) {
-            if (shouldSwap(gameSortedList.get(j).getGameNum(), gameSortedList.get(extremumIndex).getGameNum(), isDesc)) {
+            if (shouldSwap(gameSortedList.get(j).getGameName(), gameSortedList.get(extremumIndex).getGameName(), isDesc)) {
                 extremumIndex = j;
             }
         }
@@ -72,8 +72,9 @@ public class CustomSelectionSort {
      * @return true if the current value should replace the extremum; false
      * otherwise
      */
-    private boolean shouldSwap(int current, int extremum, boolean isDesc) {
-        return isDesc ? current > extremum : current < extremum;
+    private boolean shouldSwap(String current, String extremum, boolean isDesc) {
+        int compare= current.compareToIgnoreCase(extremum);
+        return isDesc?compare>0:compare<0;
     }
 
     /**

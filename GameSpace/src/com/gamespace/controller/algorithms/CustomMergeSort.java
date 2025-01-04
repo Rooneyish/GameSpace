@@ -1,4 +1,4 @@
-package com.gamespace.contoller.algorithms;
+package com.gamespace.controller.algorithms;
 
 import com.gamespace.model.GameModel;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class CustomMergeSort {
         this.sortBy = "";
     }
 
-    public List<GameModel> sortGames(List<GameModel> sortList, String dataList) {
+    public List<GameModel> sortGames(List<GameModel> sortList, String dataList, boolean isDesc) {
 
         if (sortList == null || sortList.size() <= 1) {
             return sortList;
@@ -29,20 +29,20 @@ public class CustomMergeSort {
         List<GameModel> first = new ArrayList<GameModel>(sortList.subList(0, firstLength));
         List<GameModel> second = new ArrayList<GameModel>(sortList.subList(firstLength, sortList.size()));
 
-        first = sortGames(first, dataList);
-        second = sortGames(second, dataList);
-        merge(first, second, sortList, dataList);
+        first = sortGames(first, dataList, isDesc);
+        second = sortGames(second, dataList, isDesc);
+        merge(first, second, sortList, dataList, isDesc);
         return sortList;
     }
 
-    public void merge(List<GameModel> first, List<GameModel> second, List<GameModel> sortList, String dataList) {
+    public void merge(List<GameModel> first, List<GameModel> second, List<GameModel> sortList, String dataList, boolean isDesc) {
         int fCounter = 0;
         int sCounter = 0;
 
         sortList.clear();
 
         while (fCounter < first.size() && sCounter < second.size()) {
-            if (compare(first.get(fCounter), second.get(sCounter), dataList) < 0) {
+            if ((compare(first.get(fCounter), second.get(sCounter), dataList) < 0)^isDesc) {
                 sortList.add(first.get(fCounter));
                 fCounter++;
             } else {
@@ -79,7 +79,7 @@ public class CustomMergeSort {
             case "releasedDate":
                 return first.getReleasedDate().compareToIgnoreCase(second.getReleasedDate());
             case "rating":
-                return String.valueOf(first.getRating()).compareToIgnoreCase(String.valueOf(second.getGameNum()));
+                return Integer.compare(first.getRating(), second.getRating());
             case "price":
                 String price1 = first.getPrice();
                 String price2 = second.getPrice();

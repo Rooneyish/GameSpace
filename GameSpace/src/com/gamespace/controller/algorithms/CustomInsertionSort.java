@@ -1,4 +1,4 @@
-package com.gamespace.contoller.algorithms;
+package com.gamespace.controller.algorithms;
 
 import com.gamespace.model.GameModel;
 import java.util.ArrayList;

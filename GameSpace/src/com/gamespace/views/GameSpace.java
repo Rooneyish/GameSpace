@@ -1,8 +1,8 @@
 package com.gamespace.views;
 
-import com.gamespace.contoller.algorithms.CustomInsertionSort;
-import com.gamespace.contoller.algorithms.CustomMergeSort;
-import com.gamespace.contoller.algorithms.CustomSelectionSort;
+import com.gamespace.controller.algorithms.CustomInsertionSort;
+import com.gamespace.controller.algorithms.CustomMergeSort;
+import com.gamespace.controller.algorithms.CustomSelectionSort;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
 import java.awt.Color;
@@ -59,25 +59,25 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(1, "CS:GO", "Valve", "Valve", "PC, Console", "2012/08/21", "Action, Shooting", 4, "Free", "https://www.counter-strike.net"));
-        addGamesToTable(new GameModel(2, "CS:Source", "Valve", "Valve", "PC", "2004/11/01", "Action, Shooting", 4, "$20", "https://www.counter-strike.net"));
-        addGamesToTable(new GameModel(3, "The Witcher 3: Wild Hunt", "CD Projekt Red", "CD Projekt", "PC, Console", "2015/05/19", "RPG, Action", 5, "$40", "https://www.thewitcher.com"));
-        addGamesToTable(new GameModel(4, "Cyberpunk 2077", "CD Projekt Red", "CD Projekt", "PC, Console", "2020/12/10", "RPG, Action", 4, "$60", "https://www.cyberpunk.net"));
-        addGamesToTable(new GameModel(5, "Minecraft", "Mojang Studios", "Mojang Studios", "PC, Console, Mobile", "2011/11/18", "Adventure, Sandbox", 5, "$30", "https://www.minecraft.net"));
-        addGamesToTable(new GameModel(6, "Grand Theft Auto V", "Rockstar North", "Rockstar Games", "PC, Console", "2013/09/17", "Action, Adventure", 4, "$30", "https://www.rockstargames.com/V"));
-        addGamesToTable(new GameModel(7, "Red Dead Redemption 2", "Rockstar Studios", "Rockstar Games", "PC, Console", "2018/10/26", "Action, Adventure", 5, "$60", "https://www.rockstargames.com/reddeadredemption2"));
-        addGamesToTable(new GameModel(8, "The Elder Scrolls V: Skyrim", "Bethesda Game Studios", "Bethesda Softworks", "PC, Console", "2011/11/11", "RPG, Action", 5, "$40", "https://elderscrolls.bethesda.net"));
-        addGamesToTable(new GameModel(9, "Halo: Infinite", "343 Industries", "Xbox Game Studios", "PC, Console", "2021/12/08", "Action, Shooting", 4, "$60", "https://www.halowaypoint.com"));
-        addGamesToTable(new GameModel(10, "Fortnite", "Epic Games", "Epic Games", "PC, Console, Mobile", "2017/09/26", "Battle Royale, Action", 4, "Free", "https://www.epicgames.com/fortnite"));
-        addGamesToTable(new GameModel(11, "Call of Duty: Warzone", "Infinity Ward", "Activision", "PC, Console", "2020/03/10", "Battle Royale, Action", 4, "Free", "https://www.callofduty.com/warzone"));
-        addGamesToTable(new GameModel(12, "Valorant", "Riot Games", "Riot Games", "PC", "2020/06/02", "Action, Shooting", 5, "Free", "https://playvalorant.com"));
-        addGamesToTable(new GameModel(13, "Assassin's Creed Valhalla", "Ubisoft Montreal", "Ubisoft", "PC, Console", "2020/11/10", "Action, RPG", 4, "$60", "https://www.ubisoft.com/game/assassins-creed/valhalla"));
-        addGamesToTable(new GameModel(14, "Overwatch 2", "Blizzard Entertainment", "Blizzard Entertainment", "PC, Console", "2022/10/04", "Action, Shooter", 4, "Free", "https://playoverwatch.com"));
-        addGamesToTable(new GameModel(15, "Apex Legends", "Respawn Entertainment", "Electronic Arts", "PC, Console", "2019/02/04", "Battle Royale, Action", 4, "Free", "https://www.ea.com/games/apex-legends"));
+        addGamesToTable(new GameModel(1, "CS:GO", "Valve", "Valve", "PC", "2012/08/21", "Action, Shooting", 4, "Free", "https://www.counter-strike.net"));
+        addGamesToTable(new GameModel(12, "CS:Source", "Valve", "Valve", "PC", "2004/11/01", "Action, Shooting", 4, "$20", "https://www.counter-strike.net"));
+        addGamesToTable(new GameModel(3, "Minecraft", "Mojang Studios", "Mojang Studios", "PC", "2011/11/18", "Simulation, Adventure", 5, "Free", "https://www.minecraft.net"));
+        addGamesToTable(new GameModel(4, "Fortnite", "Epic Games", "Epic Games", "PC", "2017/07/25", "Action, Battle Royale", 5, "Free", "https://www.epicgames.com/fortnite"));
+        addGamesToTable(new GameModel(10, "Apex Legends", "Respawn Entertainment", "Electronic Arts", "PC", "2019/02/04", "Action, Shooter", 5, "Free", "https://www.ea.com/games/apex-legends"));
+        addGamesToTable(new GameModel(16, "League of Legends", "Riot Games", "Riot Games", "PC", "2009/10/27", "Action, MOBA", 5, "Free", "https://www.leagueoflegends.com"));
+        addGamesToTable(new GameModel(7, "Valorant", "Riot Games", "Riot Games", "PC", "2020/06/02", "Action, Shooter", 4, "Free", "https://playvalorant.com"));
+        addGamesToTable(new GameModel(14, "Red Dead Redemption 2", "Rockstar Studios", "Rockstar Games", "Console", "2018/10/26", "Action, Adventure", 5, "$60", "https://www.rockstargames.com/reddeadredemption2"));
+        addGamesToTable(new GameModel(15, "The Elder Scrolls V: Skyrim", "Bethesda Game Studios", "Bethesda Softworks", "Console", "2011/11/11", "Role-Playing, Action", 5, "$40", "https://elderscrolls.bethesda.net"));
+        addGamesToTable(new GameModel(5, "Halo: Infinite", "343 Industries", "Xbox Game Studios", "Console", "2021/12/08", "Action, Shooter", 4, "$60", "https://www.halowaypoint.com"));
+        addGamesToTable(new GameModel(11, "Forza Horizon 5", "Playground Games", "Xbox Game Studios", "Console", "2021/11/09", "Racing/Driving", 5, "$60", "https://www.forzamotorsport.net"));
+        addGamesToTable(new GameModel(2, "FIFA 22", "EA Sports", "Electronic Arts", "Console", "2021/10/01", "Sports", 4, "$60", "https://www.ea.com/games/fifa"));
+        addGamesToTable(new GameModel(13, "Civilization VI", "Firaxis Games", "2K Games", "PC", "2016/10/21", "Strategy", 5, "$60", "https://www.civilization.com"));
+        addGamesToTable(new GameModel(8, "Football Manager 2022", "Sports Interactive", "SEGA", "PC", "2021/11/09", "Sports, Simulation", 4, "$50", "https://www.footballmanager.com"));
+        addGamesToTable(new GameModel(9, "Age of Empires IV", "Relic Entertainment", "Xbox Game Studios", "PC", "2021/10/28", "Strategy, Simulation", 5, "$60", "https://www.ageofempires.com"));
 
-        CustomMergeSort sorter = new CustomMergeSort();
-        List<GameModel> sortedGames = sorter.sortGames(gameList, "gameNum");
-
+        CustomInsertionSort sorter= new CustomInsertionSort();
+        List<GameModel> sortedNum = sorter.sortByGameNum(gameList, false);
+        gameList=sortedNum;
         tableUpdator();
 
     }
@@ -185,7 +185,7 @@ public class GameSpace extends javax.swing.JFrame {
         txtFldSearchAdmin = new javax.swing.JTextField();
         btnCloseWinAdmin = new javax.swing.JButton();
         btnMinimizeWinAdmin = new javax.swing.JButton();
-        btnFilter = new javax.swing.JLabel();
+        btnAdminSearch = new javax.swing.JButton();
         pnlDashboard = new javax.swing.JPanel();
         divider = new javax.swing.JPanel();
         pnlGameData = new javax.swing.JPanel();
@@ -195,7 +195,7 @@ public class GameSpace extends javax.swing.JFrame {
         btnAddGames = new javax.swing.JButton();
         btnRemoveGames = new javax.swing.JButton();
         btnUpdateGames = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        comboBoxSorts = new javax.swing.JComboBox<>();
         pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
         lblTotalAdmin = new javax.swing.JLabel();
         lblAdminNum = new javax.swing.JLabel();
@@ -554,19 +554,28 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/filter.png"))); // NOI18N
+        btnAdminSearch.setBackground(new java.awt.Color(32, 38, 46));
+        btnAdminSearch.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnAdminSearch.setForeground(new java.awt.Color(233, 232, 231));
+        btnAdminSearch.setText("Search");
+        btnAdminSearch.setBorder(null);
+        btnAdminSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSearchBarLayout = new javax.swing.GroupLayout(pnlSearchBar);
         pnlSearchBar.setLayout(pnlSearchBarLayout);
         pnlSearchBarLayout.setHorizontalGroup(
             pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchBarLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(lblLogoAdmin)
-                .addGap(26, 26, 26)
+                .addGap(51, 51, 51)
                 .addComponent(txtFldSearchAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(btnFilter)
+                .addGap(18, 18, 18)
+                .addComponent(btnAdminSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMinimizeWinAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -579,15 +588,16 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSearchBarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(lblLogoAdmin)
-                            .addComponent(btnCloseWinAdmin)
-                            .addComponent(btnMinimizeWinAdmin)))
+                            .addComponent(txtFldSearchAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdminSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlSearchBarLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnFilter)
-                            .addComponent(txtFldSearchAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(6, 6, 6)
+                        .addComponent(btnMinimizeWinAdmin))
+                    .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnCloseWinAdmin)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -716,7 +726,18 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("jLabel4");
+        comboBoxSorts.setBackground(new java.awt.Color(145, 49, 117));
+        comboBoxSorts.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        comboBoxSorts.setForeground(new java.awt.Color(233, 232, 231));
+        comboBoxSorts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending No.", "Descending No.", "A-Z", "Z-A", "Highest Rating", "Lowest Rating", "Highest Price", "Lowest Price" }));
+        comboBoxSorts.setBorder(null);
+        comboBoxSorts.setMinimumSize(new java.awt.Dimension(254, 22));
+        comboBoxSorts.setPreferredSize(new java.awt.Dimension(254, 42));
+        comboBoxSorts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxSortsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlGameDataLayout = new javax.swing.GroupLayout(pnlGameData);
         pnlGameData.setLayout(pnlGameDataLayout);
@@ -724,13 +745,13 @@ public class GameSpace extends javax.swing.JFrame {
             pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGameDataLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1771, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addComponent(lblGameData)
-                        .addGap(565, 565, 565)
-                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxSorts, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -744,16 +765,16 @@ public class GameSpace extends javax.swing.JFrame {
                 .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGameData)
-                            .addComponent(jLabel4))
+                        .addComponent(lblGameData)
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameDataLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnAddGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboBoxSorts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2033,6 +2054,44 @@ public class GameSpace extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRemoveGamesActionPerformed
 
+    private void btnAdminSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminSearchActionPerformed
+
+    private void comboBoxSortsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSortsActionPerformed
+        // TODO add your handling code here:
+        String sortby= String.valueOf((String)comboBoxSorts.getSelectedItem());
+        List<GameModel> sortedList= new LinkedList<>(gameList);
+        switch (sortby){
+            case "Ascending No.":
+                sortedList = new CustomInsertionSort().sortByGameNum(gameList, false);
+                break;
+            case "Descending No.":
+                sortedList = new CustomInsertionSort().sortByGameNum(gameList, true);
+                break;
+            case "A-Z":
+                sortedList= new CustomSelectionSort().sortByGameName(gameList, false);
+                break;
+            case "Z-A":
+                sortedList= new CustomSelectionSort().sortByGameName(gameList, true);
+                break;
+            case "Highest Rating":
+                sortedList= new CustomMergeSort().sortGames(gameList, "rating",true);
+                break;
+            case "Lowest Rating":
+                sortedList= new CustomMergeSort().sortGames(gameList, "rating", false);
+                break;
+            case "Highest Price":
+                sortedList= new CustomMergeSort().sortGames(gameList, "price",true);
+                break;
+            case "Lowest Price":
+                sortedList= new CustomMergeSort().sortGames(gameList, "price", false);
+                break;
+        }
+        gameList = sortedList;
+        tableUpdator();       
+    }//GEN-LAST:event_comboBoxSortsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2063,11 +2122,11 @@ public class GameSpace extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddGame;
     private javax.swing.JButton btnAddGames;
+    private javax.swing.JButton btnAdminSearch;
     private javax.swing.JButton btnCloseAddGames;
     private javax.swing.JButton btnCloseLogIn;
     private javax.swing.JButton btnCloseUpdateGames;
     private javax.swing.JButton btnCloseWinAdmin;
-    private javax.swing.JLabel btnFilter;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JButton btnLogoutAdmin;
     private javax.swing.JButton btnMinimizeLogIn;
@@ -2097,8 +2156,8 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxPlatformUpdate;
     private javax.swing.JComboBox<String> comboBoxRating;
     private javax.swing.JComboBox<String> comboBoxRatingUpdate;
+    private javax.swing.JComboBox<String> comboBoxSorts;
     private javax.swing.JPanel divider;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
