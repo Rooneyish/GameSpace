@@ -1,6 +1,7 @@
 package com.gamespace.views;
 
 import com.gamespace.contoller.algorithms.CustomInsertionSort;
+import com.gamespace.contoller.algorithms.CustomMergeSort;
 import com.gamespace.contoller.algorithms.CustomSelectionSort;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
@@ -58,24 +59,34 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void initializeData() {
         gameList = new LinkedList();
-        addGamesToTable(new GameModel(5, "CS Go", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(1, "CS Source", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(3, "CS 1.6", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(4, "CS 2", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        addGamesToTable(new GameModel(6, "Half Life", "Half-Life", "Ronish", "PC", "2024", "Action", 5, "20", "https"));
-        
-        CustomInsertionSort sort= new CustomInsertionSort();
-        gameList = sort.sortByGameNum(gameList, false);
-        
+        addGamesToTable(new GameModel(1, "CS:GO", "Valve", "Valve", "PC, Console", "2012/08/21", "Action, Shooting", 4, "Free", "https://www.counter-strike.net"));
+        addGamesToTable(new GameModel(2, "CS:Source", "Valve", "Valve", "PC", "2004/11/01", "Action, Shooting", 4, "$20", "https://www.counter-strike.net"));
+        addGamesToTable(new GameModel(3, "The Witcher 3: Wild Hunt", "CD Projekt Red", "CD Projekt", "PC, Console", "2015/05/19", "RPG, Action", 5, "$40", "https://www.thewitcher.com"));
+        addGamesToTable(new GameModel(4, "Cyberpunk 2077", "CD Projekt Red", "CD Projekt", "PC, Console", "2020/12/10", "RPG, Action", 4, "$60", "https://www.cyberpunk.net"));
+        addGamesToTable(new GameModel(5, "Minecraft", "Mojang Studios", "Mojang Studios", "PC, Console, Mobile", "2011/11/18", "Adventure, Sandbox", 5, "$30", "https://www.minecraft.net"));
+        addGamesToTable(new GameModel(6, "Grand Theft Auto V", "Rockstar North", "Rockstar Games", "PC, Console", "2013/09/17", "Action, Adventure", 4, "$30", "https://www.rockstargames.com/V"));
+        addGamesToTable(new GameModel(7, "Red Dead Redemption 2", "Rockstar Studios", "Rockstar Games", "PC, Console", "2018/10/26", "Action, Adventure", 5, "$60", "https://www.rockstargames.com/reddeadredemption2"));
+        addGamesToTable(new GameModel(8, "The Elder Scrolls V: Skyrim", "Bethesda Game Studios", "Bethesda Softworks", "PC, Console", "2011/11/11", "RPG, Action", 5, "$40", "https://elderscrolls.bethesda.net"));
+        addGamesToTable(new GameModel(9, "Halo: Infinite", "343 Industries", "Xbox Game Studios", "PC, Console", "2021/12/08", "Action, Shooting", 4, "$60", "https://www.halowaypoint.com"));
+        addGamesToTable(new GameModel(10, "Fortnite", "Epic Games", "Epic Games", "PC, Console, Mobile", "2017/09/26", "Battle Royale, Action", 4, "Free", "https://www.epicgames.com/fortnite"));
+        addGamesToTable(new GameModel(11, "Call of Duty: Warzone", "Infinity Ward", "Activision", "PC, Console", "2020/03/10", "Battle Royale, Action", 4, "Free", "https://www.callofduty.com/warzone"));
+        addGamesToTable(new GameModel(12, "Valorant", "Riot Games", "Riot Games", "PC", "2020/06/02", "Action, Shooting", 5, "Free", "https://playvalorant.com"));
+        addGamesToTable(new GameModel(13, "Assassin's Creed Valhalla", "Ubisoft Montreal", "Ubisoft", "PC, Console", "2020/11/10", "Action, RPG", 4, "$60", "https://www.ubisoft.com/game/assassins-creed/valhalla"));
+        addGamesToTable(new GameModel(14, "Overwatch 2", "Blizzard Entertainment", "Blizzard Entertainment", "PC, Console", "2022/10/04", "Action, Shooter", 4, "Free", "https://playoverwatch.com"));
+        addGamesToTable(new GameModel(15, "Apex Legends", "Respawn Entertainment", "Electronic Arts", "PC, Console", "2019/02/04", "Battle Royale, Action", 4, "Free", "https://www.ea.com/games/apex-legends"));
+
+        CustomMergeSort sorter = new CustomMergeSort();
+        List<GameModel> sortedGames = sorter.sortGames(gameList, "gameNum");
+
         tableUpdator();
-        
+
     }
 
-    private void tableUpdator(){
+    private void tableUpdator() {
         DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
         model.setRowCount(0);
 
-        for(GameModel game: gameList){
+        for (GameModel game : gameList) {
             model.addRow(new Object[]{
                 game.getGameNum(),
                 game.getGameName(),
@@ -90,7 +101,7 @@ public class GameSpace extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void addGamesToTable(GameModel game) {
         gameList.add(game);
         tableUpdator();
@@ -1749,7 +1760,7 @@ public class GameSpace extends javax.swing.JFrame {
         String password = "admin";
         txtFldUsername.setText("admin");
         txtFldPassword.setText("admin");
-        
+
         String usernametxt = txtFldUsername.getText();
         String passwordtxt = new String(txtFldPassword.getPassword());
 
@@ -1787,7 +1798,7 @@ public class GameSpace extends javax.swing.JFrame {
             String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
             int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
             double priceValue = Double.parseDouble((String) txtFldPrice.getText());
-            String price = priceValue ==0?"Free":"$"+priceValue;
+            String price = priceValue == 0 ? "Free" : "$" + priceValue;
             String link = txtFldLink.getText();
 
             ArrayList<String> selectedGenres = new ArrayList<>();
@@ -1818,43 +1829,40 @@ public class GameSpace extends javax.swing.JFrame {
             if (checkBoxShooting.isSelected()) {
                 selectedGenres.add("Shooting");
             }
-            if(selectedGenres.isEmpty()){
-                CustomMessageJOptionPane.showCustomMessage("Please select at least one genre!","ALERT",JOptionPane.WARNING_MESSAGE);
+            if (selectedGenres.isEmpty()) {
+                CustomMessageJOptionPane.showCustomMessage("Please select at least one genre!", "ALERT", JOptionPane.WARNING_MESSAGE);
             }
 
             String genres = String.join(", ", selectedGenres);
-            
+
             String yearNum = (txtFldReleasedYear.getText());
             String monthNum = (txtFldReleasedMonth.getText());
             String dayNum = (txtFldReleasedDay.getText());
-            
-            if( !validation.isValidReleasedDate(yearNum, monthNum, dayNum)){
-                CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).","ALERT!!", JOptionPane.WARNING_MESSAGE);
+
+            if (!validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
+                CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            String releasedDate = yearNum+"/"+monthNum+"/"+dayNum;
+            String releasedDate = yearNum + "/" + monthNum + "/" + dayNum;
 
             boolean exists = false;
 
             for (GameModel game : gameList) {
-                if (gameNum == game.getGameNum() || gameTitle.equalsIgnoreCase(game.getGameName()) ) {
+                if (gameNum == game.getGameNum() || gameTitle.equalsIgnoreCase(game.getGameName())) {
                     exists = true;
                     break;
                 }
             }
-            
+
             if (!exists) {
-                if (!validation.isValidGameNum(gameNum)){
+                if (!validation.isValidGameNum(gameNum)) {
                     CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
-                }
-                else if(!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers) ){
+                } else if (!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers)) {
                     CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
-                }
-                else if(!validation.isValidPrice(priceValue)){
-                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
-                }
-                else {
+                } else if (!validation.isValidPrice(priceValue)) {
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                } else {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
                     addGamesToTable(game);
                     CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -1876,94 +1884,110 @@ public class GameSpace extends javax.swing.JFrame {
     private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
         // TODO add your handling code here:
         try {
-        int gameNum = Integer.parseInt(txtFldGameNumUpdate.getText());
-        String gameTitle = txtFldGameTitleUpdate.getText();
-        String mainDevelopers = txtFldMainDevelopersUpdate.getText();
-        String publishers = txtFldPublishersUpdate.getText();
-        String platform = String.valueOf((String) comboBoxPlatformUpdate.getSelectedItem());
-        String link = txtFldLinkUpdate.getText();
+            int gameNum = Integer.parseInt(txtFldGameNumUpdate.getText());
+            String gameTitle = txtFldGameTitleUpdate.getText();
+            String mainDevelopers = txtFldMainDevelopersUpdate.getText();
+            String publishers = txtFldPublishersUpdate.getText();
+            String platform = String.valueOf((String) comboBoxPlatformUpdate.getSelectedItem());
+            String link = txtFldLinkUpdate.getText();
 
-        ArrayList<String> selectedGenres = new ArrayList<>();
-        if (checkBoxActionUpdate.isSelected()) selectedGenres.add("Action");
-        if (checkBoxAdventuresUpdate.isSelected()) selectedGenres.add("Adventures");
-        if (checkBoxEducationalUpdate.isSelected()) selectedGenres.add("Educational");
-        if (checkBoxSportsUpdate.isSelected()) selectedGenres.add("Sports");
-        if (checkBoxStrategyUpdate.isSelected()) selectedGenres.add("Strategy");
-        if (checkBoxSimulationUpdate.isSelected()) selectedGenres.add("Simulation");
-        if (checkBoxRacingUpdate.isSelected()) selectedGenres.add("Racing/Driving");
-        if (checkBoxRolePlayingUpdate.isSelected()) selectedGenres.add("Role-Playing");
-        if (checkBoxShootingUpdate.isSelected()) selectedGenres.add("Shooting");
+            ArrayList<String> selectedGenres = new ArrayList<>();
+            if (checkBoxActionUpdate.isSelected()) {
+                selectedGenres.add("Action");
+            }
+            if (checkBoxAdventuresUpdate.isSelected()) {
+                selectedGenres.add("Adventures");
+            }
+            if (checkBoxEducationalUpdate.isSelected()) {
+                selectedGenres.add("Educational");
+            }
+            if (checkBoxSportsUpdate.isSelected()) {
+                selectedGenres.add("Sports");
+            }
+            if (checkBoxStrategyUpdate.isSelected()) {
+                selectedGenres.add("Strategy");
+            }
+            if (checkBoxSimulationUpdate.isSelected()) {
+                selectedGenres.add("Simulation");
+            }
+            if (checkBoxRacingUpdate.isSelected()) {
+                selectedGenres.add("Racing/Driving");
+            }
+            if (checkBoxRolePlayingUpdate.isSelected()) {
+                selectedGenres.add("Role-Playing");
+            }
+            if (checkBoxShootingUpdate.isSelected()) {
+                selectedGenres.add("Shooting");
+            }
 
-        String genres = selectedGenres.isEmpty() ? null : String.join(",", selectedGenres);
+            String genres = selectedGenres.isEmpty() ? null : String.join(",", selectedGenres);
 
-        String releasedDate = null;
-        String yearNum = txtFldReleasedYearUpdate.getText();
-        String monthNum = txtFldReleasedMonthUpdate.getText();
-        String dayNum = txtFldReleasedDayUpdate.getText();
+            String releasedDate = null;
+            String yearNum = txtFldReleasedYearUpdate.getText();
+            String monthNum = txtFldReleasedMonthUpdate.getText();
+            String dayNum = txtFldReleasedDayUpdate.getText();
 
-        if (yearNum.isEmpty() && monthNum.isEmpty() && dayNum.isEmpty()) {
+            if (yearNum.isEmpty() && monthNum.isEmpty() && dayNum.isEmpty()) {
+                for (GameModel game : gameList) {
+                    if (gameNum == game.getGameNum()) {
+                        releasedDate = game.getReleasedDate();
+                        break;
+                    }
+                }
+            } else {
+                if (!validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
+                    CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                releasedDate = yearNum + "/" + monthNum + "/" + dayNum;
+            }
+
+            String price = null;
+            String priceInput = txtFldPriceUpdate.getText();
+            if (!priceInput.isEmpty()) {
+                price = "$" + priceInput;
+            }
+
+            int rating = -1;
+            String ratingInput = (String) comboBoxRatingUpdate.getSelectedItem();
+            if (ratingInput != null && !ratingInput.isEmpty()) {
+                rating = Integer.parseInt(ratingInput);
+            }
+
+            boolean exists = false;
+
             for (GameModel game : gameList) {
-                if (gameNum == game.getGameNum()) {
-                    releasedDate = game.getReleasedDate();
+                if (gameNum == game.getGameNum() || gameTitle.equalsIgnoreCase(game.getGameName())) {
+                    game.setGameName(gameTitle.isEmpty() ? game.getGameName() : gameTitle);
+                    game.setMainDevelopers(mainDevelopers.isEmpty() ? game.getMainDevelopers() : mainDevelopers);
+                    game.setPublishers(publishers.isEmpty() ? game.getPublishers() : publishers);
+                    game.setPlatform(platform.equalsIgnoreCase(game.getPlatform()) ? game.getPlatform() : platform);
+                    game.setReleasedDate(releasedDate == null ? game.getReleasedDate() : releasedDate);
+                    game.setGenres(genres == null ? game.getGenres() : genres);
+                    game.setRating(rating == -1 ? game.getRating() : rating);
+                    game.setPrice(price == null ? game.getPrice() : price);
+                    game.setLink(link.isEmpty() ? game.getLink() : link);
+                    exists = true;
                     break;
                 }
             }
-        } else {
-            if (!validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
-                CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).", "ALERT!!", JOptionPane.WARNING_MESSAGE);
-                return;
+
+            if (exists) {
+                if (!validation.isValidGameNum(gameNum)) {
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                } else if (!validation.isValidPrice(Double.parseDouble(priceInput))) {
+                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    tableUpdator();
+                }
+            } else {
+                CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-            releasedDate = yearNum + "/" + monthNum + "/" + dayNum;
+
+            loadScreen("AdminScreen");
+        } catch (NumberFormatException e) {
+            CustomMessageJOptionPane.showCustomMessage("Invalid value, please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
         }
-
-        String price = null;
-        String priceInput = txtFldPriceUpdate.getText();
-        if (!priceInput.isEmpty()) {
-            price = "$" + priceInput;
-        }
-
-        int rating = -1;  
-        String ratingInput = (String) comboBoxRatingUpdate.getSelectedItem();
-        if (ratingInput != null && !ratingInput.isEmpty()) {
-            rating = Integer.parseInt(ratingInput);
-        }
-
-        boolean exists = false;
-
-        for (GameModel game : gameList) {
-            if (gameNum == game.getGameNum()|| gameTitle.equalsIgnoreCase(game.getGameName())) {
-                game.setGameName(gameTitle.isEmpty() ? game.getGameName() : gameTitle);
-                game.setMainDevelopers(mainDevelopers.isEmpty() ? game.getMainDevelopers() : mainDevelopers);
-                game.setPublishers(publishers.isEmpty() ? game.getPublishers() : publishers);
-                game.setPlatform(platform.equalsIgnoreCase(game.getPlatform()) ? game.getPlatform() : platform);
-                game.setReleasedDate(releasedDate == null ? game.getReleasedDate() : releasedDate);
-                game.setGenres(genres == null ? game.getGenres() : genres);
-                game.setRating(rating == -1 ? game.getRating() : rating);
-                game.setPrice(price == null ? game.getPrice() : price);
-                game.setLink(link.isEmpty() ? game.getLink() : link);
-                exists = true;
-                break;
-            }
-        }
-
-        if (exists) {
-            if (!validation.isValidGameNum(gameNum)) {
-                CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
-            }
-            else if(!validation.isValidPrice(Double.parseDouble(priceInput))){
-                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!","ALERT!!",JOptionPane.WARNING_MESSAGE);
-                } 
-            else {
-                tableUpdator();
-            }
-        } else {
-            CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
-        }
-
-        loadScreen("AdminScreen");
-    } catch (NumberFormatException e) {
-        CustomMessageJOptionPane.showCustomMessage("Invalid value, please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
-    }
     }//GEN-LAST:event_btnUpdateGameActionPerformed
 
     private void btnUpdateGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGamesActionPerformed
@@ -1978,21 +2002,20 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
         // TODO add your handling code here:
-        
-        int selectedRow= tblGameData.getSelectedRow();
-        
-        
-        if(selectedRow==-1){
+
+        int selectedRow = tblGameData.getSelectedRow();
+
+        if (selectedRow == -1) {
             CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         try {
-            String removeNumInt =String.valueOf(tblGameData.getValueAt(selectedRow, 0));
+            String removeNumInt = String.valueOf(tblGameData.getValueAt(selectedRow, 0));
             int removeNumButton = Integer.parseInt(removeNumInt);
             boolean exist = false;
             for (int i = 0; i < gameList.size(); i++) {
-                if ((gameList.get(i).getGameNum()) == removeNumButton ) {
+                if ((gameList.get(i).getGameNum()) == removeNumButton) {
                     gameList.remove(i);
                     exist = true;
                     break;
@@ -2000,7 +2023,7 @@ public class GameSpace extends javax.swing.JFrame {
             }
 
             if (exist) {
-                tableUpdator();  
+                tableUpdator();
                 CustomMessageJOptionPane.showCustomMessage("Game Successfully Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 CustomMessageJOptionPane.showCustomMessage("Game Not Found!!", "Alert", JOptionPane.INFORMATION_MESSAGE);
