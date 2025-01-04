@@ -930,6 +930,7 @@
                         <StringItem index="7" value="Lowest Price"/>
                       </StringArray>
                     </Property>
+                    <Property name="autoscrolls" type="boolean" value="true"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>

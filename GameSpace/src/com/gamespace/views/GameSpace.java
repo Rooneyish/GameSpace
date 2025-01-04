@@ -730,6 +730,7 @@ public class GameSpace extends javax.swing.JFrame {
         comboBoxSorts.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         comboBoxSorts.setForeground(new java.awt.Color(233, 232, 231));
         comboBoxSorts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending No.", "Descending No.", "A-Z", "Z-A", "Highest Rating", "Lowest Rating", "Highest Price", "Lowest Price" }));
+        comboBoxSorts.setAutoscrolls(true);
         comboBoxSorts.setBorder(null);
         comboBoxSorts.setMinimumSize(new java.awt.Dimension(254, 22));
         comboBoxSorts.setPreferredSize(new java.awt.Dimension(254, 42));
@@ -1958,12 +1959,16 @@ public class GameSpace extends javax.swing.JFrame {
                 return;
             }
 
+            String price = null;
             String priceInput = txtFldPriceUpdate.getText();
-            if (!priceInput.isEmpty() && !priceInput.matches("\\d+(\\.\\d{1,2})?")) {
-                CustomMessageJOptionPane.showCustomMessage("Price must be a valid number!", "ALERT!", JOptionPane.WARNING_MESSAGE);
-                return;
+            if (!priceInput.isEmpty()) {
+                double priceValue = Double.parseDouble(priceInput);
+                if (priceValue == 0) {
+                    price = "Free";
+                } else {
+                    price = "$" + priceInput;
+                }
             }
-            String price = priceInput.isEmpty() ? null : "$" + priceInput;
 
             String ratingInput = (String) comboBoxRatingUpdate.getSelectedItem();
             int rating = ratingInput == null || ratingInput.isEmpty() ? -1 : Integer.parseInt(ratingInput);
