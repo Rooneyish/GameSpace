@@ -1,5 +1,6 @@
 package com.gamespace.views;
 
+import com.gamespace.controller.algorithms.CustomBinarySearch;
 import com.gamespace.controller.algorithms.CustomInsertionSort;
 import com.gamespace.controller.algorithms.CustomMergeSort;
 import com.gamespace.controller.algorithms.CustomSelectionSort;
@@ -1788,14 +1789,13 @@ public class GameSpace extends javax.swing.JFrame {
         String passwordtxt = new String(txtFldPassword.getPassword());
 
         // Check if username or password is empty
-        if (usernametxt.isEmpty()||passwordtxt.isEmpty()) {
+        if (usernametxt.isEmpty() || passwordtxt.isEmpty()) {
             lblLoginError.setText("Please enter your username and password.");
         } // Check if username and password are incorrect
-        else if (usernametxt.equals(admin) && passwordtxt.equals(adminpassword))  {
+        else if (usernametxt.equals(admin) && passwordtxt.equals(adminpassword)) {
             lblLoginError.setText("");
             loadScreen("AdminScreen");
-        }
-        else{
+        } else {
             lblLoginError.setText("Username or Password mismatch");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
@@ -2050,8 +2050,31 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAdminSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminSearchActionPerformed
         // TODO add your handling code here:
+            String searchText = txtFldSearchAdmin.getText();
+
+            if (searchText.isEmpty()) {
+                CustomMessageJOptionPane.showCustomMessage("Please enter game name to search.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+
+            GameModel result = searchGame(searchText);
+            if (result != null) {
+                gameList.clear();
+                gameList.add(result);
+                tableUpdator();     
+            } else {
+                
+                CustomMessageJOptionPane.showCustomMessage("Can't Find Game. Please Try again", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
+ 
     }//GEN-LAST:event_btnAdminSearchActionPerformed
 
+    private GameModel searchGame(String gameName) {
+        CustomSelectionSort selectionSort = new CustomSelectionSort();
+        List<GameModel> sortedList = selectionSort.sortByGameName(gameList, false);
+        CustomBinarySearch search = new CustomBinarySearch();
+        return search.searchByName(gameName, sortedList, 0, sortedList.size() - 1);
+    }
+    
     private void comboBoxSortsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSortsActionPerformed
         // TODO add your handling code here:
         String sortby = String.valueOf((String) comboBoxSorts.getSelectedItem());
