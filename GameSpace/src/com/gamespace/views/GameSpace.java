@@ -37,7 +37,8 @@ public class GameSpace extends javax.swing.JFrame {
         initializeTools();
         initializeData();
         startProgress();
-
+        jScrollPane2.setVisible(false);
+        btnSearchReset.setVisible(false);
     }
 
     private void initializeTools() {
@@ -60,7 +61,6 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     private void initializeData() {
-        gameList = new LinkedList();
         addGamesToTable(new GameModel(1, "CS:GO", "Valve", "Valve", "PC", "2012/08/21", "Action, Shooting", 4, "Free", "https://www.counter-strike.net"));
         addGamesToTable(new GameModel(12, "CS:Source", "Valve", "Valve", "PC", "2004/11/01", "Action, Shooting", 4, "$20", "https://www.counter-strike.net"));
         addGamesToTable(new GameModel(3, "Minecraft", "Mojang Studios", "Mojang Studios", "PC", "2011/11/18", "Simulation, Adventure", 5, "Free", "https://www.minecraft.net"));
@@ -189,7 +189,10 @@ public class GameSpace extends javax.swing.JFrame {
         btnMinimizeWinAdmin = new javax.swing.JButton();
         btnAdminSearch = new javax.swing.JButton();
         pnlDashboard = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblGameData1 = new javax.swing.JTable();
         divider = new javax.swing.JPanel();
+        btnSearchReset = new javax.swing.JButton();
         pnlGameData = new javax.swing.JPanel();
         lblGameData = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -607,6 +610,73 @@ public class GameSpace extends javax.swing.JFrame {
 
         pnlDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBackground(null);
+        jScrollPane2.getViewport().setBorder(null);
+
+        tblGameData1.setOpaque(false);
+        ((DefaultTableCellRenderer)tblGameData1.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblGameData1.setShowGrid(false);
+        tblGameData1.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
+        tblGameData1.getTableHeader().setOpaque(false);
+        tblGameData1.getTableHeader().setBackground(new Color(145,49,117));
+        tblGameData1.getTableHeader().setForeground(new Color(233,232,231));
+        tblGameData1.setRowHeight(40);
+        tblGameData1.setBorder(null);
+        tblGameData1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblGameData1.setForeground(new java.awt.Color(233, 232, 231));
+        tblGameData1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Game No.", "Game Title", "Main Developers", "Publisher", "Plaform", "Released Date", "Genres", "Rating", "Price", "Link"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblGameData1.setFocusable(false);
+        tblGameData1.setRequestFocusEnabled(false);
+        tblGameData1.setRowHeight(40);
+        tblGameData1.setSelectionBackground(new java.awt.Color(145, 49, 117));
+        tblGameData1.setSelectionForeground(new java.awt.Color(145, 49, 117));
+        tblGameData1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGameData1.setShowGrid(false);
+        tblGameData1.setShowHorizontalLines(true);
+        tblGameData1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblGameData1);
+        if (tblGameData1.getColumnModel().getColumnCount() > 0) {
+            tblGameData1.getColumnModel().getColumn(0).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblGameData1.getColumnModel().getColumn(1).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblGameData1.getColumnModel().getColumn(2).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(2).setPreferredWidth(180);
+            tblGameData1.getColumnModel().getColumn(3).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(3).setPreferredWidth(170);
+            tblGameData1.getColumnModel().getColumn(4).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(4).setPreferredWidth(150);
+            tblGameData1.getColumnModel().getColumn(5).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tblGameData1.getColumnModel().getColumn(6).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(6).setPreferredWidth(250);
+            tblGameData1.getColumnModel().getColumn(7).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(7).setPreferredWidth(80);
+            tblGameData1.getColumnModel().getColumn(8).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(8).setPreferredWidth(80);
+            tblGameData1.getColumnModel().getColumn(9).setResizable(false);
+            tblGameData1.getColumnModel().getColumn(9).setPreferredWidth(280);
+        }
+
+        pnlDashboard.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 1771, 260));
+
         divider.setBackground(new java.awt.Color(233, 232, 231));
         divider.setPreferredSize(new java.awt.Dimension(1800, 5));
 
@@ -622,6 +692,18 @@ public class GameSpace extends javax.swing.JFrame {
         );
 
         pnlDashboard.add(divider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 1800, 10));
+
+        btnSearchReset.setBackground(new java.awt.Color(145, 49, 117));
+        btnSearchReset.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnSearchReset.setForeground(new java.awt.Color(233, 232, 231));
+        btnSearchReset.setText("Search Reset");
+        btnSearchReset.setBorder(null);
+        btnSearchReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchResetActionPerformed(evt);
+            }
+        });
+        pnlDashboard.add(btnSearchReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 280, 113, 27));
 
         pnlGameData.setBackground(new java.awt.Color(32, 38, 46));
         pnlGameData.setOpaque(false);
@@ -749,7 +831,6 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(pnlGameDataLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1771, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addComponent(lblGameData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -759,8 +840,9 @@ public class GameSpace extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnRemoveGames, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1771, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(114, 114, 114))
         );
         pnlGameDataLayout.setVerticalGroup(
             pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,7 +871,7 @@ public class GameSpace extends javax.swing.JFrame {
 
         lblTotalAdmin.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
         lblTotalAdmin.setForeground(new java.awt.Color(233, 232, 231));
-        lblTotalAdmin.setText("Total Users");
+        lblTotalAdmin.setText("Total Admin");
 
         lblAdminNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         lblAdminNum.setForeground(new java.awt.Color(233, 232, 231));
@@ -886,23 +968,22 @@ public class GameSpace extends javax.swing.JFrame {
         pnlTotalGamesLayout.setHorizontalGroup(
             pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTotalGamesLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(31, 31, 31)
                 .addGroup(pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalGames)
                     .addGroup(pnlTotalGamesLayout.createSequentialGroup()
                         .addComponent(lblGameIcon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblGamesNum)
-                        .addGap(31, 31, 31))
-                    .addGroup(pnlTotalGamesLayout.createSequentialGroup()
-                        .addComponent(lblTotalGames)
-                        .addContainerGap(151, Short.MAX_VALUE))))
+                        .addGap(170, 170, 170)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(lblGamesNum)
+                .addGap(31, 31, 31))
         );
         pnlTotalGamesLayout.setVerticalGroup(
             pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTotalGamesLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addComponent(lblTotalGames)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(pnlTotalGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGamesNum, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblGameIcon, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1723,7 +1804,6 @@ public class GameSpace extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1782,8 +1862,8 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         String admin = "admin";
         String adminpassword = "admin";
-//        txtFldUsername.setText("admin");
-//        txtFldPassword.setText("admin");
+        txtFldUsername.setText("admin");
+        txtFldPassword.setText("admin");
 
         String usernametxt = txtFldUsername.getText();
         String passwordtxt = new String(txtFldPassword.getPassword());
@@ -2050,22 +2130,45 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnAdminSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminSearchActionPerformed
         // TODO add your handling code here:
-            String searchText = txtFldSearchAdmin.getText();
 
-            if (searchText.isEmpty()) {
-                CustomMessageJOptionPane.showCustomMessage("Please enter game name to search.", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+        String searchText = txtFldSearchAdmin.getText();
 
-            GameModel result = searchGame(searchText);
-            if (result != null) {
-                gameList.clear();
-                gameList.add(result);
-                tableUpdator();     
-            } else {
-                
-                CustomMessageJOptionPane.showCustomMessage("Can't Find Game. Please Try again", "Information", JOptionPane.INFORMATION_MESSAGE);
+        if (searchText.isEmpty()) {
+            CustomMessageJOptionPane.showCustomMessage("Please enter game name to search.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+
+        GameModel result = searchGame(searchText);
+        if (result != null) {
+            pnlTotalAdmin.setVisible(false);
+            pnlTotalUsers.setVisible(false);
+            pnlTotalGames.setVisible(false);
+            jScrollPane2.setVisible(true);
+            List<GameModel> searchedList = new LinkedList<>();
+            searchedList.add(result);
+
+            DefaultTableModel model = (DefaultTableModel) tblGameData1.getModel();
+            model.setRowCount(0);
+
+            for (GameModel game : searchedList) {
+                model.addRow(new Object[]{
+                    game.getGameNum(),
+                    game.getGameName(),
+                    game.getMainDevelopers(),
+                    game.getPublishers(),
+                    game.getPlatform(),
+                    game.getReleasedDate(),
+                    game.getGenres(),
+                    game.getRating(),
+                    game.getPrice(),
+                    game.getLink()
+                });
             }
- 
+            txtFldSearchAdmin.setText("");
+            btnSearchReset.setVisible(true);
+        } else {
+            CustomMessageJOptionPane.showCustomMessage("Can't Find Game. Please Try again", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAdminSearchActionPerformed
 
     private GameModel searchGame(String gameName) {
@@ -2074,7 +2177,7 @@ public class GameSpace extends javax.swing.JFrame {
         CustomBinarySearch search = new CustomBinarySearch();
         return search.searchByName(gameName, sortedList, 0, sortedList.size() - 1);
     }
-    
+
     private void comboBoxSortsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSortsActionPerformed
         // TODO add your handling code here:
         String sortby = String.valueOf((String) comboBoxSorts.getSelectedItem());
@@ -2108,6 +2211,15 @@ public class GameSpace extends javax.swing.JFrame {
         gameList = sortedList;
         tableUpdator();
     }//GEN-LAST:event_comboBoxSortsActionPerformed
+
+    private void btnSearchResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchResetActionPerformed
+        // TODO add your handling code here:
+        pnlTotalAdmin.setVisible(true);
+        pnlTotalUsers.setVisible(true);
+        pnlTotalGames.setVisible(true);
+        jScrollPane2.setVisible(false);
+        btnSearchReset.setVisible(false);
+    }//GEN-LAST:event_btnSearchResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2149,6 +2261,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeLogIn;
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnRemoveGames;
+    private javax.swing.JButton btnSearchReset;
     private javax.swing.JButton btnUpdateGame;
     private javax.swing.JButton btnUpdateGames;
     private javax.swing.JCheckBox checkBoxAction;
@@ -2178,6 +2291,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAddGames;
     private javax.swing.JLabel lblAddGamesBG;
     private javax.swing.JLabel lblAdminIC;
@@ -2252,6 +2366,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
     private javax.swing.JTable tblGameData;
+    private javax.swing.JTable tblGameData1;
     private javax.swing.JTextField txtFldGameNum;
     private javax.swing.JTextField txtFldGameNumUpdate;
     private javax.swing.JTextField txtFldGameTitle;
