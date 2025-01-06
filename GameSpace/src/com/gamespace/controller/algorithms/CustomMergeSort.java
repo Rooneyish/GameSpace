@@ -26,8 +26,8 @@ public class CustomMergeSort {
 
         int firstLength = sortList.size() / 2;
 
-        List<GameModel> first = new ArrayList<GameModel>(sortList.subList(0, firstLength));
-        List<GameModel> second = new ArrayList<GameModel>(sortList.subList(firstLength, sortList.size()));
+        List<GameModel> first = new ArrayList<>(sortList.subList(0, firstLength));
+        List<GameModel> second = new ArrayList<>(sortList.subList(firstLength, sortList.size()));
 
         first = sortGames(first, dataList, isDesc);
         second = sortGames(second, dataList, isDesc);
@@ -91,8 +91,8 @@ public class CustomMergeSort {
                     return 1;
                 } else {
                     try {
-                        Double priceVal1 = Double.parseDouble(price1.replace("$", ""));
-                        Double priceVal2 = Double.parseDouble(price2.replace("$", ""));
+                        Double priceVal1 = Double.valueOf(price1.replace("$", ""));
+                        Double priceVal2 = Double.valueOf(price2.replace("$", ""));
                         return Double.compare(priceVal1, priceVal2);
                     } catch (NumberFormatException e) {
                         throw new IllegalArgumentException("Invalid price format: " + price1 + " or " + price2);

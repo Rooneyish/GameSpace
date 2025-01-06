@@ -53,6 +53,7 @@ public class GameSpace extends javax.swing.JFrame {
         getContentPane().add(pnlAdmin, "AdminScreen");
         getContentPane().add(pnlAddGamesOuter, "AddGamesScreeen");
         getContentPane().add(pnlUpdateGamesOuter, "UpdateGamesScreen");
+        //getContentPane().add(pnlUser,"UserScreen");
 
         cardLayout.show(getContentPane(), "WelcomeScreen");
     }
@@ -1778,24 +1779,24 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         // TODO add your handling code here:
-        String username = "admin";
-        String password = "admin";
-        txtFldUsername.setText("admin");
-        txtFldPassword.setText("admin");
+        String admin = "admin";
+        String adminpassword = "admin";
+//        txtFldUsername.setText("admin");
+//        txtFldPassword.setText("admin");
 
         String usernametxt = txtFldUsername.getText();
         String passwordtxt = new String(txtFldPassword.getPassword());
 
         // Check if username or password is empty
-        if (username.isEmpty() || password.isEmpty()) {
+        if (usernametxt.isEmpty()||passwordtxt.isEmpty()) {
             lblLoginError.setText("Please enter your username and password.");
         } // Check if username and password are incorrect
-        else if (!usernametxt.equals("admin") || !passwordtxt.equals("admin")) {
-            lblLoginError.setText("Username and password mismatch.");
-        } // If credentials are correct, proceed to load the main screen
-        else {
-            lblLoginError.setText(""); // Clear any previous error messages
-            loadScreen("AdminScreen"); // Load the main screen
+        else if (usernametxt.equals(admin) && passwordtxt.equals(adminpassword))  {
+            lblLoginError.setText("");
+            loadScreen("AdminScreen");
+        }
+        else{
+            lblLoginError.setText("Username or Password mismatch");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
 
