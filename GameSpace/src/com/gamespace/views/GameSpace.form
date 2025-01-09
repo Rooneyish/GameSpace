@@ -844,7 +844,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="lblGameData" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnAddGames1" min="-2" pref="188" max="-2" attributes="0"/>
+                                  <Component id="btnUndoAddToLibrary" min="-2" pref="188" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnAddToMyLibrary" min="-2" pref="153" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -882,7 +882,7 @@
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                           <Component id="comboBoxSorts" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                           <Component id="btnAddToMyLibrary" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                                          <Component id="btnAddGames1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="btnUndoAddToLibrary" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1133,7 +1133,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddToMyLibraryActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnAddGames1">
+                <Component class="javax.swing.JButton" name="btnUndoAddToLibrary">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="75" green="31" red="91" type="rgb"/>
@@ -1150,7 +1150,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddGames1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUndoAddToLibraryActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

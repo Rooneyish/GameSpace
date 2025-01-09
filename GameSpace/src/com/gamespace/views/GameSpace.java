@@ -206,7 +206,7 @@ public class GameSpace extends javax.swing.JFrame {
         btnUpdateGames = new javax.swing.JButton();
         comboBoxSorts = new javax.swing.JComboBox<>();
         btnAddToMyLibrary = new javax.swing.JButton();
-        btnAddGames1 = new javax.swing.JButton();
+        btnUndoAddToLibrary = new javax.swing.JButton();
         pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
         lblTotalAdmin = new javax.swing.JLabel();
         lblAdminNum = new javax.swing.JLabel();
@@ -863,14 +863,14 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        btnAddGames1.setBackground(new java.awt.Color(145, 49, 117));
-        btnAddGames1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        btnAddGames1.setForeground(new java.awt.Color(233, 232, 231));
-        btnAddGames1.setText("Undo Add to My Library");
-        btnAddGames1.setBorder(null);
-        btnAddGames1.addActionListener(new java.awt.event.ActionListener() {
+        btnUndoAddToLibrary.setBackground(new java.awt.Color(145, 49, 117));
+        btnUndoAddToLibrary.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnUndoAddToLibrary.setForeground(new java.awt.Color(233, 232, 231));
+        btnUndoAddToLibrary.setText("Undo Add to My Library");
+        btnUndoAddToLibrary.setBorder(null);
+        btnUndoAddToLibrary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddGames1ActionPerformed(evt);
+                btnUndoAddToLibraryActionPerformed(evt);
             }
         });
 
@@ -884,7 +884,7 @@ public class GameSpace extends javax.swing.JFrame {
                     .addGroup(pnlGameDataLayout.createSequentialGroup()
                         .addComponent(lblGameData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddGames1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUndoAddToLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAddToMyLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -916,7 +916,7 @@ public class GameSpace extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(comboBoxSorts, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnAddToMyLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAddGames1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnUndoAddToLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2421,8 +2421,8 @@ public class GameSpace extends javax.swing.JFrame {
         int addGameNumInt = Integer.parseInt(addGameNum);
         boolean exist = false;
         for (int i = 0; i < myLibrary.size(); i++) {
-            if(myLibrary.peek().getGameNum()==addGameNumInt){
-                exist=true;
+            if (myLibrary.peek().getGameNum() == addGameNumInt) {
+                exist = true;
                 break;
             }
         }
@@ -2444,9 +2444,24 @@ public class GameSpace extends javax.swing.JFrame {
         addToMyLibrary();
     }//GEN-LAST:event_btnAddToMyLibraryActionPerformed
 
-    private void btnAddGames1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGames1ActionPerformed
+    private void btnUndoAddToLibraryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoAddToLibraryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddGames1ActionPerformed
+        if (myLibrary.isEmpty()) {
+            CustomMessageJOptionPane.showCustomMessage("No games to undo. Your Library is EMPTY", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        GameModel removeGameFromLibrary = myLibrary.pop();
+        DefaultTableModel model = (DefaultTableModel) tblMyLibraryData.getModel();
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if ((int) model.getValueAt(i, 0) == removeGameFromLibrary.getGameNum()) {
+                    model.removeRow(i);
+                    break;
+                }
+            }
+        CustomMessageJOptionPane.showCustomMessage("Last added game removed from the Library", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnUndoAddToLibraryActionPerformed
 
     private void btnMyLibraryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyLibraryActionPerformed
         // TODO add your handling code here:
@@ -2488,7 +2503,6 @@ public class GameSpace extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddGame;
     private javax.swing.JButton btnAddGames;
-    private javax.swing.JButton btnAddGames1;
     private javax.swing.JButton btnAddToMyLibrary;
     private javax.swing.JButton btnAdminSearch;
     private javax.swing.JButton btnCloseAddGames;
@@ -2503,6 +2517,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMyLibraryGoBack;
     private javax.swing.JButton btnRemoveGames;
     private javax.swing.JButton btnSearchReset;
+    private javax.swing.JButton btnUndoAddToLibrary;
     private javax.swing.JButton btnUpdateGame;
     private javax.swing.JButton btnUpdateGames;
     private javax.swing.JCheckBox checkBoxAction;
