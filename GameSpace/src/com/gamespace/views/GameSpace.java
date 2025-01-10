@@ -4,6 +4,7 @@ import com.gamespace.controller.algorithms.CustomBinarySearch;
 import com.gamespace.controller.algorithms.CustomInsertionSort;
 import com.gamespace.controller.algorithms.CustomMergeSort;
 import com.gamespace.controller.algorithms.CustomSelectionSort;
+import com.gamespace.controller.datastructure.CustomQueue;
 import com.gamespace.controller.datastructure.CustomStack;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
@@ -28,6 +29,7 @@ public class GameSpace extends javax.swing.JFrame {
     private List<GameModel> gameList;
     private com.gamespace.util.ValidationUtil validation;
     private com.gamespace.controller.datastructure.CustomStack myLibrary;
+    private com.gamespace.controller.datastructure.CustomQueue playGameQueue;
 
     /**
      * Creates new form GameSpace
@@ -47,6 +49,7 @@ public class GameSpace extends javax.swing.JFrame {
         gameList = new ArrayList();
         validation = new ValidationUtil();
         myLibrary = new CustomStack(100);
+        playGameQueue = new CustomQueue(100);
     }
 
     private void initializeLayout() {
@@ -302,10 +305,15 @@ public class GameSpace extends javax.swing.JFrame {
         lblUpdateGamesBG = new javax.swing.JLabel();
         pnlMyLibrary = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        pnlGameData1 = new javax.swing.JPanel();
+        lblGameData1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
         tblMyLibraryData = new javax.swing.JTable();
+        btnMyLibraryPlayGame = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         btnMyLibraryGoBack = new javax.swing.JButton();
+        lblCurrentlyPlaying = new javax.swing.JLabel();
+        lblCurrentStatus = new javax.swing.JLabel();
         lblMyLibraryBackground = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         pgBarWelcomeScreen = new javax.swing.JProgressBar();
@@ -1864,17 +1872,21 @@ public class GameSpace extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(32, 38, 46, 200));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("MyLibrary");
+        pnlGameData1.setBackground(new java.awt.Color(32, 38, 46));
+        pnlGameData1.setOpaque(false);
 
-        jScrollPane3.setOpaque(false);
-        jScrollPane3.getViewport().setOpaque(false);
-        jScrollPane3.setBackground(null);
-        jScrollPane3.getViewport().setBorder(null);
+        lblGameData1.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblGameData1.setForeground(new java.awt.Color(233, 232, 231));
+        lblGameData1.setText("My Library");
 
-        tblMyLibraryData.setOpaque(false);
-        ((DefaultTableCellRenderer)tblMyLibraryData.getDefaultRenderer(Object.class)).setOpaque(false);
+        jScrollPane4.setOpaque(true);
+        jScrollPane4.getViewport().setOpaque(true);
+        jScrollPane4.getViewport().setBorder(null);
+        jScrollPane4.setBackground(new java.awt.Color(32, 38, 46));
+        jScrollPane4.getViewport().setBackground(new java.awt.Color(32, 38, 46));
+
+        tblMyLibraryData.setOpaque(true);
+        ((DefaultTableCellRenderer)tblMyLibraryData.getDefaultRenderer(Object.class)).setOpaque(true);
         tblMyLibraryData.setShowGrid(false);
         tblMyLibraryData.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
         tblMyLibraryData.getTableHeader().setOpaque(false);
@@ -1882,6 +1894,7 @@ public class GameSpace extends javax.swing.JFrame {
         tblMyLibraryData.getTableHeader().setForeground(new Color(233,232,231));
         tblMyLibraryData.setRowHeight(40);
         tblMyLibraryData.setBorder(null);
+        tblMyLibraryData.setBackground(new java.awt.Color(32, 38, 46));
         tblMyLibraryData.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         tblMyLibraryData.setForeground(new java.awt.Color(233, 232, 231));
         tblMyLibraryData.setModel(new javax.swing.table.DefaultTableModel(
@@ -1903,13 +1916,13 @@ public class GameSpace extends javax.swing.JFrame {
         tblMyLibraryData.setFocusable(false);
         tblMyLibraryData.setRequestFocusEnabled(false);
         tblMyLibraryData.setRowHeight(40);
-        tblMyLibraryData.setSelectionBackground(new java.awt.Color(145, 49, 117));
+        tblMyLibraryData.setSelectionBackground(new java.awt.Color(32, 38, 46));
         tblMyLibraryData.setSelectionForeground(new java.awt.Color(145, 49, 117));
         tblMyLibraryData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblMyLibraryData.setShowGrid(false);
         tblMyLibraryData.setShowHorizontalLines(true);
         tblMyLibraryData.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(tblMyLibraryData);
+        jScrollPane4.setViewportView(tblMyLibraryData);
         if (tblMyLibraryData.getColumnModel().getColumnCount() > 0) {
             tblMyLibraryData.getColumnModel().getColumn(0).setResizable(false);
             tblMyLibraryData.getColumnModel().getColumn(0).setPreferredWidth(80);
@@ -1933,6 +1946,49 @@ public class GameSpace extends javax.swing.JFrame {
             tblMyLibraryData.getColumnModel().getColumn(9).setPreferredWidth(280);
         }
 
+        btnMyLibraryPlayGame.setBackground(new java.awt.Color(145, 49, 117));
+        btnMyLibraryPlayGame.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnMyLibraryPlayGame.setForeground(new java.awt.Color(233, 232, 231));
+        btnMyLibraryPlayGame.setText("Play Game");
+        btnMyLibraryPlayGame.setBorder(null);
+        btnMyLibraryPlayGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyLibraryPlayGameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGameData1Layout = new javax.swing.GroupLayout(pnlGameData1);
+        pnlGameData1.setLayout(pnlGameData1Layout);
+        pnlGameData1Layout.setHorizontalGroup(
+            pnlGameData1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGameData1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(pnlGameData1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlGameData1Layout.createSequentialGroup()
+                        .addComponent(lblGameData1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMyLibraryPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
+        );
+        pnlGameData1Layout.setVerticalGroup(
+            pnlGameData1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGameData1Layout.createSequentialGroup()
+                .addGroup(pnlGameData1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlGameData1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lblGameData1)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGameData1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnMyLibraryPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setOpaque(false);
+
         btnMyLibraryGoBack.setBackground(new java.awt.Color(145, 49, 117));
         btnMyLibraryGoBack.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         btnMyLibraryGoBack.setForeground(new java.awt.Color(233, 232, 231));
@@ -1944,29 +2000,56 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
+        lblCurrentlyPlaying.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblCurrentlyPlaying.setForeground(new java.awt.Color(233, 232, 231));
+        lblCurrentlyPlaying.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCurrentlyPlaying.setText("Your Game Status");
+
+        lblCurrentStatus.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblCurrentStatus.setForeground(new java.awt.Color(233, 232, 231));
+        lblCurrentStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCurrentStatus.setText("Your Game Status");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+            .addComponent(lblCurrentlyPlaying, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCurrentStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(lblCurrentStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCurrentlyPlaying)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1855, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlGameData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
-                .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap()
+                .addComponent(pnlGameData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlMyLibrary.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1080));
@@ -2473,6 +2556,36 @@ public class GameSpace extends javax.swing.JFrame {
         loadScreen("AdminScreen");
     }//GEN-LAST:event_btnMyLibraryGoBackActionPerformed
 
+    private void btnMyLibraryPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyLibraryPlayGameActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblMyLibraryData.getSelectedRow();
+
+        if (selectedRow == -1) {
+            CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String playGameSelected = String.valueOf(tblMyLibraryData.getValueAt(selectedRow, 0));
+        int playGameInt = Integer.parseInt(playGameSelected);
+        boolean exist = false;
+        for (int i = 0; i < playGameQueue.poll(); i++) {
+            if (playGameQueue.peek().getGameNum() == playGameInt) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            CustomMessageJOptionPane.showCustomMessage("Game is Already in the Library.", "Alert", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (GameModel game : gameList) {
+                if (game.getGameNum() == playGameInt) {
+                    playGameQueue.enQueue(game);
+                    lblCurrentlyPlaying.setText("You are currently playing " + game.getGameName() + ".");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnMyLibraryPlayGameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2515,6 +2628,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnMyLibrary;
     private javax.swing.JButton btnMyLibraryGoBack;
+    private javax.swing.JButton btnMyLibraryPlayGame;
     private javax.swing.JButton btnRemoveGames;
     private javax.swing.JButton btnSearchReset;
     private javax.swing.JButton btnUndoAddToLibrary;
@@ -2544,20 +2658,23 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxRatingUpdate;
     private javax.swing.JComboBox<String> comboBoxSorts;
     private javax.swing.JPanel divider;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblAddGames;
     private javax.swing.JLabel lblAddGamesBG;
     private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
     private javax.swing.JLabel lblAdminNum;
+    private javax.swing.JLabel lblCurrentStatus;
+    private javax.swing.JLabel lblCurrentlyPlaying;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblGameData;
+    private javax.swing.JLabel lblGameData1;
     private javax.swing.JLabel lblGameIcon;
     private javax.swing.JLabel lblGameNum;
     private javax.swing.JLabel lblGameNumUpdate;
@@ -2611,6 +2728,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDashboard;
     private javax.swing.JLabel pnlDashboardBg;
     private javax.swing.JPanel pnlGameData;
+    private javax.swing.JPanel pnlGameData1;
     private javax.swing.JPanel pnlLogIn;
     private javax.swing.JPanel pnlLogInBorder;
     private javax.swing.JPanel pnlLogInbtn;
