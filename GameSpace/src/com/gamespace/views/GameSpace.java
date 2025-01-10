@@ -4,7 +4,6 @@ import com.gamespace.controller.algorithms.CustomBinarySearch;
 import com.gamespace.controller.algorithms.CustomInsertionSort;
 import com.gamespace.controller.algorithms.CustomMergeSort;
 import com.gamespace.controller.algorithms.CustomSelectionSort;
-import com.gamespace.controller.datastructure.CustomQueue;
 import com.gamespace.controller.datastructure.CustomStack;
 import com.gamespace.util.ValidationUtil;
 import com.gamespace.model.GameModel;
@@ -29,7 +28,6 @@ public class GameSpace extends javax.swing.JFrame {
     private List<GameModel> gameList;
     private com.gamespace.util.ValidationUtil validation;
     private com.gamespace.controller.datastructure.CustomStack myLibrary;
-    private com.gamespace.controller.datastructure.CustomQueue playGame;
 
     /**
      * Creates new form GameSpace
@@ -49,7 +47,6 @@ public class GameSpace extends javax.swing.JFrame {
         gameList = new ArrayList();
         validation = new ValidationUtil();
         myLibrary = new CustomStack(100);
-        playGame = new CustomQueue(100);
     }
 
     private void initializeLayout() {
@@ -87,12 +84,11 @@ public class GameSpace extends javax.swing.JFrame {
         List<GameModel> sortedNum = sorter.sortByGameNum(gameList, false);
         gameList = sortedNum;
         tableUpdator();
-        lblGamesNum.setText(String.valueOf(gameList.size()));
 
     }
 
     private void tableUpdator() {
-        DefaultTableModel model = (DefaultTableModel) tblGameData2.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblGameData.getModel();
         model.setRowCount(0);
 
         for (GameModel game : gameList) {
@@ -204,14 +200,14 @@ public class GameSpace extends javax.swing.JFrame {
         pnlGameData = new javax.swing.JPanel();
         lblGameData = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblGameData2 = new javax.swing.JTable();
+        tblGameData = new javax.swing.JTable();
         btnAddGames = new javax.swing.JButton();
         btnRemoveGames = new javax.swing.JButton();
         btnUpdateGames = new javax.swing.JButton();
         comboBoxSorts = new javax.swing.JComboBox<>();
         btnAddToMyLibrary = new javax.swing.JButton();
         btnUndoAddToLibrary = new javax.swing.JButton();
-        pnlTotalFreeGames = new CustomRoundedPanel(80, new Color(145,49,117));
+        pnlTotalAdmin = new CustomRoundedPanel(80, new Color(145,49,117));
         lblTotalAdmin = new javax.swing.JLabel();
         lblAdminNum = new javax.swing.JLabel();
         lblAdminIC = new javax.swing.JLabel();
@@ -305,14 +301,11 @@ public class GameSpace extends javax.swing.JFrame {
         lblPriceUpdate = new javax.swing.JLabel();
         lblUpdateGamesBG = new javax.swing.JLabel();
         pnlMyLibrary = new javax.swing.JPanel();
-        pnlMyLibraryInner = new javax.swing.JPanel();
-        lblMyLibrary = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblMyLibraryData = new javax.swing.JTable();
         btnMyLibraryGoBack = new javax.swing.JButton();
-        lblCurrentlyPlaying = new javax.swing.JLabel();
-        btnMyLibraryPlayGame = new javax.swing.JButton();
-        lblCurrentlyPlaying1 = new javax.swing.JLabel();
         lblMyLibraryBackground = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         pgBarWelcomeScreen = new javax.swing.JProgressBar();
@@ -525,7 +518,7 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        btnMyLibrary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/bookself.png"))); // NOI18N
+        btnMyLibrary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/book stack.png"))); // NOI18N
         btnMyLibrary.setBorder(null);
         btnMyLibrary.setBorderPainted(false);
         btnMyLibrary.setContentAreaFilled(false);
@@ -752,18 +745,18 @@ public class GameSpace extends javax.swing.JFrame {
         jScrollPane1.setBackground(null);
         jScrollPane1.getViewport().setBorder(null);
 
-        tblGameData2.setOpaque(false);
-        ((DefaultTableCellRenderer)tblGameData2.getDefaultRenderer(Object.class)).setOpaque(false);
-        tblGameData2.setShowGrid(false);
-        tblGameData2.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
-        tblGameData2.getTableHeader().setOpaque(false);
-        tblGameData2.getTableHeader().setBackground(new Color(145,49,117));
-        tblGameData2.getTableHeader().setForeground(new Color(233,232,231));
-        tblGameData2.setRowHeight(40);
-        tblGameData2.setBorder(null);
-        tblGameData2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblGameData2.setForeground(new java.awt.Color(233, 232, 231));
-        tblGameData2.setModel(new javax.swing.table.DefaultTableModel(
+        tblGameData.setOpaque(false);
+        ((DefaultTableCellRenderer)tblGameData.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblGameData.setShowGrid(false);
+        tblGameData.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
+        tblGameData.getTableHeader().setOpaque(false);
+        tblGameData.getTableHeader().setBackground(new Color(145,49,117));
+        tblGameData.getTableHeader().setForeground(new Color(233,232,231));
+        tblGameData.setRowHeight(40);
+        tblGameData.setBorder(null);
+        tblGameData.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblGameData.setForeground(new java.awt.Color(233, 232, 231));
+        tblGameData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -779,36 +772,37 @@ public class GameSpace extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblGameData2.setFocusable(false);
-        tblGameData2.setRequestFocusEnabled(false);
-        tblGameData2.setRowHeight(40);
-        tblGameData2.setSelectionBackground(new java.awt.Color(145, 49, 117));
-        tblGameData2.setSelectionForeground(new java.awt.Color(145, 49, 117));
-        tblGameData2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblGameData2.setShowGrid(false);
-        tblGameData2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblGameData2);
-        if (tblGameData2.getColumnModel().getColumnCount() > 0) {
-            tblGameData2.getColumnModel().getColumn(0).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tblGameData2.getColumnModel().getColumn(1).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblGameData2.getColumnModel().getColumn(2).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(2).setPreferredWidth(180);
-            tblGameData2.getColumnModel().getColumn(3).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(3).setPreferredWidth(170);
-            tblGameData2.getColumnModel().getColumn(4).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(4).setPreferredWidth(150);
-            tblGameData2.getColumnModel().getColumn(5).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(5).setPreferredWidth(120);
-            tblGameData2.getColumnModel().getColumn(6).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(6).setPreferredWidth(250);
-            tblGameData2.getColumnModel().getColumn(7).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(7).setPreferredWidth(80);
-            tblGameData2.getColumnModel().getColumn(8).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(8).setPreferredWidth(80);
-            tblGameData2.getColumnModel().getColumn(9).setResizable(false);
-            tblGameData2.getColumnModel().getColumn(9).setPreferredWidth(280);
+        tblGameData.setFocusable(false);
+        tblGameData.setRequestFocusEnabled(false);
+        tblGameData.setRowHeight(40);
+        tblGameData.setSelectionBackground(new java.awt.Color(145, 49, 117));
+        tblGameData.setSelectionForeground(new java.awt.Color(145, 49, 117));
+        tblGameData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGameData.setShowGrid(false);
+        tblGameData.setShowHorizontalLines(true);
+        tblGameData.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblGameData);
+        if (tblGameData.getColumnModel().getColumnCount() > 0) {
+            tblGameData.getColumnModel().getColumn(0).setResizable(false);
+            tblGameData.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblGameData.getColumnModel().getColumn(1).setResizable(false);
+            tblGameData.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblGameData.getColumnModel().getColumn(2).setResizable(false);
+            tblGameData.getColumnModel().getColumn(2).setPreferredWidth(180);
+            tblGameData.getColumnModel().getColumn(3).setResizable(false);
+            tblGameData.getColumnModel().getColumn(3).setPreferredWidth(170);
+            tblGameData.getColumnModel().getColumn(4).setResizable(false);
+            tblGameData.getColumnModel().getColumn(4).setPreferredWidth(150);
+            tblGameData.getColumnModel().getColumn(5).setResizable(false);
+            tblGameData.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tblGameData.getColumnModel().getColumn(6).setResizable(false);
+            tblGameData.getColumnModel().getColumn(6).setPreferredWidth(250);
+            tblGameData.getColumnModel().getColumn(7).setResizable(false);
+            tblGameData.getColumnModel().getColumn(7).setPreferredWidth(80);
+            tblGameData.getColumnModel().getColumn(8).setResizable(false);
+            tblGameData.getColumnModel().getColumn(8).setPreferredWidth(80);
+            tblGameData.getColumnModel().getColumn(9).setResizable(false);
+            tblGameData.getColumnModel().getColumn(9).setPreferredWidth(280);
         }
 
         btnAddGames.setBackground(new java.awt.Color(145, 49, 117));
@@ -930,59 +924,59 @@ public class GameSpace extends javax.swing.JFrame {
 
         pnlDashboard.add(pnlGameData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1790, 620));
 
-        pnlTotalFreeGames.setBackground(new java.awt.Color(145, 49, 117));
+        pnlTotalAdmin.setBackground(new java.awt.Color(145, 49, 117));
 
         lblTotalAdmin.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
         lblTotalAdmin.setForeground(new java.awt.Color(233, 232, 231));
-        lblTotalAdmin.setText("Total Free Games");
+        lblTotalAdmin.setText("Total Admin");
 
         lblAdminNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         lblAdminNum.setForeground(new java.awt.Color(233, 232, 231));
         lblAdminNum.setText("100");
 
-        lblAdminIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/free.png"))); // NOI18N
+        lblAdminIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/whiteCrown.png"))); // NOI18N
 
-        javax.swing.GroupLayout pnlTotalFreeGamesLayout = new javax.swing.GroupLayout(pnlTotalFreeGames);
-        pnlTotalFreeGames.setLayout(pnlTotalFreeGamesLayout);
-        pnlTotalFreeGamesLayout.setHorizontalGroup(
-            pnlTotalFreeGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTotalFreeGamesLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlTotalAdminLayout = new javax.swing.GroupLayout(pnlTotalAdmin);
+        pnlTotalAdmin.setLayout(pnlTotalAdminLayout);
+        pnlTotalAdminLayout.setHorizontalGroup(
+            pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalAdminLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(pnlTotalFreeGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTotalFreeGamesLayout.createSequentialGroup()
+                .addGroup(pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTotalAdminLayout.createSequentialGroup()
                         .addComponent(lblAdminIC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblAdminNum)
                         .addGap(31, 31, 31))
-                    .addGroup(pnlTotalFreeGamesLayout.createSequentialGroup()
+                    .addGroup(pnlTotalAdminLayout.createSequentialGroup()
                         .addComponent(lblTotalAdmin)
-                        .addContainerGap(44, Short.MAX_VALUE))))
+                        .addContainerGap(151, Short.MAX_VALUE))))
         );
-        pnlTotalFreeGamesLayout.setVerticalGroup(
-            pnlTotalFreeGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTotalFreeGamesLayout.createSequentialGroup()
+        pnlTotalAdminLayout.setVerticalGroup(
+            pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalAdminLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(lblTotalAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(pnlTotalFreeGamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(pnlTotalAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAdminNum, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblAdminIC, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(31, 31, 31))
         );
 
-        pnlDashboard.add(pnlTotalFreeGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 60, -1, -1));
+        pnlDashboard.add(pnlTotalAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 60, -1, -1));
 
         pnlTotalUsers.setBackground(new java.awt.Color(145, 49, 117));
 
         lblTotalUsers.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
         lblTotalUsers.setForeground(new java.awt.Color(233, 232, 231));
-        lblTotalUsers.setText("My Library Games");
+        lblTotalUsers.setText("Total Users");
 
         lblUsersNum.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         lblUsersNum.setForeground(new java.awt.Color(233, 232, 231));
         lblUsersNum.setText("100");
 
-        lblUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/bookself.png"))); // NOI18N
+        lblUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/users.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlTotalUsersLayout = new javax.swing.GroupLayout(pnlTotalUsers);
         pnlTotalUsers.setLayout(pnlTotalUsersLayout);
@@ -998,14 +992,14 @@ public class GameSpace extends javax.swing.JFrame {
                         .addGap(31, 31, 31))
                     .addGroup(pnlTotalUsersLayout.createSequentialGroup()
                         .addComponent(lblTotalUsers)
-                        .addContainerGap(46, Short.MAX_VALUE))))
+                        .addContainerGap(151, Short.MAX_VALUE))))
         );
         pnlTotalUsersLayout.setVerticalGroup(
             pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTotalUsersLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(lblTotalUsers)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(pnlTotalUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUsersNum, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblUserIcon, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1867,14 +1861,19 @@ public class GameSpace extends javax.swing.JFrame {
         pnlMyLibrary.setPreferredSize(new java.awt.Dimension(1920, 1080));
         pnlMyLibrary.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlMyLibraryInner.setBackground(new java.awt.Color(32, 38, 46, 200));
-        pnlMyLibraryInner.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        jPanel1.setBackground(new java.awt.Color(32, 38, 46, 200));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        lblMyLibrary.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
-        lblMyLibrary.setForeground(new java.awt.Color(255, 255, 255));
-        lblMyLibrary.setText("MyLibrary");
+        jLabel1.setFont(new java.awt.Font("Pixelify Sans", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MyLibrary");
 
-        tblMyLibraryData.setOpaque(true);
+        jScrollPane3.setOpaque(false);
+        jScrollPane3.getViewport().setOpaque(false);
+        jScrollPane3.setBackground(null);
+        jScrollPane3.getViewport().setBorder(null);
+
+        tblMyLibraryData.setOpaque(false);
         ((DefaultTableCellRenderer)tblMyLibraryData.getDefaultRenderer(Object.class)).setOpaque(false);
         tblMyLibraryData.setShowGrid(false);
         tblMyLibraryData.getTableHeader().setFont(new java.awt.Font("Roboto", 0,16 ));
@@ -1902,7 +1901,6 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
         tblMyLibraryData.setFocusable(false);
-        tblMyLibraryData.setOpaque(false);
         tblMyLibraryData.setRequestFocusEnabled(false);
         tblMyLibraryData.setRowHeight(40);
         tblMyLibraryData.setSelectionBackground(new java.awt.Color(145, 49, 117));
@@ -1946,69 +1944,32 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        lblCurrentlyPlaying.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
-        lblCurrentlyPlaying.setForeground(new java.awt.Color(233, 232, 231));
-        lblCurrentlyPlaying.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurrentlyPlaying.setText("Currently Playing");
-
-        btnMyLibraryPlayGame.setBackground(new java.awt.Color(145, 49, 117));
-        btnMyLibraryPlayGame.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        btnMyLibraryPlayGame.setForeground(new java.awt.Color(233, 232, 231));
-        btnMyLibraryPlayGame.setText("Play Game");
-        btnMyLibraryPlayGame.setBorder(null);
-        btnMyLibraryPlayGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMyLibraryPlayGameActionPerformed(evt);
-            }
-        });
-
-        lblCurrentlyPlaying1.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
-        lblCurrentlyPlaying1.setForeground(new java.awt.Color(233, 232, 231));
-        lblCurrentlyPlaying1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurrentlyPlaying1.setText("Currently Playing");
-
-        javax.swing.GroupLayout pnlMyLibraryInnerLayout = new javax.swing.GroupLayout(pnlMyLibraryInner);
-        pnlMyLibraryInner.setLayout(pnlMyLibraryInnerLayout);
-        pnlMyLibraryInnerLayout.setHorizontalGroup(
-            pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMyLibraryInnerLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblMyLibrary)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1855, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnMyLibraryPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1855, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
-            .addComponent(lblCurrentlyPlaying, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlMyLibraryInnerLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lblCurrentlyPlaying1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
-        pnlMyLibraryInnerLayout.setVerticalGroup(
-            pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMyLibraryInnerLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(lblMyLibrary)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMyLibraryPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(lblCurrentlyPlaying)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
                 .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
-            .addGroup(pnlMyLibraryInnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMyLibraryInnerLayout.createSequentialGroup()
-                    .addContainerGap(682, Short.MAX_VALUE)
-                    .addComponent(lblCurrentlyPlaying1)
-                    .addGap(353, 353, 353)))
         );
 
-        pnlMyLibrary.add(pnlMyLibraryInner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1080));
+        pnlMyLibrary.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1080));
 
         lblMyLibraryBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gamespace/resources/welcomePage.png"))); // NOI18N
         pnlMyLibrary.add(lblMyLibraryBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -2180,7 +2141,6 @@ public class GameSpace extends javax.swing.JFrame {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
                     addGamesToTable(game);
                     CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    lblGamesNum.setText(String.valueOf(gameList.size()));
                     loadScreen("AdminScreen");
                 }
             } else {
@@ -2310,7 +2270,7 @@ public class GameSpace extends javax.swing.JFrame {
     private void btnRemoveGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveGamesActionPerformed
         // TODO add your handling code here:
 
-        int selectedRow = tblGameData2.getSelectedRow();
+        int selectedRow = tblGameData.getSelectedRow();
 
         if (selectedRow == -1) {
             CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
@@ -2318,7 +2278,7 @@ public class GameSpace extends javax.swing.JFrame {
         }
 
         try {
-            String removeNumInt = String.valueOf(tblGameData2.getValueAt(selectedRow, 0));
+            String removeNumInt = String.valueOf(tblGameData.getValueAt(selectedRow, 0));
             int removeNumButton = Integer.parseInt(removeNumInt);
             boolean exist = false;
             for (int i = 0; i < gameList.size(); i++) {
@@ -2331,7 +2291,6 @@ public class GameSpace extends javax.swing.JFrame {
 
             if (exist) {
                 tableUpdator();
-                lblGamesNum.setText(String.valueOf(gameList.size()));
                 CustomMessageJOptionPane.showCustomMessage("Game Successfully Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 CustomMessageJOptionPane.showCustomMessage("Game Not Found!!", "Alert", JOptionPane.INFORMATION_MESSAGE);
@@ -2352,7 +2311,7 @@ public class GameSpace extends javax.swing.JFrame {
 
         GameModel result = searchGame(searchText);
         if (result != null) {
-            pnlTotalFreeGames.setVisible(false);
+            pnlTotalAdmin.setVisible(false);
             pnlTotalUsers.setVisible(false);
             pnlTotalGames.setVisible(false);
             jScrollPane2.setVisible(true);
@@ -2427,7 +2386,7 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnSearchResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchResetActionPerformed
         // TODO add your handling code here:
-        pnlTotalFreeGames.setVisible(true);
+        pnlTotalAdmin.setVisible(true);
         pnlTotalUsers.setVisible(true);
         pnlTotalGames.setVisible(true);
         jScrollPane2.setVisible(false);
@@ -2435,7 +2394,7 @@ public class GameSpace extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchResetActionPerformed
 
     private void updateMyLibraryTbl(GameModel myLibrary) {
-        DefaultTableModel model = (DefaultTableModel) tblGameData2.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblMyLibraryData.getModel();
         model.addRow(new Object[]{
             myLibrary.getGameNum(),
             myLibrary.getGameName(),
@@ -2451,14 +2410,14 @@ public class GameSpace extends javax.swing.JFrame {
     }
 
     private void addToMyLibrary() {
-        int selectedRow = tblGameData2.getSelectedRow();
+        int selectedRow = tblGameData.getSelectedRow();
 
         if (selectedRow == -1) {
             CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        String addGameNum = String.valueOf(tblGameData2.getValueAt(selectedRow, 0));
+        String addGameNum = String.valueOf(tblGameData.getValueAt(selectedRow, 0));
         int addGameNumInt = Integer.parseInt(addGameNum);
         boolean exist = false;
         for (int i = 0; i < myLibrary.size(); i++) {
@@ -2493,14 +2452,14 @@ public class GameSpace extends javax.swing.JFrame {
         }
 
         GameModel removeGameFromLibrary = myLibrary.pop();
-        DefaultTableModel model = (DefaultTableModel) tblGameData2.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblMyLibraryData.getModel();
 
-        for (int i = 0; i < model.getRowCount(); i++) {
-            if ((int) model.getValueAt(i, 0) == removeGameFromLibrary.getGameNum()) {
-                model.removeRow(i);
-                break;
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if ((int) model.getValueAt(i, 0) == removeGameFromLibrary.getGameNum()) {
+                    model.removeRow(i);
+                    break;
+                }
             }
-        }
         CustomMessageJOptionPane.showCustomMessage("Last added game removed from the Library", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnUndoAddToLibraryActionPerformed
 
@@ -2513,37 +2472,6 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadScreen("AdminScreen");
     }//GEN-LAST:event_btnMyLibraryGoBackActionPerformed
-
-    private void btnMyLibraryPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyLibraryPlayGameActionPerformed
-        // TODO add your handling code here:
-
-        int selectedRow = tblGameData2.getSelectedRow();
-
-        if (selectedRow == -1) {
-            CustomMessageJOptionPane.showCustomMessage("Please selecte a game to remove. ", "Game Not Selected", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String playGameSelected = String.valueOf(tblGameData2.getValueAt(selectedRow, 0));
-        int playGameInt = Integer.parseInt(playGameSelected);
-        boolean exist = false;
-        for (int i = 0; i < playGame.poll(); i++) {
-            if (playGame.peek().getGameNum() == playGameInt) {
-                exist = true;
-                break;
-            }
-        }
-        if (exist) {
-            CustomMessageJOptionPane.showCustomMessage("Game is Already in the Library.", "Alert", JOptionPane.WARNING_MESSAGE);
-        } else {
-            for (GameModel game : gameList) {
-                if (game.getGameNum() == playGameInt) {
-                    playGame.enQueue(game);
-                    lblCurrentlyPlaying1.setText("You are currently playing " + game.getGameName() + ".");
-                }
-            }
-        }
-    }//GEN-LAST:event_btnMyLibraryPlayGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2587,7 +2515,6 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnMyLibrary;
     private javax.swing.JButton btnMyLibraryGoBack;
-    private javax.swing.JButton btnMyLibraryPlayGame;
     private javax.swing.JButton btnRemoveGames;
     private javax.swing.JButton btnSearchReset;
     private javax.swing.JButton btnUndoAddToLibrary;
@@ -2617,8 +2544,10 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxRatingUpdate;
     private javax.swing.JComboBox<String> comboBoxSorts;
     private javax.swing.JPanel divider;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2627,8 +2556,6 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdminIC;
     private javax.swing.JLabel lblAdminIcon;
     private javax.swing.JLabel lblAdminNum;
-    private javax.swing.JLabel lblCurrentlyPlaying;
-    private javax.swing.JLabel lblCurrentlyPlaying1;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblGameData;
     private javax.swing.JLabel lblGameIcon;
@@ -2651,7 +2578,6 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogoAdmin;
     private javax.swing.JLabel lblMainDevelopers;
     private javax.swing.JLabel lblMainDevelopersUpdate;
-    private javax.swing.JLabel lblMyLibrary;
     private javax.swing.JLabel lblMyLibraryBackground;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPlatformsUpdate;
@@ -2690,10 +2616,9 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLogInbtn;
     private javax.swing.JPanel pnlMainLogIn;
     private javax.swing.JPanel pnlMyLibrary;
-    private javax.swing.JPanel pnlMyLibraryInner;
     private javax.swing.JPanel pnlSearchBar;
     private javax.swing.JPanel pnlSidebar;
-    private javax.swing.JPanel pnlTotalFreeGames;
+    private javax.swing.JPanel pnlTotalAdmin;
     private javax.swing.JPanel pnlTotalGames;
     private javax.swing.JPanel pnlTotalUsers;
     private javax.swing.JPanel pnlUpdateGamesBorder;
@@ -2701,8 +2626,8 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JPanel pnlUpdateGamesOuter;
     private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlWelcomeLogIn;
+    private javax.swing.JTable tblGameData;
     private javax.swing.JTable tblGameData1;
-    private javax.swing.JTable tblGameData2;
     private javax.swing.JTable tblMyLibraryData;
     private javax.swing.JTextField txtFldGameNum;
     private javax.swing.JTextField txtFldGameNumUpdate;
