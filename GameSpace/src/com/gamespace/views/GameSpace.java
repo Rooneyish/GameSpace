@@ -87,7 +87,7 @@ public class GameSpace extends javax.swing.JFrame {
         List<GameModel> sortedNum = sorter.sortByGameNum(gameList, false);
         gameList = sortedNum;
         tableUpdator();
-
+        lblGamesNum.setText(String.valueOf(gameList.size()));
     }
 
     private void tableUpdator() {
@@ -314,6 +314,7 @@ public class GameSpace extends javax.swing.JFrame {
         btnMyLibraryGoBack = new javax.swing.JButton();
         lblCurrentlyPlaying = new javax.swing.JLabel();
         lblCurrentStatus = new javax.swing.JLabel();
+        btnMyLibraryFinish = new javax.swing.JButton();
         lblMyLibraryBackground = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         pgBarWelcomeScreen = new javax.swing.JProgressBar();
@@ -2000,35 +2001,61 @@ public class GameSpace extends javax.swing.JFrame {
             }
         });
 
-        lblCurrentlyPlaying.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
+        lblCurrentlyPlaying.setBackground(new java.awt.Color(145, 49, 117));
+        lblCurrentlyPlaying.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lblCurrentlyPlaying.setForeground(new java.awt.Color(233, 232, 231));
         lblCurrentlyPlaying.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurrentlyPlaying.setText("Your Game Status");
+        lblCurrentlyPlaying.setText("IDLE");
+        lblCurrentlyPlaying.setAutoscrolls(true);
+        lblCurrentlyPlaying.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 232, 231), 3));
+        lblCurrentlyPlaying.setOpaque(true);
+        lblCurrentlyPlaying.setPreferredSize(new java.awt.Dimension(800, 45));
 
         lblCurrentStatus.setFont(new java.awt.Font("Pixelify Sans", 0, 36)); // NOI18N
         lblCurrentStatus.setForeground(new java.awt.Color(233, 232, 231));
         lblCurrentStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCurrentStatus.setText("Your Game Status");
+        lblCurrentStatus.setPreferredSize(new java.awt.Dimension(1920, 45));
+
+        btnMyLibraryFinish.setBackground(new java.awt.Color(145, 49, 117));
+        btnMyLibraryFinish.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        btnMyLibraryFinish.setForeground(new java.awt.Color(233, 232, 231));
+        btnMyLibraryFinish.setText("Finish");
+        btnMyLibraryFinish.setBorder(null);
+        btnMyLibraryFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyLibraryFinishActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addComponent(lblCurrentlyPlaying, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblCurrentStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblCurrentlyPlaying, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(558, 558, 558))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnMyLibraryFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(908, 908, 908))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(lblCurrentStatus)
+                .addComponent(lblCurrentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCurrentlyPlaying)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addComponent(lblCurrentlyPlaying, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMyLibraryFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(btnMyLibraryGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -2040,7 +2067,7 @@ public class GameSpace extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlGameData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -2224,6 +2251,7 @@ public class GameSpace extends javax.swing.JFrame {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
                     addGamesToTable(game);
                     CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    lblGamesNum.setText(String.valueOf(gameList.size()));
                     loadScreen("AdminScreen");
                 }
             } else {
@@ -2374,6 +2402,7 @@ public class GameSpace extends javax.swing.JFrame {
 
             if (exist) {
                 tableUpdator();
+                lblGamesNum.setText(String.valueOf(gameList.size()));
                 CustomMessageJOptionPane.showCustomMessage("Game Successfully Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 CustomMessageJOptionPane.showCustomMessage("Game Not Found!!", "Alert", JOptionPane.INFORMATION_MESSAGE);
@@ -2537,12 +2566,12 @@ public class GameSpace extends javax.swing.JFrame {
         GameModel removeGameFromLibrary = myLibrary.pop();
         DefaultTableModel model = (DefaultTableModel) tblMyLibraryData.getModel();
 
-            for (int i = 0; i < model.getRowCount(); i++) {
-                if ((int) model.getValueAt(i, 0) == removeGameFromLibrary.getGameNum()) {
-                    model.removeRow(i);
-                    break;
-                }
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if ((int) model.getValueAt(i, 0) == removeGameFromLibrary.getGameNum()) {
+                model.removeRow(i);
+                break;
             }
+        }
         CustomMessageJOptionPane.showCustomMessage("Last added game removed from the Library", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnUndoAddToLibraryActionPerformed
 
@@ -2586,6 +2615,20 @@ public class GameSpace extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMyLibraryPlayGameActionPerformed
 
+    private void btnMyLibraryFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyLibraryFinishActionPerformed
+        // TODO add your handling code here:
+        if (playGameQueue.isEmpty()) {
+            lblCurrentlyPlaying.setText("You are not playing any games.");
+        } else {
+            playGameQueue.deQueue();
+            if (playGameQueue.isEmpty()) {
+                lblCurrentlyPlaying.setText("No more games in the queue.");
+            } else {
+                lblCurrentlyPlaying.setText("Now playing: " + playGameQueue.peek());
+            }
+        }
+    }//GEN-LAST:event_btnMyLibraryFinishActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2627,6 +2670,7 @@ public class GameSpace extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizeLogIn;
     private javax.swing.JButton btnMinimizeWinAdmin;
     private javax.swing.JButton btnMyLibrary;
+    private javax.swing.JButton btnMyLibraryFinish;
     private javax.swing.JButton btnMyLibraryGoBack;
     private javax.swing.JButton btnMyLibraryPlayGame;
     private javax.swing.JButton btnRemoveGames;
