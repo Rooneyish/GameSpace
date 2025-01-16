@@ -14,13 +14,11 @@ import javax.swing.JPanel;
  * LmuID: 23048584
  */
 public class CustomRoundedPanel extends JPanel {
-        private Color backgroundColor;
         private int cornerRadius = 15;
 
-        public CustomRoundedPanel(int radius, Color bgColor) {
+        public CustomRoundedPanel(int radius) {
             super();
             cornerRadius = radius;
-            backgroundColor = bgColor;
             setOpaque(false);
         }
         
@@ -32,8 +30,7 @@ public class CustomRoundedPanel extends JPanel {
             int height = getHeight();
             Graphics2D graphics = (Graphics2D) g;
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            
-            graphics.setColor(backgroundColor != null ? backgroundColor : getBackground());
+
             graphics.fillRoundRect(0, 0, width, height, arcs.width, arcs.height);             
         }
 }
