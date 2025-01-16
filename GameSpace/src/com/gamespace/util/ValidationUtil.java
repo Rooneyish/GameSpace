@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
 public class ValidationUtil {
     
     private static final Pattern STRING_PATTERN = Pattern.compile("^[a-zA-Z0-9]+$");
+    private static final Pattern INTEGER_PATTERN = Pattern.compile("\\d+");
+    private static final Pattern YEAR_PATTERN = Pattern.compile("\\d{4}");
+    private static final Pattern MONTH_DAY_PATTERN = Pattern.compile("\\d{1,2}");
     
     /**
      * Validates if a string is null or empty.
@@ -30,6 +33,16 @@ public class ValidationUtil {
      */
     public boolean isValidString(String string){
         return !isNullOrEmpty(string) && STRING_PATTERN.matcher(string).matches();
+    }
+    
+    /**
+     * Validates the integer input if the integer contains numeric values or not
+     * 
+     * @param value the integer value to validate
+     * @return true if validate else false
+     */
+    public boolean isValidInteger(String value){
+        return !isNullOrEmpty(value) && INTEGER_PATTERN.matcher(value).matches();
     }
     
     /**
@@ -61,7 +74,7 @@ public class ValidationUtil {
             return false;
         }
         
-        if(!year.matches("\\d{4}") || !month.matches("\\d{1,2}") || !day.matches("\\d{1,2}")){
+        if(!YEAR_PATTERN.matcher(year).matches() || !MONTH_DAY_PATTERN.matcher(month).matches() || !MONTH_DAY_PATTERN.matcher(day).matches()){
             return false;
         }
         
@@ -71,9 +84,6 @@ public class ValidationUtil {
         if (monthNum < 1 || monthNum > 12){
             return false;
         }
-        if (dayNum < 1 || dayNum > 31){
-            return false;
-        }
-        return true;
+        return !(dayNum < 1 || dayNum > 31);
     }
 }

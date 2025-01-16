@@ -82,11 +82,11 @@ public class CustomSelectionSort {
      *
      * @param gameList the list of GameModel objects
      * @param i the index of the first element
-     * @param j the index of the second element
+     * @param first the index of the second element
      */
-    private void swap(List<GameModel> gameSortedList, int i, int j) {
-        GameModel temp = gameSortedList.get(i);
-        gameSortedList.set(i, gameSortedList.get(j));
-        gameSortedList.set(j, temp);
+    private void swap(List<GameModel> gameSortedList, int first, int second) {
+        GameModel temp = gameSortedList.get(first);
+        gameSortedList.set(first, gameSortedList.get(second));
+        gameSortedList.set(first, temp);
     }
 }

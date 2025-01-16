@@ -2279,16 +2279,55 @@ public class GameSpace extends javax.swing.JFrame {
     private void btnAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGameActionPerformed
         // TODO add your handling code here:
         try {
-
+            if (validation.isNullOrEmpty(txtFldGameNum.getText())) {
+                CustomMessageJOptionPane.showCustomMessage("Game Number cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             int gameNum = Integer.parseInt(txtFldGameNum.getText());
+
+            if (validation.isNullOrEmpty(txtFldGameTitle.getText())) {
+                CustomMessageJOptionPane.showCustomMessage("Game Title cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             String gameTitle = txtFldGameTitle.getText();
+
+            if (validation.isNullOrEmpty(txtFldMainDevelopers.getText())) {
+                CustomMessageJOptionPane.showCustomMessage("Main Developers cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             String mainDevelopers = txtFldMainDevelopers.getText();
+
+            if (validation.isNullOrEmpty(txtFldPublishers.getText())) {
+                CustomMessageJOptionPane.showCustomMessage("Publishers cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             String publishers = txtFldPublishers.getText();
-            String platform = String.valueOf((String) comboBoxPlatform.getSelectedItem());
-            int rating = Integer.parseInt((String) comboBoxRating.getSelectedItem());
-            double priceValue = Double.parseDouble((String) txtFldPrice.getText());
+
+            String platform = String.valueOf(comboBoxPlatform.getSelectedItem());
+            if (validation.isNullOrEmpty(platform)) {
+                CustomMessageJOptionPane.showCustomMessage("Platform cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            String ratingString = String.valueOf(comboBoxRating.getSelectedItem());
+            if (validation.isNullOrEmpty(ratingString)) {
+                CustomMessageJOptionPane.showCustomMessage("Rating cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            int rating = Integer.parseInt(ratingString);
+
+            if (validation.isNullOrEmpty(txtFldPrice.getText())) {
+                CustomMessageJOptionPane.showCustomMessage("Price cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            double priceValue = Double.parseDouble(txtFldPrice.getText());
             String price = priceValue == 0 ? "Free" : "$" + priceValue;
+
             String link = txtFldLink.getText();
+            if (validation.isNullOrEmpty(link)) {
+                CustomMessageJOptionPane.showCustomMessage("Link cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
             ArrayList<String> selectedGenres = new ArrayList<>();
             if (checkBoxAction.isSelected()) {
@@ -2318,25 +2357,23 @@ public class GameSpace extends javax.swing.JFrame {
             if (checkBoxShooting.isSelected()) {
                 selectedGenres.add("Shooting");
             }
+
             if (selectedGenres.isEmpty()) {
                 CustomMessageJOptionPane.showCustomMessage("Please select at least one genre!", "ALERT", JOptionPane.WARNING_MESSAGE);
+                return;
             }
-
             String genres = String.join(", ", selectedGenres);
 
-            String yearNum = (txtFldReleasedYear.getText());
-            String monthNum = (txtFldReleasedMonth.getText());
-            String dayNum = (txtFldReleasedDay.getText());
-
+            String yearNum = txtFldReleasedYear.getText();
+            String monthNum = txtFldReleasedMonth.getText();
+            String dayNum = txtFldReleasedDay.getText();
             if (!validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
                 CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             String releasedDate = yearNum + "/" + monthNum + "/" + dayNum;
 
             boolean exists = false;
-
             for (GameModel game : gameList) {
                 if (gameNum == game.getGameNum() || gameTitle.equalsIgnoreCase(game.getGameName())) {
                     exists = true;
@@ -2346,23 +2383,21 @@ public class GameSpace extends javax.swing.JFrame {
 
             if (!exists) {
                 if (!validation.isValidGameNum(gameNum)) {
-                    CustomMessageJOptionPane.showCustomMessage("Enter valid Game Number!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
-                } else if (!validation.isValidString(gameTitle) && !validation.isValidString(mainDevelopers) && !validation.isValidString(publishers)) {
-                    CustomMessageJOptionPane.showCustomMessage("Please Enter Valid Value!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                    CustomMessageJOptionPane.showCustomMessage("Enter a valid Game Number!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 } else if (!validation.isValidPrice(priceValue)) {
-                    CustomMessageJOptionPane.showCustomMessage("Enter valid Price!!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                    CustomMessageJOptionPane.showCustomMessage("Enter a valid Price!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
                     addGamesToTable(game);
-                    CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!", "Success", JOptionPane.INFORMATION_MESSAGE);
                     updateGameCounts();
                     loadScreen("AdminScreen");
                 }
             } else {
-                CustomMessageJOptionPane.showCustomMessage("The Game Already Exists", "Information", JOptionPane.INFORMATION_MESSAGE);
+                CustomMessageJOptionPane.showCustomMessage("The Game No. or Game Title Already Exists!", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            CustomMessageJOptionPane.showCustomMessage("Invalid value please try again!!", "ALERT!", JOptionPane.WARNING_MESSAGE);
+            CustomMessageJOptionPane.showCustomMessage("Invalid value, please try again!", "ALERT!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddGameActionPerformed
 
@@ -2373,9 +2408,9 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
         // TODO add your handling code here:
-        try {
+        try { 
             String gameNumInput = txtFldGameNumUpdate.getText();
-            if (gameNumInput.isEmpty() || !gameNumInput.matches("\\d+")) {
+            if (!validation.isValidInteger(gameNumInput)) {
                 CustomMessageJOptionPane.showCustomMessage("Game Number must be a valid integer!", "ALERT!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -2415,14 +2450,14 @@ public class GameSpace extends javax.swing.JFrame {
             if (checkBoxShootingUpdate.isSelected()) {
                 selectedGenres.add("Shooting");
             }
-            String genres = selectedGenres.isEmpty() ? null : String.join(",", selectedGenres);
+            String genres = selectedGenres.isEmpty() ? null : String.join(", ", selectedGenres);
 
             String yearNum = txtFldReleasedYearUpdate.getText();
             String monthNum = txtFldReleasedMonthUpdate.getText();
             String dayNum = txtFldReleasedDayUpdate.getText();
-            String releasedDate = yearNum.isEmpty() && monthNum.isEmpty() && dayNum.isEmpty() ? null : yearNum + "/" + monthNum + "/" + dayNum;
+            String releasedDate = (yearNum.isEmpty() && monthNum.isEmpty() && dayNum.isEmpty()) ? null : yearNum + "/" + monthNum + "/" + dayNum;
 
-            if (!yearNum.isEmpty() && !validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
+            if (releasedDate != null && !validation.isValidReleasedDate(yearNum, monthNum, dayNum)) {
                 CustomMessageJOptionPane.showCustomMessage("Invalid Released Date! Please enter a valid date (YYYY/MM/DD).", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -2430,20 +2465,20 @@ public class GameSpace extends javax.swing.JFrame {
             String price = null;
             String priceInput = txtFldPriceUpdate.getText();
             if (!priceInput.isEmpty()) {
-                double priceValue = Double.parseDouble(priceInput);
-                if (priceValue == 0) {
-                    price = "Free";
-                } else {
-                    price = "$" + priceInput;
+                if (!validation.isValidPrice(Double.parseDouble(priceInput))) {
+                    CustomMessageJOptionPane.showCustomMessage("Invalid price! Price must be a positive value.", "ALERT!!", JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
+                double priceValue = Double.parseDouble(priceInput);
+                price = priceValue == 0 ? "Free" : "$" + priceInput;
             }
 
             String ratingInput = (String) comboBoxRatingUpdate.getSelectedItem();
-            int rating = ratingInput == null || ratingInput.isEmpty() ? -1 : Integer.parseInt(ratingInput);
+            int rating = (ratingInput == null || ratingInput.isEmpty()) ? -1 : Integer.parseInt(ratingInput);
 
             boolean exists = false;
             for (GameModel game : gameList) {
-                if (gameNum == game.getGameNum()) {
+                if (gameNum == game.getGameNum() && gameTitle.equalsIgnoreCase(game.getGameName())) {
                     game.setGameName(gameTitle.isEmpty() ? game.getGameName() : gameTitle);
                     game.setMainDevelopers(mainDevelopers.isEmpty() ? game.getMainDevelopers() : mainDevelopers);
                     game.setPublishers(publishers.isEmpty() ? game.getPublishers() : publishers);
@@ -2459,7 +2494,7 @@ public class GameSpace extends javax.swing.JFrame {
             }
 
             if (!exists) {
-                CustomMessageJOptionPane.showCustomMessage("The Game No. does not Exist!!", "Alert", JOptionPane.WARNING_MESSAGE);
+                CustomMessageJOptionPane.showCustomMessage("The Game No. and Game Title does not match!", "Alert", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 

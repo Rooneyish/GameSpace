@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
  */
 public class CustomQueue {
 
-    private LinkedList<GameModel> vivaList; // Internal storage for the queue.
+    private LinkedList<GameModel> gameQueueList; // Internal storage for the queue.
     private int capacity; // Maximum number of elements the queue can hold.
 
     /**
@@ -37,7 +37,7 @@ public class CustomQueue {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than zero.");
         }
-        vivaList = new LinkedList<>();
+        gameQueueList = new LinkedList<>();
         this.capacity = capacity;
     }
 
@@ -50,7 +50,7 @@ public class CustomQueue {
      */
     public GameModel deQueue() {
         try {
-            return vivaList.removeFirst();
+            return gameQueueList.removeFirst();
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException("Cannot dequeue from an empty queue.");
         }
@@ -67,8 +67,8 @@ public class CustomQueue {
         if (isFull()) {
             return -1; // Indicates the queue is full.
         }
-        vivaList.addLast(gameModel);
-        return vivaList.size();
+        gameQueueList.addLast(gameModel);
+        return gameQueueList.size();
     }
 
     /**
@@ -77,7 +77,7 @@ public class CustomQueue {
      * @return the number of elements in the queue.
      */
     public int poll() {
-        return vivaList.size();
+        return gameQueueList.size();
     }
 
     /**
@@ -89,7 +89,7 @@ public class CustomQueue {
      */
     public GameModel peek() {
         try {
-            return vivaList.getFirst();
+            return gameQueueList.getFirst();
         } catch (NoSuchElementException ex) {
             throw new NoSuchElementException("Cannot peek into an empty queue.");
         }
@@ -101,7 +101,7 @@ public class CustomQueue {
      * @return true if the queue contains no elements, false otherwise.
      */
     public boolean isEmpty() {
-        return vivaList.isEmpty();
+        return gameQueueList.isEmpty();
     }
 
     /**
@@ -110,7 +110,7 @@ public class CustomQueue {
      * @return true if the queue has reached its capacity, false otherwise.
      */
     public boolean isFull() {
-        return vivaList.size() == capacity;
+        return gameQueueList.size() == capacity;
     }
 
 }
