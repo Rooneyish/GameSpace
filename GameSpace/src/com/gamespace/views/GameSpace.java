@@ -84,7 +84,7 @@ public class GameSpace extends javax.swing.JFrame {
         addGamesToTable(new GameModel(13, "Civilization VI", "Firaxis Games", "2K Games", "PC", "2016/10/21", "Strategy", 5, "$60", "https://www.civilization.com"));
         addGamesToTable(new GameModel(8, "Football Manager 2022", "Sports Interactive", "SEGA", "PC", "2021/11/09", "Sports, Simulation", 4, "$50", "https://www.footballmanager.com"));
         addGamesToTable(new GameModel(9, "Age of Empires IV", "Relic Entertainment", "Xbox Game Studios", "PC", "2021/10/28", "Strategy, Simulation", 5, "$60", "https://www.ageofempires.com"));
-        
+
         CustomInsertionSort sorter = new CustomInsertionSort();
         List<GameModel> sortedNum = sorter.sortByGameNum(gameList, false);
         gameList = sortedNum;
@@ -123,7 +123,7 @@ public class GameSpace extends javax.swing.JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i <= 100; i++) {
-                    Thread.sleep(0); // Simulated delay for progress bar
+                    Thread.sleep(50); // Simulated delay for progress bar
                     publish(i);
                 }
                 return null;
@@ -145,6 +145,18 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void loadScreen(String screenName) {
         cardLayout.show(getContentPane(), screenName);
+    }
+
+    private void updateGameCounts() {
+        lblGamesNum.setText(String.valueOf(gameList.size()));
+        int freeGamesCount = 0;
+        for (GameModel game : gameList) {
+            if ("Free".equalsIgnoreCase(game.getPrice())) {
+                freeGamesCount++;
+            }
+        }
+        lblTotalFreeGamesNum.setText(String.valueOf(freeGamesCount));
+        lblMyLibraryGameNum.setText(String.valueOf(myLibrary.size()));
     }
 
     private void closeWindow() {
@@ -2238,8 +2250,6 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
         String admin = "admin";
         String adminpassword = "admin";
-        txtFldUsername.setText("admin");
-        txtFldPassword.setText("admin");
 
         String usernametxt = txtFldUsername.getText();
         String passwordtxt = new String(txtFldPassword.getPassword());
@@ -2807,18 +2817,6 @@ public class GameSpace extends javax.swing.JFrame {
             CustomMessageJOptionPane.showCustomMessage("Error: No game found to start. " + e.getMessage(), "Queue Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnMyLibraryStartActionPerformed
-
-    private void updateGameCounts() {
-        lblGamesNum.setText(String.valueOf(gameList.size()));
-        int freeGamesCount = 0;
-        for (GameModel game : gameList) {
-            if ("Free".equalsIgnoreCase(game.getPrice())) {
-                freeGamesCount++;
-            }
-        }
-        lblTotalFreeGamesNum.setText(String.valueOf(freeGamesCount));
-        lblMyLibraryGameNum.setText(String.valueOf(myLibrary.size()));
-    }
 
     /**
      * @param args the command line arguments

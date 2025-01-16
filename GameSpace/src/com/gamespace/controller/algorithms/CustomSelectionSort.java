@@ -9,7 +9,7 @@ import java.util.List;
  * @author Ronish Prajapati
  */
 public class CustomSelectionSort {
-    List<GameModel> gameSortedList;
+    private List<GameModel> gameSortedList;
     
     public CustomSelectionSort(){
         gameSortedList = new ArrayList<>();

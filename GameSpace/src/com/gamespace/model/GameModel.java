@@ -1,8 +1,6 @@
 
 package com.gamespace.model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Ronish Prajapati

@@ -10,7 +10,7 @@ import java.util.List;
  * LMU ID: 23048584
  */
 public class CustomInsertionSort {
-    List<GameModel> gameSortedList;
+    private List<GameModel> gameSortedList;
     public CustomInsertionSort(){
         gameSortedList = new ArrayList<>();
     }
