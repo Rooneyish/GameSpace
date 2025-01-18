@@ -172,6 +172,55 @@ public class GameSpace extends javax.swing.JFrame {
         loadScreen("LogInScreen");
     }
 
+    private void clearFieldsAdd() {
+        txtFldGameNum.setText("");
+        txtFldGameTitle.setText("");
+        txtFldMainDevelopers.setText("");
+        txtFldPublishers.setText("");
+        txtFldPrice.setText("");
+        txtFldLink.setText("");
+        txtFldReleasedYear.setText("");
+        txtFldReleasedMonth.setText("");
+        txtFldReleasedDay.setText("");
+
+        comboBoxPlatform.setSelectedIndex(0);
+        comboBoxRating.setSelectedIndex(0);
+
+        checkBoxAction.setSelected(false);
+        checkBoxAdventures.setSelected(false);
+        checkBoxEducational.setSelected(false);
+        checkBoxSports.setSelected(false);
+        checkBoxStrategy.setSelected(false);
+        checkBoxSimulation.setSelected(false);
+        checkBoxRacing.setSelected(false);
+        checkBoxRolePlaying.setSelected(false);
+        checkBoxShooting.setSelected(false);
+    }
+    private void clearFieldsUpdate() {
+        txtFldGameNumUpdate.setText("");
+        txtFldGameTitleUpdate.setText("");
+        txtFldMainDevelopersUpdate.setText("");
+        txtFldPublishersUpdate.setText("");
+        txtFldPriceUpdate.setText("");
+        txtFldLinkUpdate.setText("");
+        txtFldReleasedYearUpdate.setText("");
+        txtFldReleasedMonthUpdate.setText("");
+        txtFldReleasedDayUpdate.setText("");
+
+        comboBoxPlatformUpdate.setSelectedIndex(0);
+        comboBoxRatingUpdate.setSelectedIndex(0);
+
+        checkBoxActionUpdate.setSelected(false);
+        checkBoxAdventuresUpdate.setSelected(false);
+        checkBoxEducationalUpdate.setSelected(false);
+        checkBoxSportsUpdate.setSelected(false);
+        checkBoxStrategyUpdate.setSelected(false);
+        checkBoxSimulationUpdate.setSelected(false);
+        checkBoxRacingUpdate.setSelected(false);
+        checkBoxRolePlayingUpdate.setSelected(false);
+        checkBoxShootingUpdate.setSelected(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2320,6 +2369,7 @@ public class GameSpace extends javax.swing.JFrame {
                 CustomMessageJOptionPane.showCustomMessage("Price cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            
             double priceValue = Double.parseDouble(txtFldPrice.getText());
             String price = priceValue == 0 ? "Free" : "$" + priceValue;
 
@@ -2390,6 +2440,7 @@ public class GameSpace extends javax.swing.JFrame {
                     GameModel game = new GameModel(gameNum, gameTitle, mainDevelopers, publishers, platform, releasedDate, genres, rating, price, link);
                     addGamesToTable(game);
                     CustomMessageJOptionPane.showCustomMessage("Game added SUCCESSFULLY!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    clearFieldsAdd();
                     updateGameCounts();
                     loadScreen("AdminScreen");
                 }
@@ -2408,7 +2459,7 @@ public class GameSpace extends javax.swing.JFrame {
 
     private void btnUpdateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGameActionPerformed
         // TODO add your handling code here:
-        try { 
+        try {
             String gameNumInput = txtFldGameNumUpdate.getText();
             if (!validation.isValidInteger(gameNumInput)) {
                 CustomMessageJOptionPane.showCustomMessage("Game Number must be a valid integer!", "ALERT!", JOptionPane.WARNING_MESSAGE);
@@ -2497,12 +2548,11 @@ public class GameSpace extends javax.swing.JFrame {
                 CustomMessageJOptionPane.showCustomMessage("The Game No. and Game Title does not match!", "Alert", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             tableUpdator();
             updateGameCounts();
             loadScreen("AdminScreen");
+            clearFieldsUpdate();
             CustomMessageJOptionPane.showCustomMessage("The Game Updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-
         } catch (NumberFormatException e) {
             CustomMessageJOptionPane.showCustomMessage("Invalid value, please try again!", "ALERT!", JOptionPane.WARNING_MESSAGE);
         }
