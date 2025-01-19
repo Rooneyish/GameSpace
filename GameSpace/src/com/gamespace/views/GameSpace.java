@@ -123,7 +123,7 @@ public class GameSpace extends javax.swing.JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i <= 100; i++) {
-                    Thread.sleep(30); // Simulated delay for progress bar
+                    Thread.sleep(50); // Simulated delay for progress bar
                     publish(i);
                 }
                 return null;

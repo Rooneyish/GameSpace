@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class CustomInsertionSort {
     private List<GameModel> gameSortedList;
-    
     public CustomInsertionSort(){
         gameSortedList = new ArrayList<>();
     }
