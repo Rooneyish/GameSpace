@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class CustomSelectionSort {
     private List<GameModel> gameSortedList;
-    
     public CustomSelectionSort(){
         gameSortedList = new ArrayList<>();
     }
@@ -38,7 +37,6 @@ public class CustomSelectionSort {
         }
         return gameSortedList;
     }
-    
     /**
      * Finds the index of the extremum value (minimum or maximum) in the list
      * from the start index.
@@ -60,7 +58,6 @@ public class CustomSelectionSort {
 
         return extremumIndex;
     }
-
     /**
      * Determines whether the current value should replace the current extremum
      * based on sort order.
@@ -76,7 +73,6 @@ public class CustomSelectionSort {
         int compare= current.compareToIgnoreCase(extremum);
         return isDesc?compare>0:compare<0;
     }
-
     /**
      * Swaps two elements in the list.
      *

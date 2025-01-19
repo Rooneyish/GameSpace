@@ -196,6 +196,7 @@ public class GameSpace extends javax.swing.JFrame {
         checkBoxRolePlaying.setSelected(false);
         checkBoxShooting.setSelected(false);
     }
+
     private void clearFieldsUpdate() {
         txtFldGameNumUpdate.setText("");
         txtFldGameTitleUpdate.setText("");
@@ -2369,7 +2370,7 @@ public class GameSpace extends javax.swing.JFrame {
                 CustomMessageJOptionPane.showCustomMessage("Price cannot be empty!", "ALERT!!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
+
             double priceValue = Double.parseDouble(txtFldPrice.getText());
             String price = priceValue == 0 ? "Free" : "$" + priceValue;
 
@@ -2606,15 +2607,13 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String searchText = txtFldSearchAdmin.getText();
-        System.out.println(searchText);
-        
+
         if (searchText.isEmpty()) {
             CustomMessageJOptionPane.showCustomMessage("Please enter game name to search.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
         GameModel result = searchGame(searchText);
-        System.out.println(result);
-        
+
         if (result != null) {
             pnlTotalFreeGames.setVisible(false);
             pnlMyLibraryGames.setVisible(false);
@@ -2651,7 +2650,6 @@ public class GameSpace extends javax.swing.JFrame {
     private GameModel searchGame(String gameName) {
         CustomSelectionSort selectionSort = new CustomSelectionSort();
         List<GameModel> sortedList = selectionSort.sortByGameName(gameList, false);
-        System.out.println(sortedList);
         CustomBinarySearch search = new CustomBinarySearch();
         return search.searchByName(gameName, sortedList, 0, sortedList.size() - 1);
     }
@@ -2879,6 +2877,7 @@ public class GameSpace extends javax.swing.JFrame {
         model.setRowCount(0);
 
         CustomMessageJOptionPane.showCustomMessage("The gaming session has ended, and the queue has been cleared.", "Session Ended", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_btnMyLibraryEndActionPerformed
 
     private void btnMyLibraryStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyLibraryStartActionPerformed
@@ -2890,6 +2889,7 @@ public class GameSpace extends javax.swing.JFrame {
 
                 if (playGameQueue.isEmpty()) {
                     CustomMessageJOptionPane.showCustomMessage("The Game queue is Empty. Please add game to the queue first. ", "Queue Empty", JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
                 GameModel currentGame = playGameQueue.peek();
                 if (!session) {
