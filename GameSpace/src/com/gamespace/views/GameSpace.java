@@ -2606,12 +2606,15 @@ public class GameSpace extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String searchText = txtFldSearchAdmin.getText();
-
+        System.out.println(searchText);
+        
         if (searchText.isEmpty()) {
             CustomMessageJOptionPane.showCustomMessage("Please enter game name to search.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
         GameModel result = searchGame(searchText);
+        System.out.println(result);
+        
         if (result != null) {
             pnlTotalFreeGames.setVisible(false);
             pnlMyLibraryGames.setVisible(false);
@@ -2648,6 +2651,7 @@ public class GameSpace extends javax.swing.JFrame {
     private GameModel searchGame(String gameName) {
         CustomSelectionSort selectionSort = new CustomSelectionSort();
         List<GameModel> sortedList = selectionSort.sortByGameName(gameList, false);
+        System.out.println(sortedList);
         CustomBinarySearch search = new CustomBinarySearch();
         return search.searchByName(gameName, sortedList, 0, sortedList.size() - 1);
     }
