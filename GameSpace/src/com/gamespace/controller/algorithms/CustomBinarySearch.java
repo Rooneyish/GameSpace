@@ -8,6 +8,14 @@ import java.util.List;
  * @author Ronish Prajapati
  */
 public class CustomBinarySearch {
+    /**
+     * Validates and search the search value.
+     * 
+     * @param searchValue  the search value to search in the list.
+     * @param gameList the list of the games to search
+     * @param left first half of the gamelist
+     * @param right second half of the gamelist
+     */
 
     public GameModel searchByName(String searchValue, List<GameModel> gameList,
             int left, int right) {

@@ -20,7 +20,8 @@ import java.util.NoSuchElementException;
  * Note: This implementation assumes that the queue operations are not accessed
  * concurrently.</p>
  *
- * @author Prithivi
+ * @author Ronish Prajapati 
+ * LMU ID: 23028584
  */
 public class CustomQueue {
 

@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
  * <p>Note: This implementation assumes that the stack operations are not accessed concurrently.</p>
  * 
  * @author Ronish Prajapati
+ * LMU ID: 23048584
  */
 public class CustomStack {
 
