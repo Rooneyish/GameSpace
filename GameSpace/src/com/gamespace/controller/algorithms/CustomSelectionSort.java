@@ -83,6 +83,6 @@ public class CustomSelectionSort {
     private void swap(List<GameModel> gameSortedList, int first, int second) {
         GameModel temp = gameSortedList.get(first);
         gameSortedList.set(first, gameSortedList.get(second));
-        gameSortedList.set(second, temp);
+        gameSortedList.set(first, temp);
     }
 }
