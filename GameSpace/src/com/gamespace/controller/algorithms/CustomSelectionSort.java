@@ -7,6 +7,7 @@ import java.util.List;
 /**
  *
  * @author Ronish Prajapati
+ * LMU ID: 23048584
  */
 public class CustomSelectionSort {
     private List<GameModel> gameSortedList;

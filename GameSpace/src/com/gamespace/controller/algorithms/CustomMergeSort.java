@@ -6,18 +6,32 @@ import java.util.List;
 
 /**
  *
- * @author Ronish Prajapati LMU ID: 23048584
+ * @author Ronish Prajapati 
+ * LMU ID: 23048584
  */
 public class CustomMergeSort {
 
-    private List<GameModel> sortList;
-    private String sortBy;
+    private List<GameModel> sortList;// Internal storae for the sorted list
+    private String sortBy;// option to sort
 
+    /**
+     * Constructs a CustomMergeSort that initializes sort list and sort by option
+     * 
+     */
     public CustomMergeSort() {
         this.sortList = new ArrayList<>();
         this.sortBy = "";
     }
 
+    /**
+     * Sorts game using recursion.
+     * 
+     * @param sortList the list to sort
+     * @param dataList type of the dataList
+     * @param isDesc value to sort in ascending or descending order
+     * 
+     * @return the sorted list
+     */
     public List<GameModel> sortGames(List<GameModel> sortList, String dataList, boolean isDesc) {
 
         if (sortList == null || sortList.size() <= 1) {
@@ -35,6 +49,15 @@ public class CustomMergeSort {
         return sortList;
     }
 
+    /**
+     * Combines the list of single element to a single sorted list
+     * 
+     * @param first first half of the list
+     * @param second second half of the list
+     * @param sortList the sorted list
+     * @param dataList type of the dataList
+     * @param isDesc value to sort in ascending or descending order
+     */
     public void merge(List<GameModel> first, List<GameModel> second, List<GameModel> sortList, String dataList, boolean isDesc) {
         int fCounter = 0;
         int sCounter = 0;
@@ -62,6 +85,16 @@ public class CustomMergeSort {
         }
     }
 
+    /**
+     * Compares the data list 
+     * 
+     * @param  first first half of the list
+     * @param second second half of the list
+     * @param dataList type of dataList
+     * @return a negative integer, zero, or a positive integer as the
+     *          specified String is greater than, equal to, or less
+     *          than this String, ignoring case considerations. 
+     */
     public int compare(GameModel first, GameModel second, String dataList) {
         switch (dataList) {
             case "gameTitle":

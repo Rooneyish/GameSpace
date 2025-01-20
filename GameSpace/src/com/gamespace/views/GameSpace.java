@@ -22,7 +22,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ronish Prajapati LmuID: 23048584
+ * @author Ronish Prajapati 
+ * LMU ID: 23048584
  */
 public class GameSpace extends javax.swing.JFrame {
 

@@ -8,7 +8,7 @@ import javax.swing.UIManager;
 /**
  *
  * @author Ronish Prajapati
- * Lmu ID: 23048584
+ * LMU ID: 23048584
  * 
  */
 public class CustomMessageJOptionPane {
